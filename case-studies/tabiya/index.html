@@ -1,1351 +1,1010 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
 
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tabiya Compass — Case Study</title>
 
+<!-- SEO & AEO -->
+<meta name="description" content="Case study: UX Lead on Tabiya Compass, an AI-powered skills consultation tool designed for young jobseekers in India, Kenya and South Africa. Designed by Myrto Papagiannakou.">
+<meta name="author" content="Myrto Papagiannakou">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="YOUR-URL-HERE">
 
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tabiya Compass — Case Study by Myrto Papagiannakou">
+<meta property="og:description" content="UX Lead on Tabiya Compass: an AI-powered skills consultation tool for young jobseekers across India, Kenya and South Africa. Discovery research, alignment facilitation, and full MVP design.">
+<meta property="og:image" content="hero.webp">
+<meta property="og:url" content="YOUR-URL-HERE">
+<meta property="og:site_name" content="Myrto Papagiannakou — Portfolio">
+<meta property="article:author" content="Myrto Papagiannakou">
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tabiya Compass — Case study — Myrto</title>
-  <meta name="description" content="UX leadership on a 0→1 GenAI product for jobseekers across India, Kenya, and South Africa. Tabiya Compass case study.">
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Tabiya Compass — Case Study by Myrto Papagiannakou">
+<meta name="twitter:description" content="UX Lead on Tabiya Compass: an AI-powered skills consultation tool for young jobseekers across India, Kenya and South Africa.">
+<meta name="twitter:image" content="hero.webp">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<!-- JSON-LD structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "Tabiya Compass",
+  "description": "An AI-powered skills consultation tool designed for young jobseekers in India, Kenya and South Africa. Designed by Myrto Papagiannakou as UX Lead.",
+  "author": {
+    "@type": "Person",
+    "name": "Myrto Papagiannakou"
+  },
+  "creator": {
+    "@type": "Person",
+    "name": "Myrto Papagiannakou"
+  },
+  "dateCreated": "2024",
+  "datePublished": "2024",
+  "keywords": "UX design, AI, skills consultation, jobseekers, India, Kenya, South Africa, Tabiya, Google.org, Oxford, GDI, GOYN, Harambee",
+  "about": [
+    {"@type": "Thing", "name": "UX Design"},
+    {"@type": "Thing", "name": "AI product design"},
+    {"@type": "Thing", "name": "Youth employment"},
+    {"@type": "Thing", "name": "Skills frameworks"}
+  ],
+  "funder": {
+    "@type": "Organization",
+    "name": "Google.org"
+  },
+  "sourceOrganization": {
+    "@type": "Organization",
+    "name": "Tabiya"
+  },
+  "url": "YOUR-URL-HERE"
+}
+</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.cdnfonts.com/css/opendyslexic" rel="stylesheet"/>
+<style>
+  :root{
+    --navy-1:#0a1240;
+    --navy-2:#1a2055;
+    --blue:#1f2dff;
+    --blue-deep:#1822c4;
+    --lime:#d2ff02;
+    --ink:#10122b;
+    --ink-soft:#2a2d4a;
+    --muted:#6a6d85;
+    --line:#e6e6ec;
+    --bg:#ffffff;
+    --bg-soft:#f4f4f1;
+    /* Spacing scale — 8pt grid */
+    --sp-xs: 0.5rem;   /* 8px */
+    --sp-sm: 1rem;     /* 16px */
+    --sp-md: 1.5rem;   /* 24px */
+    --sp-lg: 2rem;     /* 32px */
+    --sp-xl: 3rem;     /* 48px */
+    --sp-2xl: 4rem;    /* 64px */
+    --sp-3xl: 6rem;    /* 96px */
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:16px;}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:"JetBrains Mono",ui-monospace,monospace;line-height:1.85;-webkit-font-smoothing:antialiased;}
+  body{font-size:1.125rem;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{max-width:67.5rem;margin:0 auto;padding:0 2rem;}
+  .wrap-narrow{max-width:52rem;margin:0 auto;padding:0 2rem;}
+  .h-sans{font-family:"Space Grotesk",ui-sans-serif,system-ui,sans-serif;letter-spacing:-0.02em;color:var(--blue);font-weight:700;}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:0.75rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--blue);font-weight:500;}
+  p{font-family:"JetBrains Mono",monospace;color:var(--ink-soft);line-height:1.7;font-size:1rem;}
+  p + p{margin-top:1.25em;}
+  strong{color:var(--ink);font-weight:600;}
 
-  <style>
-    /* -------------------------------------------------------------
-       TOKENS — inherits the landing page palette, with one extra
-       background token for the case-study body (warm off-white).
-    ------------------------------------------------------------- */
-    :root {
-      /* Landing page palette (kept for footer, links, accents, and hero overlay) */
-      --bg:           #d2ff00;
-      --bg-2:         #c4ef00;
-      --ink:          #040644;
-      --muted:        #5a7500;
-      --rule:         rgba(0, 18, 229, 0.18);
-      --rule-soft:    rgba(0, 18, 229, 0.10);
-      --accent-ink:   #3d5000;
-      --selection:    rgba(0, 18, 229, 0.15);
-      --blue:         #0012e5;
+  /* ===== universal placeholder ===== */
+  .ph{
+    background: repeating-linear-gradient(135deg,#e6e6e6 0 0.375rem,#f1f1f1 0.375rem 0.75rem);
+    color:#5a5a5a;
+    display:flex;align-items:center;justify-content:center;
+    font-family:"JetBrains Mono",monospace;font-size:0.6875rem;letter-spacing:.02em;
+    text-align:center;padding:1rem;border-radius:0.375rem;
+    border:1px solid #e2e2e2;
+    min-height:5rem;
+  }
+  .ph .ph-tag{
+    position:relative;
+  }
+  .ph[data-kind]::after{
+    content:attr(data-kind);
+    position:absolute;top:0.625rem;left:0.625rem;
+    background:rgba(255,255,255,.85);color:#666;
+    font-size:0.5625rem;letter-spacing:.12em;text-transform:uppercase;
+    padding:0.1875rem 0.375rem;border-radius:2px;border:1px solid #ddd;
+  }
+  .ph{position:relative;}
+  .ph--dark{background:repeating-linear-gradient(135deg,#2b3268 0 0.375rem,#353d76 0.375rem 0.75rem);color:#cdd2ff;border-color:#1a1f4f;}
 
-      /* Case-study body — cool pale blue-grey, in the brand's cool family. */
-      --paper:        #ffffff;
-      --paper-2:      #f0f0f0;   /* slightly darker tint for placeholders */
-      --paper-rule:   rgba(4, 6, 68, 0.14);
+  /* ===== figure caption ===== */
+  .figcap{
+    font-family:"JetBrains Mono",monospace;
+    font-size:0.8125rem;
+    line-height:1.7;
+    color:#5a5a6e;
+    letter-spacing:.01em;
+    margin-top:0.625rem;
+    display:flex;flex-direction:column;gap:0.1875rem;
+  }
+  .figcap .num{
+    color:var(--blue);
+    font-weight:500;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    font-size:0.75rem;
+    flex:0 0 auto;
+    white-space:nowrap;
+  }
+  .figcap .desc{flex:1;}
+  .figcap--light{color:#26283f;}
+  .figcap--light .num{color:#0a1240;}
+  .figcap--invert{color:#cdd2ff;}
+  .figcap--invert .num{color:var(--lime);}
+  .figs-rowcap{margin:2.5rem 0 4rem;padding:0 var(--sp-lg);}
+  .figs-rowcap-880{margin:2.5rem 0 4rem;padding:0 var(--sp-lg);}
+  .figs-rowcap-1080{margin:2.5rem 0 4rem;padding:0 var(--sp-lg);}
 
-      /* Type */
-      --serif:        'Space Grotesk', sans-serif;
-      --sans:         'Space Grotesk', sans-serif;
-      --mono:         'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  /* ============= HERO ============= */
+  .hero{
+    color:#fff; position:relative; padding:2rem 0 0; overflow:hidden;
+  }
+  .hero__img{
+    position:absolute; inset:0; width:100%; height:100%;
+    object-fit:cover; object-position:40% center;
+    z-index:0;
+  }
+  .hero::before{
+    content:""; position:absolute; inset:0; pointer-events:none; z-index:1;
+    background: linear-gradient(to bottom, rgba(10,18,64,0.3) 0%, rgba(10,18,64,0.85) 100%);
+    mix-blend-mode: multiply;
+  }
+  .hero-caption{font-family:"JetBrains Mono",monospace;font-size:0.6875rem;color:#9aa0c4;padding:0 2rem;letter-spacing:.04em;position:relative;z-index:2;}
+  .back{
+    display:inline-flex;align-items:center;gap:0.5rem;
+    font-family:"JetBrains Mono",monospace;font-size:0.6875rem;letter-spacing:.14em;text-transform:uppercase;
+    color:#fff;background:var(--blue);
+    padding:0.5rem 0.75rem;border-radius:2px;
+    position:absolute;top:1.25rem;left:1.25rem;z-index:10;
+    transition:color .2s,background .2s;text-decoration:none;
+  }
+  @media(min-width:1024px){
+    .back{
+      position:fixed;top:clamp(1.25rem,3vw,2.25rem);left:clamp(1.25rem,4vw,3.5rem);z-index:200;
+    }
+  }
+  .back .arrow{display:inline-block;transition:transform .2s;}
+  .back:hover .arrow{transform:translateX(-3px);}
+  .back.on-blue{background:var(--lime);color:var(--blue);}
+  .back.on-lime-bg{background:var(--blue);color:#fff;}
+  .hero-inner{position:relative;z-index:2;padding:8.125rem var(--sp-lg) var(--sp-2xl);}
+  .hero-eyebrow{display:flex;align-items:center;gap:0.875rem;color:var(--lime);font-family:"JetBrains Mono";font-size:0.75rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;}
+  .hero-eyebrow::before{content:"";display:block;width:2.375rem;height:0.125rem;background:var(--lime);}
+  .hero h1{
+    font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:5.25rem;line-height:1;letter-spacing:-0.04em;color:#fff;
+    margin:1.375rem 0 1.75rem;
+  }
+  .hero-lead{max-width:40rem;
+    font-family:"JetBrains Mono",monospace;font-size:1.25rem;line-height:1.7;color:#dde0f5;max-width:42.5rem;
+    border-left:1px dashed #6b78ff; padding-left:1.5rem;
+  }
+  .hero-meta{background:var(--blue);color:#fff;margin-top:var(--sp-xl);position:relative;z-index:2;}
+  .hero-meta-inner{display:grid;grid-template-columns:auto auto auto auto;justify-content:space-between;gap:var(--sp-md);padding:var(--sp-sm) var(--sp-lg);max-width:67.5rem;margin:0 auto;}
+  .hero-meta-inner > div{font-family:"JetBrains Mono",monospace;}
+  .hero-meta-inner .k{font-size:0.75rem;letter-spacing:.14em;text-transform:uppercase;color:#cdd2ff;margin-bottom:0.25rem;}
+  .hero-meta-inner .v{font-size:0.8125rem;color:#fff;white-space:nowrap;}
 
-      /* Rhythm */
-      --max:          1280px;
-      --gutter:       clamp(20px, 4vw, 56px);
-      --section-y:    clamp(36px, 5.5vw, 72px);
+  /* ============= LIME BAND ============= */
+  .lime{background:var(--lime);}
+  .lime-grid{display:grid;grid-template-columns:18.75rem 1fr;gap:var(--sp-2xl);align-items:start;max-width:67.5rem;margin:0 auto;padding:0 2rem;}
+  .lime-grid > div:first-child{display:block;}
+  .lime-grid > div:last-child{display:block;}
+  .ph--phone{aspect-ratio:9/19.5;width:100%;border-radius:1.75rem;background:repeating-linear-gradient(135deg,#cfcfcf 0 0.375rem,#dcdcdc 0.375rem 0.75rem);color:#444;border-color:#bbb;}
+  .sr-only{position:absolute;width:1px;height:0.0625rem;padding:0;margin:-0.0625rem;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+  .skip-link{position:absolute;top:-100%;left:1rem;background:var(--blue);color:#fff;font-family:"JetBrains Mono",monospace;font-size:0.75rem;letter-spacing:.08em;padding:0.5rem 0.875rem;border-radius:0 0 0.25rem 0.25rem;z-index:1000;text-decoration:none;}
+  .skip-link:focus{top:0;}
+  .lime h3{color:var(--blue);font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:1.75rem;letter-spacing:-0.01em;margin-bottom:0.875rem;}
+  .lime p + h3{margin-top:2.5rem;}
+  .lime h3 + h3{margin-top:2rem;}
+  .lime p{color:#1a1a2e;font-size:1rem;}
 
-      /* Reading column — wider for comfortable long-form, centered on page */
-      --prose-max:    800px;
-      --wide-max:     960px;   /* visuals can break out a bit wider */
-    }
+  /* ============= LOGOS ============= */
+  .logos{padding:var(--sp-xl) 0;}
+  .logos-inner{max-width:67.5rem;margin:0 auto;padding:0 2rem;text-align:center;}
+  .logos-inner .eyebrow{margin-bottom:var(--sp-md);display:inline-block;}
+  .logos-row{display:grid;grid-template-columns:repeat(6,1fr);align-items:center;gap:var(--sp-md);}
+  .logo{
+    max-height:2.75rem;
+    width:auto;
+    max-width:100%;
+    object-fit:contain;
+    display:block;
+    margin:0 auto;
+    opacity:0.9;
+    transition:opacity 0.2s ease;
+  }
+  .logo:hover{opacity:1;}
+  .logo--gdi{max-height:4rem;}
+  .logo--goyn{max-height:4.5rem;}
+  .logo--google{max-height:2rem;}
+  .logo--tabiya{max-height:2.25rem;}
+  .logo--oxford{max-height:3.25rem;}
+  .logo--harambee{max-height:2.75rem;}
 
-    /* -------------------------------------------------------------
-       BASE
-    ------------------------------------------------------------- */
-    *, *::before, *::after { box-sizing: border-box; }
-    html { -webkit-text-size-adjust: 100%; }
-    body {
-      margin: 0;
-      background: var(--paper);
-      color: var(--ink);
-      font-family: var(--sans);
-      font-size: 17px;
-      line-height: 1.6;
-      font-weight: 400;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      text-rendering: optimizeLegibility;
-    }
-    ::selection { background: var(--selection); color: var(--ink); }
+  /* ============= OVERVIEW ============= */
+  .overview{}
+  .ov-grid{display:block;max-width:67.5rem;margin:0 auto;padding:0 2rem;}
+  .ph--map{aspect-ratio:16/9;font-size:0.75rem;}
 
-    a {
-      color: var(--blue);
-      text-decoration: none;
-      text-underline-offset: 3px;
-      text-decoration-thickness: 1px;
-      border-bottom: 1px solid var(--paper-rule);
-      transition: color .15s ease, border-color .15s ease;
-    }
-    a:hover { color: var(--ink); border-color: var(--ink); }
-    /* Inline prose links: a calmer underline so links don't fight the body rag. */
-    .prose a { border-bottom-color: var(--rule); }
-    .prose a:hover { color: var(--ink); border-bottom-color: var(--ink); }
+  /* ============= SECTIONS ============= */
+  section h2.section-heading{
+    font-family:"Space Grotesk",sans-serif;color:var(--blue);font-weight:700;font-size:2.5rem;letter-spacing:-0.01em;line-height:1.3;margin-bottom:2rem;max-width:47.5rem;
+  }
+  .section{}
 
-    h1, h2, h3, h4 {
-      font-family: var(--serif);
-      font-weight: 500;
-      letter-spacing: -0.01em;
-      color: var(--blue);
-      margin: 0;
-    }
-    p { margin: 0; text-wrap: pretty; }
+  /* partner placeholders */
+  .partner-grid{display:grid;grid-template-columns:1fr;gap:0.25rem;max-width:67.5rem;margin:0 auto;padding:0 var(--sp-lg);}
+  .partner-grid div:first-child img{border-radius:var(--sp-xs) var(--sp-xs) 0 0;}
+  .partner-grid div:last-child img{border-radius:0 0 0.25rem 0.25rem;}
+  .partner-grid div:not(:first-child):not(:last-child) img{border-radius:0;}
 
-    /* Screen-reader-only utility (matches landing page) */
-    .visually-hidden {
-      position: absolute; width: 1px; height: 1px;
-      padding: 0; margin: -1px; overflow: hidden;
-      clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
-    }
+  /* artifact placeholders */
+  .arts-2{display:block;max-width:67.5rem;margin:0 auto;padding:0 var(--sp-lg);}
+  .ph--art{aspect-ratio:16/10;}
+  .arts-big{max-width:67.5rem;margin:0 auto;padding:0 var(--sp-lg);}
+  .ph--big{aspect-ratio:16/8.5;}
 
-    .container {
-      width: 100%;
-      max-width: var(--max);
-      margin: 0 auto;
-      padding-left: var(--gutter);
-      padding-right: var(--gutter);
-    }
+  /* charts placeholders */
+  .charts-row{max-width:62.5rem;margin:2rem auto;padding:0 2rem;display:grid;grid-template-columns:repeat(4,1fr);gap:0.75rem;}
+  .charts-row2{max-width:62.5rem;margin:0 auto 2rem;padding:0 2rem;display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;}
+  .charts-row3{max-width:55rem;margin:0 auto 2.25rem;padding:0 2rem;display:grid;grid-template-columns:1.2fr 1fr 2fr;gap:0.75rem;align-items:start;}
+  .ph--chart{aspect-ratio:4/3;font-size:0.625rem;}
 
-    /* -------------------------------------------------------------
-       CASE HERO — full-bleed image with overlaid breadcrumb + title
-    ------------------------------------------------------------- */
-    .case-hero {
-      position: relative;
-      width: 100%;
-      height: clamp(420px, 78vh, 720px);
-      overflow: hidden;
-      background: var(--ink);
-      display: block;
-    }
+  /* video placeholder */
+  .ph--video{aspect-ratio:16/9;max-width:55rem;margin:3rem auto;background:repeating-linear-gradient(135deg,#2b3268 0 0.375rem,#353d76 0.375rem 0.75rem);color:#cdd2ff;border-color:#1a1f4f;font-size:0.8125rem;}
 
-    /* The image / placeholder fills the whole hero */
-    .case-hero-media {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      /* Override .placeholder defaults — no fixed aspect ratio, no border */
-      aspect-ratio: auto;
-      border: none;
-      /* Darker placeholder ground so white overlay text reads clearly.
-         When the real <img> lands, this background sits behind it. */
-      background-color: #2a2d6e;
-      background-image:
-        repeating-linear-gradient(
-          135deg,
-          transparent 0,
-          transparent 18px,
-          rgba(255, 255, 255, 0.04) 18px,
-          rgba(255, 255, 255, 0.04) 19px
-        );
-    }
-    /* Hide the placeholder labels inside the hero — the overlay title
-       already tells the reader what this page is. */
-    .case-hero-media .ph-corner,
-    .case-hero-media .ph-label {
-      display: none;
-    }
-    /* When the real image lands, it should cover the area */
-    .case-hero-media img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 30%;
-      display: block;
-    }
+  /* board placeholder */
+  .board{max-width:55rem;margin:0 auto;padding:0 var(--sp-lg);}
+  .ph--board{aspect-ratio:16/9;}
 
-    /* Gradient scrim — darker at bottom where the title sits */
-    .case-hero-scrim {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to bottom,
-        rgba(4, 6, 68, 0.35) 0%,
-        rgba(4, 6, 68, 0.05) 30%,
-        rgba(4, 6, 68, 0.05) 40%,
-        rgba(4, 6, 68, 0.92) 100%
-      );
-      pointer-events: none;
-    }
+  /* MVP flow placeholder */
+  .ph--flow{max-width:62.5rem;margin:2rem auto;padding:0;aspect-ratio:16/8;font-size:0.8125rem;}
 
-    /* Back button — sticky, floats over the page, colour-swaps by background */
-    .back-btn {
-      position: fixed;
-      top: clamp(20px, 3vw, 36px);
-      left: var(--gutter);
-      z-index: 100;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-family: var(--mono);
-      font-size: 12px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      border: none;
-      padding: 6px 12px;
-      text-decoration: none;
-      color: #ffffff;
-      background: var(--blue);
-      transition: color .25s ease, opacity .3s ease, background .25s ease;
-    }
-    .back-btn:hover { border: none; text-decoration: none; }
-    .back-btn .arrow {
-      transition: transform .2s ease;
-      display: inline-block;
-    }
-    .back-btn:hover .arrow { transform: translateX(-3px); }
-    /* On light background, keep blue bg + lime text */
-    .back-btn.on-light {
-      background: var(--blue);
-      color: #ffffff;
-    }
-    /* On blue background, switch to lime bg + blue text */
-    .back-btn.on-blue {
-      background: var(--bg);
-      color: var(--blue);
-    }
+  /* accessibility placeholders */
+  .a11y-tiles{display:block;max-width:67.5rem;margin:4rem auto 0;padding:0 var(--sp-lg);}
+  .ph--a11y{aspect-ratio:3/4;font-size:0.625rem;}
+  .palettes-grid{max-width:67.5rem;margin:4rem auto 0;padding:0 var(--sp-lg);}
+  .ph--palettes{aspect-ratio:16/6;}
+  .ui-sims{max-width:87.75rem;margin:4rem auto 0;display:grid;grid-template-columns:repeat(4,1fr);gap:0.875rem;}
+  .ph--sim{aspect-ratio:9/13;font-size:0.625rem;}
 
-    /* Title block — bottom, full width, content aligned to prose column */
-    .case-hero-text {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: 2;
-      color: #ffffff;
-    }
-    .case-hero-text-inner {
-      max-width: calc(var(--prose-max) + var(--gutter) * 2);
-      margin: 0 auto;
-      padding: clamp(32px, 6vw, 64px) var(--gutter);
-    }
-    .case-hero-text .case-eyebrow {
-      color: var(--bg);
-      margin-bottom: clamp(16px, 2vw, 24px);
-    }
-    .case-hero-text .case-eyebrow::before {
-      background: var(--bg);
-    }
-    .case-hero-text .case-title {
-      color: #ffffff;
-      margin-bottom: 0;
-      font-weight: 700;
-    }
-    .case-hero-intro {
-      margin-top: clamp(16px, 2vw, 24px);
-      font-size: clamp(16px, 1.4vw, 19px);
-      line-height: 1.55;
-      color: rgba(255, 255, 255, 0.88);
-      font-family: var(--mono);
-    }
+  /* ============= GRADUATED ============= */
+  .grad{}
+  .grad-grid{max-width:67.5rem;margin:0 auto;padding:0 var(--sp-lg);display:grid;grid-template-columns:18.75rem 1fr;gap:var(--sp-2xl);align-items:center;}
+  .grad h2{font-family:"Space Grotesk";color:var(--blue);font-weight:700;font-size:2.5rem;letter-spacing:-0.01em;line-height:1.3;margin-bottom:1.125rem;}
+  .btn{font-family:"JetBrains Mono",monospace;font-size:0.8125rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;line-height:1;padding:1rem 1.5rem;border:1px solid transparent;cursor:pointer;display:inline-flex;align-items:center;gap:0.625rem;text-decoration:none;transition:background-color .18s ease,color .18s ease,border-color .18s ease,transform .18s ease;border-radius:0;}
+  .btn .arrow{transition:transform .2s ease;}
+  .btn:hover .arrow{transform:translateX(3px);}
+  .btn:focus-visible{outline:2px solid var(--blue);outline-offset:3px;}
+  .btn-primary{background:var(--blue);color:#fff;border-color:var(--blue);}
+  .btn-primary:hover{background:#040644;border-color:#040644;color:#fff;}
+  .btn-primary:active{transform:translateY(1px);}
+  .btn-secondary{background:transparent;color:var(--blue);border:1px solid var(--blue);}
+  .btn-secondary:hover{background:var(--blue);color:#fff;border-color:var(--blue);}
+  .btn-cta{font-family:"Space Grotesk",sans-serif;font-size:1.25rem;font-weight:600;letter-spacing:-0.012em;text-transform:none;padding:1.375rem 2.25rem;background:var(--blue);color:#fff;border:1px solid var(--blue);gap:1.125rem;line-height:1;box-shadow:6px 6px 0 #040644;}
+  .btn-cta:hover{background:#040644;border-color:#040644;transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--blue);}
+  .btn-cta:active{transform:translate(2px,2px);box-shadow:2px 2px 0 #040644;}
 
-    /* -------------------------------------------------------------
-       CASE METADATA BLOCK
-       Holds the project's Type/Role/Year/Co-created strip.
-       The title and eyebrow now live overlaid on the case hero above.
-    ------------------------------------------------------------- */
-    .case-meta-wrap {
-      background: var(--blue);
-    }
-    .case-meta-wrap .case-meta-row dt {
-      color: var(--bg);
-    }
-    .case-meta-wrap .case-meta-row dd {
-      color: #ffffff;
-    }
-    .case-reflection-wrap {
-      background: var(--blue);
-    }
-    .case-reflection-wrap .section-h2 {
-      color: var(--bg);
-    }
-    .case-reflection-wrap .prose {
-      color: rgba(255, 255, 255, 0.88);
-    }
-    .case-reflection-wrap .case-section {
-      border-top: none;
-    }
-    .case-meta {
-      padding-top: clamp(24px, 3vw, 36px);
-      padding-bottom: clamp(20px, 2.5vw, 28px);
-      border-bottom: 1px solid var(--paper-rule);
-    }
-    .case-eyebrow {
-      font-family: var(--mono);
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 24px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .case-eyebrow::before {
-      content: "";
-      width: 28px;
-      height: 1px;
-      background: var(--muted);
-    }
-    /* Title scale mirrors homepage .hero-lede so the two pages feel of a piece. */
-    .case-title {
-      font-family: var(--serif);
-      font-weight: 400;
-      font-size: clamp(34px, 5vw, 60px);
-      line-height: 1.12;
-      letter-spacing: -0.018em;
-      color: var(--blue);
-      margin-bottom: clamp(28px, 4vw, 40px);
-    }
-    .case-meta-row {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: clamp(20px, 3vw, 40px);
-      align-items: start;
-      max-width: var(--prose-max);
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .case-meta-row dt {
-      font-family: var(--mono);
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 10px;
-    }
-    .case-meta-row dd {
-      margin: 0;
-      font-size: 16px;
-      line-height: 1.5;
-      color: var(--ink);
-    }
-    .case-meta-row .co-created {
-      /* longer field — let it span the row on narrow viewports */
-      grid-column: 1 / -1;
-    }
-    /* On wider screens, return co-created to its own slot */
-    @media (min-width: 900px) {
-      .case-meta-row {
-        grid-template-columns: max-content max-content max-content 1fr;
-      }
-      .case-meta-row .co-created { grid-column: auto; }
-    }
+  /* ============= CARRIED FORWARD ============= */
+  .carried{background:var(--blue);color:#fff;}
+  .carried h2{font-family:"Space Grotesk";font-weight:700;font-size:2.375rem;color:var(--lime);letter-spacing:-0.02em;line-height:1.3;margin-bottom:1.125rem;}
+  .carried p{color:#dde2ff;font-size:1rem;}
 
-    /* -------------------------------------------------------------
-       OPENER — short scene-setting paragraphs + hero visual
-    ------------------------------------------------------------- */
-    .opener {
-      padding-top: clamp(40px, 5vw, 64px);
-      padding-bottom: clamp(24px, 4vw, 40px);
-    }
-    /* Opener — calmer than the title; matches homepage .hero-frame / .about-body scale. */
-    .opener-prose {
-      max-width: var(--prose-max);
-      margin-left: auto;
-      margin-right: auto;
-      font-size: clamp(18px, 1.5vw, 21px);
-      line-height: 1.55;
-      color: var(--ink);
-      text-align: left;
-    }
-    .opener-prose p + p { margin-top: 1em; }
-    .opener-prose em { font-style: italic; color: var(--accent-ink); }
+  /* ============= QUOTE ============= */
+  .quote{}
+  .quote-inner{max-width:55rem;margin:0 auto;padding:0 var(--sp-lg);display:grid;grid-template-columns:10rem 1fr;gap:2.25rem 2.25rem;align-items:start;}
+  .quote-mark{font-family:"Space Grotesk";color:var(--blue);font-size:3.75rem;line-height:.7;grid-column:2;}
+  .ph--portrait{width:7.5rem;height:10rem;font-size:0.625rem;}
+  .quote-photo-wrap{grid-row:2;}
+  .quote-body{grid-row:2;grid-column:2;font-family:"JetBrains Mono";font-size:1.25rem;line-height:1.8;color:#1a1a2e;}
+  .quote-by{margin-top:1.125rem;font-family:"JetBrains Mono";font-size:0.6875rem;letter-spacing:.04em;color:#111;}
+  .quote-by b{font-weight:600;}
+  .quote-by span{color:var(--blue);margin-left:0.375rem;}
 
-    /* -------------------------------------------------------------
-       CASE STUDY SECTIONS
-       Single column, narrow prose, full-width visuals by default.
-       Visuals can use .figure-wide or .figure-full to break out.
-    ------------------------------------------------------------- */
-    .case-section {
-      padding-top: clamp(32px, 4vw, 56px);
-      padding-bottom: clamp(32px, 4vw, 56px);
-    }
+  /* ============= FOOTER ============= */
+  .pagefoot{padding:var(--sp-md) 0 var(--sp-2xl);border-top:1px solid var(--line);}
+  .pagefoot-inner{max-width:67.5rem;margin:0 auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;}
+  .next-card{width:12.5rem;}
+  .ph--next{aspect-ratio:4/3;font-size:0.625rem;}
+  .pagefoot .back-link{font-family:"JetBrains Mono";font-size:0.6875rem;color:#111;}
+  .pagefoot .next-line{margin-top:0.625rem;font-family:"JetBrains Mono";font-size:0.6875rem;color:#111;text-align:right;}
+  .pagefoot .next-line a{color:var(--blue);}
 
-    /* Matches homepage .section-head h2 exactly, centered above the reading column. */
-    .section-h2 {
-      font-family: var(--serif);
-      font-weight: 500;
-      font-size: clamp(28px, 3.6vw, 42px);
-      line-height: 1.05;
-      letter-spacing: -0.018em;
-      color: var(--blue);
-      max-width: var(--prose-max);
-      margin-left: auto;
-      margin-right: auto;
-      margin-bottom: clamp(28px, 3vw, 40px);
-      text-align: left;
+  @media (max-width: 900px){
+    .hero h1{font-size:3.375rem;}
+    .hero-meta-inner{grid-template-columns:repeat(2,1fr);}
+    .lime-grid,.grad-grid,.ov-grid{grid-template-columns:1fr;}
+    .a11y-tiles,.charts-row,.ui-sims{grid-template-columns:repeat(2,1fr);}
+    .charts-row2,.charts-row3{grid-template-columns:1fr 1fr;}
+    .quote-inner{grid-template-columns:1fr;}
+    .quote-photo-wrap,.quote-mark,.quote-body{grid-column:1;grid-row:auto;}
+    .logos-row{grid-template-columns:repeat(3,1fr);}
+    .hero-inner{padding:6.25rem 2rem 3.75rem;}
+  }
+  @media (max-width: 600px){
+    .hero h1{font-size:2.25rem;letter-spacing:-0.02em;}
+    .hero-lead{max-width:40rem;font-size:1rem;}
+    .hero-meta-inner{grid-template-columns:1fr 1fr;}
+    .hero{padding:5rem 0 2.5rem;}
+    .hero-inner{padding:6.875rem 1.25rem 2.5rem;}
+    .back{top:1.25rem;left:1rem;}
+    .wrap,.wrap-narrow{padding:0 1.25rem;}
+    .lime-grid,.grad-grid{gap:2rem;}
+    .section-heading{font-size:1.625rem;}
+    .logos-row{grid-template-columns:repeat(2,1fr);}
+    .figcap{overflow-wrap:break-word;word-break:break-word;flex-direction:column;gap:0.25rem;}
+    .figcap .num{white-space:normal;}
+    .desc{max-width:100%;display:inline-block;}
+    .a11y-tiles,.charts-row,.ui-sims{grid-template-columns:1fr;}
+    .carried h2{font-size:1.625rem;}
+    .quote-text{font-size:1rem;}
+    .video-player{max-width:17.5rem;margin:0 auto;}
+  }
+  /* ===== HERO STAGGER ===== */
+  @media (prefers-reduced-motion: no-preference) {
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(1rem); }
+      to   { opacity: 1; transform: translateY(0); }
     }
+    .hero-eyebrow,
+    .hero h1,
+    .hero-lead {
+      opacity: 0;
+      animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    .hero-eyebrow { animation-delay: 0.05s; }
+    .hero h1      { animation-delay: 0.22s; }
+    .hero-lead    { animation-delay: 0.42s; }
+    /* Metric bar stagger */
+    .hero-meta-inner > div {
+      opacity: 0;
+      animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    .hero-meta-inner > div:nth-child(1) { animation-delay: 0.66s; }
+    .hero-meta-inner > div:nth-child(2) { animation-delay: 0.74s; }
+    .hero-meta-inner > div:nth-child(3) { animation-delay: 0.82s; }
+    .hero-meta-inner > div:nth-child(4) { animation-delay: 0.90s; }
+    /* Lime grid fade-up */
+    .lime-grid > div { opacity: 0; }
+    .lime-grid.is-visible > div:first-child {
+      animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    .lime-grid.is-visible > div:last-child {
+      animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.12s forwards;
+    }
+    /* Quote mark drop */
+    @keyframes quoteDrop {
+      0%   { opacity: 0; transform: translateY(-1.25rem); }
+      40%  { opacity: 1; transform: translateY(0.75rem); }
+      58%  { opacity: 1; transform: translateY(-0.4375rem); }
+      72%  { opacity: 1; transform: translateY(0.25rem); }
+      83%  { opacity: 1; transform: translateY(-0.125rem); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .quote-mark {
+      opacity: 0;
+    }
+    .quote-mark.is-visible {
+      animation: quoteDrop 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+      opacity: 1;
+    }
+  }
+  /* ===== GIF PLAYER ===== */
+  .video-player {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9/19.5;
+    border-radius: 1.75rem;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .video-player__gif,
+  .video-player__still {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .video-player__still {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+  .video-player.is-paused .video-player__still { opacity: 1; }
+  .video-player__btn {
+    position: absolute;
+    top: calc(42% + 0.625rem);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    border: none;
+    background: #ffffff;
+    color: #3deb7a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    z-index: 2;
+  }
+  .video-player:hover .video-player__btn { opacity: 1; }
+  .video-player__btn                   { opacity: 0; }
+  .video-player__icon { width: 1.5rem; height: 1.5rem; display: block; }
+  .video-player__icon--play  { display: none; }
+  .video-player__icon--pause { display: block; }
+  .video-player.is-paused .video-player__icon--pause { display: none; }
+  .video-player.is-paused .video-player__icon--play  { display: block; }
+  @media (prefers-reduced-motion: reduce) {
+    .video-player__gif         { display: none; }
+    .video-player__still       { opacity: 1; }
+    .video-player__btn         { opacity: 1; }
+    .video-player__icon--pause { display: none; }
+    .video-player__icon--play  { display: block; }
+  }
+  /* ===== DENSE CHARTS GRID ===== */
+  .dense-charts{max-width:67.5rem;margin:0 auto;padding:0 var(--sp-lg);}
+  .dense-charts__section{margin-bottom:1rem;}
+  .dense-charts__label{
+    font-family:"JetBrains Mono",monospace;font-size:0.6875rem;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--muted);margin-bottom:0.375rem;
+  }
+  .dense-charts__grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;}
+  .dense-charts__grid img{width:100%;height:auto;display:block;aspect-ratio:4/3;object-fit:cover;opacity:0.85;}
+  @media(max-width:900px){.dense-charts__grid{grid-template-columns:repeat(4,1fr);}}
+  @media(max-width:600px){.dense-charts__grid{grid-template-columns:repeat(3,1fr);}}
+  /* ===== DYSLEXIA FONT TOGGLE ===== */
+  .font-toggle{
+    position:fixed;bottom:1.5rem;right:1.5rem;z-index:900;
+    display:flex;align-items:center;gap:0.5rem;
+    background:#fff;border:0.0625rem solid var(--line);
+    padding:0.5rem 0.875rem;border-radius:6.25rem;
+    box-shadow:0 0.125rem 0.75rem rgba(0,0,0,.08);
+    cursor:pointer;
+    font-family:"JetBrains Mono",monospace;font-size:0.625rem;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+    transition:box-shadow .2s, color .2s;
+    user-select:none;
+  }
+  .font-toggle:hover{box-shadow:0 0.25rem 1.125rem rgba(0,0,0,.13);color:var(--ink);}
+  .font-toggle__dot{
+    width:0.5rem;height:0.5rem;border-radius:50%;
+    background:var(--line);
+    transition:background .2s;
+    flex-shrink:0;
+  }
+  body.dyslexic-font .font-toggle__dot{background:var(--blue);}
+  body.dyslexic-font .font-toggle{color:var(--blue);}
 
-    .prose {
-      max-width: var(--prose-max);
-      margin-left: auto;
-      margin-right: auto;
-      font-size: 17px;
-      line-height: 1.6;
-      color: var(--ink);
-    }
-    .prose p + p { margin-top: 1.1em; }
-    .prose em { font-style: italic; }
-    .prose strong { font-weight: 600; }
+  /* When dyslexic font is active — body text */
+  body.dyslexic-font,
+  body.dyslexic-font p,
+  body.dyslexic-font .hero-lead,
+  body.dyslexic-font .figcap,
+  body.dyslexic-font .eyebrow,
+  body.dyslexic-font .hero-eyebrow,
+  body.dyslexic-font .hero-meta-inner div,
+  body.dyslexic-font .quote-body,
+  body.dyslexic-font .quote-by,
+  body.dyslexic-font .back,
+  body.dyslexic-font .btn,
+  body.dyslexic-font .charts-tab-btn,
+  body.dyslexic-font .pagefoot .back-link,
+  body.dyslexic-font .pagefoot .next-line,
+  body.dyslexic-font .hero-meta-inner .k,
+  body.dyslexic-font .hero-meta-inner .v,
+  body.dyslexic-font .carried p,
+  body.dyslexic-font .lime p{
+    font-family:"OpenDyslexic",sans-serif;
+    letter-spacing:0.05em;
+    line-height:2;
+    word-spacing:0.2em;
+  }
 
-    /* -------------------------------------------------------------
-       FIGURES — placeholders, captions, three width variants
-    ------------------------------------------------------------- */
-    figure {
-      margin: clamp(32px, 4vw, 56px) auto;
-      width: 100%;
-    }
-    /* Default: prose-width — sits in the reading column */
-    figure.figure-prose {
-      max-width: var(--prose-max);
-    }
+  /* Headings — OpenDyslexic Bold */
+  body.dyslexic-font h1,
+  body.dyslexic-font h2,
+  body.dyslexic-font h3,
+  body.dyslexic-font .section-heading,
+  body.dyslexic-font .grad h2,
+  body.dyslexic-font .carried h2,
+  body.dyslexic-font .lime h3{
+    font-family:"OpenDyslexic",sans-serif;
+    font-weight:700;
+    letter-spacing:0.02em;
+    line-height:1.5;
+    word-spacing:0.1em;
+  }
 
-    /* Wider than prose but still constrained */
-    figure.figure-wide {
-      max-width: var(--wide-max);
-    }
+  /* Font sizes */
+  body.dyslexic-font p{ font-size:1.125rem; }
+  body.dyslexic-font .hero-lead{max-width:40rem; font-size:1.375rem; line-height:1.9; }
+  body.dyslexic-font h1{ font-size:4rem; }
+  body.dyslexic-font .section-heading{ font-size:2rem; }
+  body.dyslexic-font .lime h3{ font-size:1.625rem; }
 
-    /* Full container width */
-    figure.figure-full {
-      max-width: 100%;
-    }
-    figure img {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
-    /* 2×2 grid for multi-image figures */
-    figure.research-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(12px, 1.5vw, 20px);
-    }
-    figure.research-grid .placeholder {
-      aspect-ratio: 3 / 4;
-      width: 100%;
-      height: auto;
-    }
-    figure.research-grid img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-    figure.research-grid {
-      align-items: start;
-    }
-    @media (max-width: 640px) {
-      figure.research-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-    /* Inner placeholder fills its figure */
-    figure .placeholder { width: 100%; }
+  /* Paragraph spacing — more air between blocks */
+  body.dyslexic-font p + p{ margin-top:1.6em; }
 
-    /* The placeholder visual itself — cool tint to match the new paper. */
-    .placeholder {
-      position: relative;
-      aspect-ratio: 16 / 9;
-      width: 100%;
-      background-color: var(--paper-2);
-      background-image:
-        repeating-linear-gradient(
-          135deg,
-          transparent 0,
-          transparent 14px,
-          rgba(4, 6, 68, 0.06) 14px,
-          rgba(4, 6, 68, 0.06) 15px
-        );
-      border: 1px solid var(--paper-rule);
-      display: flex;
-      align-items: flex-end;
-      justify-content: flex-start;
-      overflow: hidden;
-    }
-    .placeholder .ph-corner {
-      position: absolute;
-      top: 14px;
-      left: 14px;
-      font-family: var(--mono);
-      font-size: 11px;
-      letter-spacing: 0.08em;
-      color: var(--muted);
-    }
-    .placeholder .ph-label {
-      font-family: var(--mono);
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      color: var(--muted);
-      background: var(--paper);
-      border: 1px solid var(--paper-rule);
-      padding: 10px 14px;
-      margin: 14px;
-      line-height: 1.4;
-      max-width: calc(100% - 28px);
-    }
-    .placeholder .ph-label .ph-dim {
-      display: block;
-      font-size: 10px;
-      color: var(--muted);
-      opacity: 0.7;
-      margin-top: 4px;
-    }
+  /* Line length — target ~65 chars */
+  body.dyslexic-font .wrap-narrow{ max-width:51.25rem; }
 
-    figcaption {
-      font-family: var(--mono);
-      font-size: 12px;
-      letter-spacing: 0.04em;
-      color: var(--muted);
-      margin-top: 14px;
-      max-width: 60ch;
-      line-height: 1.5;
-    }
+  /* More section padding */
+  body.dyslexic-font .section{ padding:4.5rem 0; }
+  body.dyslexic-font .lime{ padding:5rem 0; }
 
-    /* -------------------------------------------------------------
-       PULL QUOTE / TESTIMONIAL
-       Oversized opening mark, serif quote, mono attribution.
-    ------------------------------------------------------------- */
-    .testimonial {
-      padding-top: clamp(56px, 7vw, 96px);
-      padding-bottom: clamp(56px, 7vw, 96px);
-      border-top: 1px solid var(--paper-rule);
-    }
-    .testimonial-inner {
-      max-width: var(--wide-max);
-      position: relative;
-      padding-top: 0;
-    }
-    .testimonial::before {
-      content: "“";
-      display: block;
-      font-family: var(--serif);
-      font-weight: 500;
-      font-size: clamp(110px, 12vw, 170px);
-      line-height: 0.8;
-      color: var(--blue);
-      margin-bottom: -0.18em;
-      margin-left: -0.06em;
-      letter-spacing: -0.02em;
-    }
-    .testimonial-quote {
-      font-family: var(--mono);
-      font-weight: 400;
-      font-size: clamp(22px, 2.4vw, 30px);
-      line-height: 1.4;
-      letter-spacing: -0.012em;
-      color: var(--ink);
-      margin: 0 0 32px 0;
-      text-wrap: pretty;
-    }
-    .testimonial-attribution {
-      font-family: var(--mono);
-      font-size: 13px;
-      letter-spacing: 0.04em;
-      color: var(--muted);
-      line-height: 1.5;
-    }
-    .testimonial-attribution strong {
-      color: var(--ink);
-      font-weight: 500;
-    }
+  /* Quote body */
+  body.dyslexic-font .quote-body{ font-size:1.4375rem; line-height:2.1; }
 
-    /* -------------------------------------------------------------
-       PAGE FOOTER NAV — back to work + next case study
-    ------------------------------------------------------------- */
-    .case-nav {
-      padding-top: clamp(40px, 5vw, 64px);
-      padding-bottom: clamp(40px, 5vw, 64px);
-      border-top: 1px solid var(--paper-rule);
-    }
-    .case-nav-inner {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 24px;
-      font-family: var(--mono);
-      font-size: 13px;
-      letter-spacing: 0.04em;
-    }
-    .case-nav a {
-      color: var(--ink);
-      border-bottom: 1px solid var(--paper-rule);
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .case-nav a:hover { color: var(--blue); border-color: var(--blue); }
-    .case-nav-next {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 16px;
-    }
-    .case-nav-thumb {
-      width: clamp(160px, 22vw, 280px);
-      aspect-ratio: 16 / 9;
-      background-color: var(--paper-2);
-      background-image:
-        repeating-linear-gradient(
-          135deg,
-          transparent 0,
-          transparent 14px,
-          rgba(4, 6, 68, 0.06) 14px,
-          rgba(4, 6, 68, 0.06) 15px
-        );
-      border: 1px solid var(--paper-rule);
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: flex-end;
-      justify-content: flex-start;
-    }
-    .case-nav-thumb .ph-corner {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: 0.08em;
-      color: var(--muted);
-    }
-    .case-nav-thumb .ph-label {
-      font-family: var(--mono);
-      font-size: 10px;
-      color: var(--muted);
-      padding: 8px 10px;
-      line-height: 1.3;
-    }
-    .case-nav .next strong {
-      display: block;
-      font-family: var(--serif);
-      font-size: 17px;
-      font-weight: 500;
-      letter-spacing: -0.01em;
-      color: var(--blue);
-      margin-top: 4px;
-    }
+  /* Figcap — slightly larger so it's readable */
+  body.dyslexic-font .figcap{ font-size:0.8125rem; line-height:1.7; letter-spacing:0.04em; flex-direction:column; gap:0.125rem; }
+  body.dyslexic-font .figcap .num{ font-size:0.75rem; white-space:normal; }
 
-    /* -------------------------------------------------------------
-       SITE FOOTER — identical to landing page
-    ------------------------------------------------------------- */
-    .site-footer {
-      background: var(--blue);
-      border-top: 1px solid rgba(255,255,255,0.15);
-      padding: 40px 0 56px;
-    }
-    .site-footer-inner {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 16px;
-      font-family: var(--mono);
-      font-size: 12px;
-      letter-spacing: 0.06em;
-      color: #e8ff80;
-    }
-    .site-footer a { color: #ffffff; border: none; }
-    .site-footer a:hover { color: var(--bg); }
+  /* Hero meta bar — redistribute evenly, don't shrink font */
+  body.dyslexic-font .hero-meta-inner{
+    grid-template-columns: auto auto auto auto;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+  body.dyslexic-font .hero-meta-inner .k{ font-size:0.6875rem; letter-spacing:.12em; }
+  body.dyslexic-font .hero-meta-inner .v{ font-size:0.875rem; line-height:1.5; word-spacing:0.05em; white-space:nowrap; }
 
-    /* -------------------------------------------------------------
-       RESPONSIVE
-    ------------------------------------------------------------- */
-    @media (max-width: 640px) {
-      .case-title { font-size: clamp(32px, 9vw, 44px); }
-      .section-h2 { font-size: clamp(22px, 6vw, 28px); }
-      .testimonial::before { font-size: 100px; }
-    }
+  /* Left border on hero lead — more padding */
+  body.dyslexic-font .hero-lead{max-width:40rem; padding-left:2rem; }
 
-    /* Respect reduced motion */
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        transition-duration: 0.01ms !important;
-        animation-duration: 0.01ms !important;
-      }
-    }
-    /* Slide viewer */
-    .slide-viewer {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .slide-track img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-    .slide-controls {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      font-family: var(--mono);
-      font-size: 13px;
-      color: var(--muted);
-    }
-    .slide-btn {
-      background: none;
-      border: 1px solid var(--paper-rule);
-      color: var(--blue);
-      font-size: 16px;
-      width: 36px;
-      height: 36px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background .15s;
-    }
-    .slide-btn:hover:not(:disabled) { background: var(--bg); }
-    .slide-btn:disabled { opacity: 0.3; cursor: default; }
-    .slide-counter { letter-spacing: 0.06em; }
+  /* Lime grid — stack earlier for narrower reading column */
+  @media (min-width:601px){
+    body.dyslexic-font .lime-grid{ grid-template-columns:16.25rem 1fr; gap:3rem; }
+  }
 
-    /* Prototype button — secondary style */
-    .prototype-embed {
-      max-width: var(--prose-max);
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .prototype-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: transparent;
-      color: var(--blue);
-      border: 1px solid var(--blue);
-      font-family: var(--mono);
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 16px 24px;
-      text-decoration: none;
-      transition: background .18s ease, color .18s ease;
-    }
-    .prototype-btn:hover { background: var(--blue); color: #ffffff; border: none; }
-    .prototype-btn .arrow { transition: transform .2s ease; }
-    .prototype-btn:hover .arrow { transform: translateX(3px); }
+  
+  /* ===== SPACING SYSTEM ===== */
 
+  /* Sections — fluid continuous scroll */
+  .section,
+  .overview,
+  .grad,
+  .carried,
+  .lime,
+  .quote { padding: 8rem 0; }
 
+  /* Consecutive sections — don't double up */
+  .section + .section,
+  .section + .grad,
+  .section + .carried,
+  .section + .lime,
+  .section + .quote,
+  .grad + .section,
+  .carried + .section,
+  .lime + .section,
+  .quote + .section,
+  .overview + .section { padding-top: 0; }
+  /* After figcap — section already has margin from figcap */
+  .figs-rowcap + .section,
+  .figs-rowcap-880 + .section,
+  .figs-rowcap-1080 + .section { padding-top: 0; }
 
-    .img-zoom-overlay {
-          display: none;
-          position: fixed;
-          inset: 0;
-          z-index: 9000;
-          background: #ffffff;
-          overflow: hidden;
-          touch-action: none;
-        }
-        .img-zoom-overlay.active { display: block; }
-    
-        .img-zoom-canvas {
-          position: absolute;
-          inset: 0;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: grab;
-        }
-        .img-zoom-canvas.dragging { cursor: grabbing; }
-    
-        .img-zoom-canvas img {
-          max-width: 92vw;
-          max-height: 88vh;
-          object-fit: contain;
-          transform-origin: center center;
-          user-select: none;
-          pointer-events: none;
-          will-change: transform;
-          transition: transform .05s linear;
-        }
-    
-        /* Controls bar */
-        .img-zoom-controls {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          height: 56px;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 0 24px;
-          background: rgba(255,255,255,0.92);
-          backdrop-filter: blur(8px);
-          border-bottom: 1px solid var(--rule);
-          z-index: 9001;
-        }
-    
-        .img-zoom-label {
-          font-family: var(--mono);
-          font-size: 11px;
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-          color: #000000;
-          max-width: 50%;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
-    
-        .img-zoom-btns {
-          display: flex;
-          align-items: center;
-          gap: 4px;
-        }
-    
-        .img-zoom-btn {
-          background: none;
-          border: 1px solid var(--rule);
-          color: var(--blue);
-          font-family: var(--mono);
-          font-size: 14px;
-          cursor: pointer;
-          width: 36px;
-          height: 36px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          transition: background .12s, border-color .12s;
-        }
-        .img-zoom-btn:hover { background: rgba(0,18,229,0.06); border-color: var(--blue); }
-    
-        .img-zoom-scale {
-          font-family: var(--mono);
-          font-size: 11px;
-          color: #000000;
-          width: 44px;
-          text-align: center;
-          letter-spacing: 0.04em;
-        }
-    
-        .img-zoom-sep {
-          width: 1px;
-          height: 20px;
-          background: var(--rule);
-          margin: 0 8px;
-        }
-    
-        /* Hint */
-        .img-zoom-hint {
-          position: fixed;
-          bottom: 24px;
-          left: 50%;
-          transform: translateX(-50%);
-          font-family: var(--mono);
-          font-size: 10px;
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-          color: #000000;
-          white-space: nowrap;
-          pointer-events: none;
-          opacity: 1;
-          transition: opacity .4s ease;
-          background: rgba(255,255,255,0.88);
-          backdrop-filter: blur(6px);
-          padding: 8px 16px;
-          border: 1px solid rgba(0,0,0,0.12);
-          z-index: 9002;
-        }
-        .img-zoom-hint.hidden { opacity: 0; }
+  /* Paragraphs */
+  p + p { margin-top: 1.75em; }
 
-  </style>
+  /* Section heading */
+  .section-heading { margin-bottom: 1.5rem; }
+
+  /* Paragraph → caption (now above image): medium */
+  .wrap-narrow + .figs-rowcap,
+  .wrap-narrow + .figs-rowcap-880,
+  .wrap-narrow + .figs-rowcap-1080 { margin-top: 4rem; }
+
+  /* Paragraph → image (when no caption above): medium */
+  .wrap-narrow + .arts-big,
+  .wrap-narrow + .arts-2,
+  .wrap-narrow + .partner-grid,
+  .wrap-narrow + .charts-tabs,
+  .wrap-narrow + .board,
+  .wrap-narrow + .palettes-grid,
+  .wrap-narrow + .ui-sims { margin-top: 4rem; }
+
+  /* Image → next paragraph: medium */
+  .arts-big + .wrap-narrow,
+  .arts-2 + .wrap-narrow,
+  .figs-rowcap + .wrap-narrow,
+  .figs-rowcap-880 + .wrap-narrow,
+  .figs-rowcap-1080 + .wrap-narrow,
+  .partner-grid + .wrap-narrow,
+  .charts-tabs + .wrap-narrow,
+  .board + .wrap-narrow,
+  .palettes-grid + .wrap-narrow,
+  .ui-sims + .wrap-narrow,
+  .figs-rowcap + .section,
+  .figs-rowcap-880 + .section,
+  .figs-rowcap-1080 + .section,
+  .board + .section { margin-top: 2rem; padding-top: 0; }
+
+  /* Consecutive wrap-narrow blocks — no extra gap */
+  .wrap-narrow + .wrap-narrow { margin-top: 0; }
+
+</style>
 </head>
-<body style="background-color: #ffffff;" data-new-gr-c-s-check-loaded="14.1292.0" data-gr-ext-installed="" data-new-gr-c-s-loaded="14.1292.0">
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<button class="font-toggle" id="font-toggle" aria-pressed="false" title="Toggle dyslexia-friendly version">
+  <span class="font-toggle__dot" aria-hidden="true"></span>
+  <span class="font-toggle__label" style="font-family:'OpenDyslexic',sans-serif;">Dyslexia-friendly version</span>
+</button>
+<!-- ===================== HERO ===================== -->
+<header class="hero" data-screen-label="01 Hero" style="padding-top:4rem !important;padding-bottom:0rem !important;">
+<img class="hero__img" src="hero.webp" alt="Opening photograph: a busy street scene from one of the neighbourhoods at the heart of the Tabiya Compass programme.">
+<a class="back" id="backBtn" href="#">
+  <span class="arrow" aria-hidden="true">←</span> Back
+</a>
+<div class="wrap hero-inner">
+<div class="hero-eyebrow">Case study</div>
+<h1>Tabiya Compass</h1>
+<p class="hero-lead">Most skills frameworks recognise paid work. They don't recognise the woman who has raised six siblings, run a household, and managed a community network — and so neither does the labour market she's trying to enter. Tabiya Compass set out to change that.</p>
+</div>
+<div class="hero-meta">
+<div class="hero-meta-inner">
+<div><div class="k" style="color: var(--lime);">Type</div><div class="v" style="font-size: 0.875rem;">0→1, GenAI, B2B2C</div></div>
+<div><div class="k" style="color: var(--lime);">Role</div><div class="v" style="font-size: 0.875rem;">UX Lead (sole designer)</div></div>
+<div><div class="k" style="color: var(--lime);">Duration</div><div class="v" style="font-size: 0.875rem;">February 2024 — August 2024</div></div>
+<div><div class="k" style="color: var(--lime);">Geography</div><div class="v" style="font-size: 0.875rem;">India, Kenya, South Africa</div></div>
+</div>
+</div>
+</header>
+<main id="main-content">
+<!-- ===================== LIME — WHAT I LED / OUTCOME ===================== -->
+<section class="lime" data-screen-label="02 What I led" style="padding-top:5rem !important;padding-bottom:4.5rem !important;">
+<div class="lime-grid">
+<div>
+<div class="video-player" data-img-label="Compass Preview" id="compass-gif" aria-label="Compass app interaction">
+  <img class="video-player__gif"   src="compass-preview.gif" alt="Compass app interaction walkthrough">
+  <img class="video-player__still" src="compass-preview.webp" alt="Compass app — paused frame">
+  <button class="video-player__btn" aria-label="Pause animation">
+    <svg class="video-player__icon video-player__icon--pause" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect x="6"  y="5" width="4" height="14" rx="1" fill="currentColor"/>
+      <rect x="14" y="5" width="4" height="14" rx="1" fill="currentColor"/>
+    </svg>
+    <svg class="video-player__icon video-player__icon--play" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M7 5.5L19 12L7 18.5V5.5Z" fill="currentColor"/>
+    </svg>
+  </button>
+</div>
+</div>
+<div>
+<h2 class="sr-only">Summary</h2>
+<h3>What I led</h3>
+<p>Discovery research across five partner organisations and three countries: semi-structured interviews with 25 counsellors and 35 jobseekers, desk research on technology access and phone usage patterns, and stakeholder interviews at senior level across all partner organisations. Synthesised five distinct organisational workflows into a single shared consultation framework. Built a persona set that served three simultaneous functions: product specification for AI agent behaviour, research synthesis across communities, and stakeholder alignment reference. Facilitated a cross-organisational alignment session with Google.org, Oxford, Tabiya engineering, and Harambee — producing a shared vocabulary and prioritised MVP scope. Designed the full MVP: onboarding, a three-phase consultation chatbot flow, and CV generation.</p>
+<h3>Outcome</h3>
+<p>Graduated the Google.org Accelerator. MVP adopted and sustained post-accelerator by partner organisations. Tabiya continues to develop Compass as open source. UX roadmap and strategic design guide still in active use.</p>
+</div>
+</div>
+</section>
+<!-- ===================== LOGOS ===================== -->
+<section class="logos" data-screen-label="02b Logos" style="padding-top:2.25rem !important;padding-bottom:2.25rem !important;">
+<div class="logos-inner">
+<div class="eyebrow">In collaboration with</div>
+<div class="logos-row" data-img-label="Partner Logos" style="margin-top:0.75rem;margin-bottom:2.75rem">
+<img class="logo logo--tabiya" src="tabiya-logo-dm-color.svg" alt="Tabiya">
+<img class="logo logo--google" src="google_org_logo.svg" alt="Google.org">
+<img class="logo logo--oxford" src="oxford-logo.svg" alt="University of Oxford">
+<img class="logo logo--gdi" src="gdi-logo.webp" alt="GDI — Global Development Incubator">
+<img class="logo logo--goyn" src="goyn-logo.webp" alt="GOYN — Global Opportunity Youth Network">
+<img class="logo logo--harambee" src="harambee-logo.webp" alt="Harambee Youth Employment Accelerator">
+</div>
+</div>
+</section>
+<!-- ===================== OVERVIEW ===================== -->
+<section class="overview" data-screen-label="02c Overview" style="padding-top:2.25rem !important;padding-bottom:6rem !important;">
+<div style="max-width:80%;margin:1rem auto 0;">
+<div class="ov-grid" data-img-label="Map" style="height:auto;display:block;border-radius:0.25rem;padding:0;margin:0;max-width:none;margin-bottom:0rem"><img src="map-cover.svg" alt="World map showing India, Kenya and South Africa highlighted, with partner organisations pinned" style="width:100%;height:auto;display:block;border-radius:0.25rem;"></div>
+<div class="figs-rowcap-1080" data-figcap-label="Programme Geography" style="margin-top:0;padding:0"><div class="figcap"><span class="num">PROGRAMME GEOGRAPHY</span><span class="desc">Two continents, three countries, five partner organisations.</span></div></div>
+</div>
+</section>
+<!-- ===================== ONE-DESIGNER BRIEF ===================== -->
+<section class="section" data-screen-label="03 Brief" style="padding-top:0rem !important;padding-bottom:8rem !important;">
+<div class="wrap-narrow">
+<h2 class="section-heading">One-designer brief, three continents</h2>
+<p>Tabiya joined the Google.org Accelerator with a working hypothesis: that an AI chatbot could help young jobseekers surface skills the formal labour market doesn't see — caregiving, informal trade, community organising, unpaid work of every kind — and translate those skills into a CV they could use.</p>
+<p style="font-weight: 400;">The hypothesis was promising. The conditions weren't simple. <strong style="font-weight: 400;">I was the only designer on the programme, working with partner organisations across India, Kenya, and South Africa — including Google.org, Oxford University, Harambee, GOYN, and four community-level NGOs serving young people in rural and urban contexts I had never worked in.</strong> The MVP had to ship in six months.</p>
+<p>When I joined Tabiya I had no experience with any of the three countries, the communities there, or the dense network of counsellors, mentors and intermediaries who do the actual work of getting young people into jobs. Discovery and design had to land fast enough not to hold engineering up.</p>
+</div>
+<div style="max-width:80%;margin:4.5rem auto 0;">
+<div class="arts-big" data-img-label="Desk Research" style="height:auto;display:block;border-radius:0.25rem;padding:0;margin:0;max-width:none"><img src="desk-research-interventions-and-media.webp" alt="Desk research composite: partner organisation profiles, intervention frameworks, and media landscape across Swahili Pot Foundation (Mombasa, Kenya), Ajira Programme / eMobilis (Nairobi, Kenya), Transform Rural India (New Delhi, India), and Head Held High Foundation (Karnataka, India)." style="width:100%;height:auto;display:block;border-radius:0.25rem;"></div>
+<div class="figs-rowcap-1080" data-figcap-label="Desk Research" style="margin-top:1rem;margin-bottom:2rem;padding:0"><div class="figcap"><span class="num">DESK RESEARCH</span><span class="desc">Collecting and organising information about each partner organisation and their local context.</span></div></div>
+</div>
+</section>
+<!-- ===================== FIVE WORKFLOWS ===================== -->
+<section class="section" data-screen-label="04 Workflows" style="padding-top:0rem !important;padding-bottom:8rem !important;">
+<div class="wrap-narrow">
+<h2 class="section-heading">Five distinct workflows mapped into one shared framework</h2>
+<p>I worked outward from stakeholders into communities. Semi-structured interviews with senior people at each partner organisation — to understand their interventions, their assumptions, and what success looked like from their side — then desk research on technology access, internet coverage, and how young people across the three countries actually use their phones.</p>
+</div>
+<div style="max-width:70%;margin:4rem auto 0;">
+<div class="arts-2" data-img-label="In-depth Interviews" style="height:auto;display:block;border-radius:0.25rem;padding:0;margin:0;max-width:none"><img src="interviews.webp" alt="Research notebooks composite: four views of the Dovetail workspace showing partner profiles, stakeholder interview sessions with transcripts and bookmarks, highlights reel with video clips from jobseeker and counsellor interviews, and the artefacts library with participant summaries across Swahilipot, eMobilis, Head Held High, and Transform Rural India." style="width:100%;height:auto;display:block;border-radius:0.25rem;"></div>
+<div class="figs-rowcap-1080" data-figcap-label="In-depth Interviews" style="margin-top:1rem;padding:0"><div class="figcap"><span class="num">IN-DEPTH INTERVIEWS</span><span class="desc">25 counsellors and 35 jobseekers across five partner organisations.</span></div></div>
+</div>
+<div class="wrap-narrow">
+<p>The jobseeker and counsellor interviews used the TED method (Tell, Explain, Describe) to surface narrative detail rather than yes/no answers. With GOYN's and Harambee's recruitment support, I ran interviews with 25 counsellors and 35 jobseekers across Swahilipot Hub Foundation, eMobilis (Ajira Program), Head Held High, and Transform Rural India. For South Africa, I interviewed Harambee SMEs and stakeholders but had no direct access to South African jobseekers. Tumelo and Kabo, the two South African personas, were built by sifting through Harambee's existing personas — they had more than ten — selecting the two that fit Compass's purpose, and modifying them against my SME interviews and desk research. A call made under timeline pressure, not a clean methodology, and I flagged it on stage.</p>
+</div>
+<div style="max-width:70%;margin:5.5rem auto 0;">
+<div class="arts-big" data-img-label="Synthesis Board" style="height:auto;display:block;border-radius:0.25rem;padding:0;margin:0;max-width:none"><img src="analysis-of-workflow.webp" alt="Synthesis board excerpt: five partner organisation workflows — Swahilipot, eMobilis, Head Held High, Transform Rural India, and Harambee — mapped side-by-side in FigJam, with the shared consultation framework derived underneath, annotated with colour-coded sticky notes and process steps." style="width:100%;height:auto;display:block;border-radius:0.25rem;"></div>
+<div class="figs-rowcap-1080" data-figcap-label="Synthesis Board" style="margin-top:1rem;margin-bottom:4rem;padding:0"><div class="figcap"><span class="num">SYNTHESIS BOARD EXCERPT</span><span class="desc">Five organisational workflows mapped and synthesised into a shared consultation framework.</span></div></div>
+</div>
+<div class="wrap-narrow">
+<p>The bigger synthesis challenge was process. Each organisation had its own way of taking a young person from first contact through to job placement. Different steps, different sequencing, different roles for the people involved. The vocabulary mirrored that: counsellors and students at Head Held High and Transform Rural India, trainers and trainees at eMobilis, mentors and mentees at Swahilipot, SMEs and stakeholders at Harambee. Five organisations, five workflows. Before any of the research could speak to product decisions, those workflows had to be mapped out separately and then synthesised onto a common consultation flow the whole programme could reference. So I created the shared process framework Compass was built around.</p>
+<p>Another core outcome was a set of personas. They had three jobs from the start: product specifications informing how the AI agent would adapt tone, pacing, and questions across different user contexts; research synthesis across the five communities; and a documented reference for the wider programme. I'd been building them as part of the research synthesis.</p>
+</div>
+</section>
+<!-- ===================== HOUR THAT ALIGNED THE ROOM ===================== -->
+<section class="section" data-screen-label="05 The hour that aligned the room" style="padding-top:0rem !important;padding-bottom:4rem !important;">
+<div class="wrap-narrow">
+<h2 class="section-heading">The hour that aligned the room</h2>
+<p>Two months in, I had an hour to present to Google.org leads, Tabiya engineers, Oxford researchers, and Harambee partners. The session had three scopes: a handoff of the research findings, a feedback and approval of the personas, and a first look at the consultation flow and early mockups that would shape the prototype. Three goals, one hour.</p>
+<p>The first version of the presentation was the version most researchers default to: country profiles, comparison tables, recurring themes. Kenya's 55 million people. 12.3% youth unemployment. 22 million internet users, 99% on smartphones. Three countries' worth of these. I rehearsed it. It was thorough. It was also going to lose the room. Most of the people in it had never spent time in coastal Mombasa or Pretoria, and most of them were going to make product decisions in the weeks that followed. A data-dense deck would land as information. It wouldn't land as understanding.</p>
+</div>
+<div style="max-width:80%;margin:2.25rem auto 0;"><img data-img-label="Data Charts" src="data-board.webp" alt="Country profile data dashboard showing youth unemployment, internet penetration, and phone usage patterns across India, Kenya, and South Africa." style="width:100%;height:auto;display:block;">
+<div class="figs-rowcap" data-figcap-label="Country Profile Data" style="margin-top:1rem;padding:0"><div class="figcap"><span class="num">COUNTRY PROFILE DATA</span><span class="desc">Two countries' worth of data, before it could land as understanding and support any decision.</span></div></div>
+</div>
+<div class="wrap-narrow">
+<p >The pivot was small but it was the right one. The personas were already there, already shaped to communicate the texture of the research. I rebuilt the presentation around them. Compass was never going to replace the counsellor relationship. It had to fit inside it. So the personas captured both sides of the consultation, not just the young people. Three jobseekers, two counsellors — five composite characters told as one continuous story: Aisha, a young artist in Mombasa, sole carer for six siblings, looking for work through Swahilipot. Amina, the program manager at Swahilipot who guides her. James, a trainer at eMobilis who Aisha consults about a digital-skills programme. Tumelo, a certified mechanic in Cape Town who has been out of work for years. Kabo, a minimum-wage worker in Pretoria who uses Harambee's job platform every day.</p>
+</div>
+<div style="max-width:75%;margin:4.75rem auto 0;">
+<div class="figs-rowcap-880" data-img-label="Persona Video" style="margin:0;padding:0;max-width:none">
+<video controls preload="metadata" style="width:100%;display:block;border-radius:0.375rem;" aria-label="Persona presentation excerpt: narrative walkthrough of five composite characters — Aisha, Amina, James, Tumelo, and Kabo — used to align Google.org, Oxford, Tabiya engineering, and Harambee partners on the Compass MVP scope.">
+  <source src="research-presentation.mp4" type="video/mp4">
+</video>
+</div>
+<div class="figs-rowcap-880" data-figcap-label="Persona Presentation" style="margin-top:1rem;margin-bottom:4.25rem;padding:0"><div class="figcap"><span class="num">PERSONA PRESENTATION EXCERPT</span><span class="desc">Replacing a data-heavy deck with a narrative the whole room could carry forward.</span></div></div>
+</div>
+<div class="wrap-narrow">
+<p >The narrative spine served all three scopes at once. The research findings landed in a form the room could carry into the CUJ and feature prioritisation work that followed. The personas were stretch-tested and approved through the stories that brought them to life. The early designs opened up cross-organisational discussion among stakeholders. The product team left the session able to describe, in their own words, the difference between a Swahilipot counsellor's caseload and a Harambee SME's mandate — and what that meant for how Compass needed to behave. By the end of that hour, all participating organisations had a common understanding and language for Compass.</p>
+</div>
+</section>
+<div class="board">
+<div data-img-label="Workshop Board" style=""><img src="cuj-workshop.webp" alt="Critical User Journeys workshop board used to align and prioritise features for the MVP." style="width:100%;height:auto;display:block;border-radius:0.25rem;"></div>
+<div class="figs-rowcap-880" data-figcap-label="Workshop Board" style="margin-top:1rem;margin-bottom:4rem;padding:0"><div class="figcap"><span class="num">WORKSHOP BOARD</span><span class="desc">Critical User Journeys workshop to align and prioritise features for the MVP.</span></div></div>
+<!-- ===================== MVP FLOW ===================== -->
+<section class="section" data-screen-label="06 Accelerator MVP" style="padding-top:3rem !important;padding-bottom:4.75rem !important;">
+<div class="wrap-narrow">
+<h2 class="section-heading">The Accelerator MVP</h2>
+<p>The design direction was already on the table. What the team still needed to decide was scope: what would actually ship in the six-month accelerator window, and what would wait. The CUJ workshop served this purpose and converged faster than it would have without the persona presentation underneath it. The output was a defined accelerator MVP: onboarding, the consultation chatbot flow, and CV generation — with everything else placed on the wider roadmap.</p>
+</div>
+<div data-img-label="MVP Feature Map" style="width:130%;margin-left:-15%;margin-top:5rem;margin-bottom:0rem"><img src="cross-country-features.svg" alt="MVP feature map showing accelerator scope set against the wider product roadmap." style="width:100%;height:auto;display:block;"></div>
+<div class="figs-rowcap" data-figcap-label="MVP Feature Map" style="margin-top:1rem;width:130%;margin-left:-15%;margin-bottom:2.5rem;padding:0"><div class="figcap"><span class="num">MVP FEATURE MAP</span><span class="desc">MVP scope set against the wider product roadmap.</span></div></div>
+<div class="wrap-narrow">
+<p>The consultation flow that anchored the MVP was structured in three phases — building rapport, exploring the jobseeker's history, and surfacing skills — adapted across cultural and linguistic contexts in tone, pacing, and prompts.</p>
+</div>
+</section>
+<!-- ===================== ACCESSIBILITY ===================== -->
+<section class="section" data-screen-label="07 Accessibility" style="padding-top:1rem !important;padding-bottom:8rem !important;">
+<div class="wrap-narrow">
+<h2 class="section-heading">Accessibility built into the palette,<br/>not bolted on</h2>
+<p>Compass was built for jobseekers in low-bandwidth contexts, on a wide range of devices, with screen brightness and ambient light conditions outside my Berlin office's range. The visual palette had to hold up across all of that — including for users with colour vision deficiencies.</p>
+</div>
+<div style="width:130%;margin-left:-15%;margin-top:3.75rem;">
+<div class="a11y-tiles" data-img-label="WCAG Checks" style="margin-top:0;margin-bottom:0;padding:0"><img src="wcag-aa-checks.svg" alt="WCAG AA contrast checks for the Compass palette." style="width:100%;height:auto;display:block;border-radius:0.25rem;"></div>
+<div class="figs-rowcap-1080" data-figcap-label="WCAG Checks" style="margin-top:1rem;padding-left:0"><div class="figcap"><span class="num">WCAG AA CONTRAST CHECKS</span><span class="desc">Every primary colour pairing passes normal-text, large-text, and graphic-component thresholds.</span></div></div>
+</div>
+<div class="wrap-narrow">
+<p>I tested the UI on two axes. WCAG AA contrast checks across every component, which flagged places where contrast ratios fell short and got tightened before launch. And deficiency simulators for anomalous trichromacy, dichromacy, and monochromacy, which revealed that individual colours rendered differently for colour-blind users but the combinations still worked as intended.</p>
+</div>
+<div style="width:130%;margin-left:-15%;margin-top:6.25rem;">
+<div class="palettes-grid" data-img-label="Colour Palette Simulation" style="margin-top:0;margin-bottom:0;padding:0"><img src="palette-simulation.svg" alt="Compass palette grid showing all nine colour-vision condition simulations side by side." style="width:100%;height:auto;display:block;border-radius:0.25rem;"></div>
 
-  <!-- Sticky back button — colour swaps via JS scroll detection -->
-  <a href="index.html#work" class="back-btn" id="backBtn" aria-label="Back to selected work">
-    <span class="arrow" aria-hidden="true">←</span> Back
-  </a>
+</div>
+<div style="width:140%;margin-left:-20%;margin-top:4rem;">
+<div class="ui-sims" data-img-label="UI Colour Simulations" style="background:rgb(244,244,241);padding:1.5rem;border-radius:0.375rem;margin-bottom:0px">
+<figure >
+  <div style="font-family:'JetBrains Mono',monospace;font-size:0.6875rem;letter-spacing:.1em;text-transform:uppercase;color:#3a3a3a;font-weight:600">Protanomaly</div>
+  <img src="protanomaly.webp" alt="Compass UI palette rendered through a Protanomaly simulator: reduced red sensitivity causes warm tones to shift, but the lime-navy contrast remains legible and call-to-action hierarchy is preserved." style="width:100%;height:auto;display:block;border-radius:0.25rem;">
+</figure>
+<figure >
+  <div style="font-family:'JetBrains Mono',monospace;font-size:0.6875rem;letter-spacing:.1em;text-transform:uppercase;color:#3a3a3a;font-weight:600">Protanopia</div>
+  <img src="protanopia.webp" alt="Compass UI palette rendered through a Protanopia simulator: full loss of red cone function produces a blue-yellow world; the lime accent remains distinct from navy and all critical UI states stay distinguishable." style="width:100%;height:auto;display:block;border-radius:0.25rem;">
+</figure>
+<figure >
+  <div style="font-family:'JetBrains Mono',monospace;font-size:0.6875rem;letter-spacing:.1em;text-transform:uppercase;color:#3a3a3a;font-weight:600">Deuteranomaly</div>
+  <img src="deuteranomaly.webp" alt="Compass UI palette rendered through a Deuteranomaly simulator: reduced green sensitivity shifts mid-range colours, but the high-contrast lime-navy pairing continues to function as intended across all components." style="width:100%;height:auto;display:block;border-radius:0.25rem;">
+</figure>
+<figure >
+  <div style="font-family:'JetBrains Mono',monospace;font-size:0.6875rem;letter-spacing:.1em;text-transform:uppercase;color:#3a3a3a;font-weight:600">Deuteranopia</div>
+  <img src="deuteranopia.webp" alt="Compass UI palette rendered through a Deuteranopia simulator: complete loss of green cone function; the palette holds because the design never relies on red-green distinction alone to communicate state or hierarchy." style="width:100%;height:auto;display:block;border-radius:0.25rem;">
+</figure>
+<figure >
+  <div style="font-family:'JetBrains Mono',monospace;font-size:0.6875rem;letter-spacing:.1em;text-transform:uppercase;color:#3a3a3a;font-weight:600">Tritanomaly</div>
+  <img src="tritanomaly.webp" alt="Compass UI palette rendered through a Tritanomaly simulator: reduced blue-yellow sensitivity causes some palette shifts, but the lime accent and navy base retain sufficient contrast to keep the UI navigable." style="width:100%;height:auto;display:block;border-radius:0.25rem;">
+</figure>
+<figure >
+  <div style="font-family:'JetBrains Mono',monospace;font-size:0.6875rem;letter-spacing:.1em;text-transform:uppercase;color:#3a3a3a;font-weight:600">Tritanopia</div>
+  <img src="tritanopia.webp" alt="Compass UI palette rendered through a Tritanopia simulator: complete loss of blue cone function; the lime-navy pairing, which does not depend on blue-channel differentiation, continues to pass contrast thresholds and maintain visual hierarchy." style="width:100%;height:auto;display:block;border-radius:0.25rem;">
+</figure>
+<figure >
+  <div style="font-family:'JetBrains Mono',monospace;font-size:0.6875rem;letter-spacing:.1em;text-transform:uppercase;color:#3a3a3a;font-weight:600">Monochromacy</div>
+  <img src="monochromacy.webp" alt="Compass UI palette rendered through a Monochromacy (achromatopsia) simulator: all colour information is removed and only luminance remains; the navy-white contrast and lime brightness ensure the layout and hierarchy survive in greyscale." style="width:100%;height:auto;display:block;border-radius:0.25rem;">
+</figure>
+<figure >
+  <div style="font-family:'JetBrains Mono',monospace;font-size:0.6875rem;letter-spacing:.1em;text-transform:uppercase;color:#3a3a3a;font-weight:600">Blue Cone Monochromacy</div>
+  <img src="blue cone monochromacy.webp" alt="Compass UI palette rendered through a Blue Cone Monochromacy simulator: a rare condition affecting the blue-cone pathway; the near-monochromatic result still preserves the primary reading hierarchy due to strong luminance contrast throughout the palette." style="width:100%;height:auto;display:block;border-radius:0.25rem;">
+</figure>
+</div>
+<div class="figs-rowcap-1080" data-figcap-label="Colour-Vision Screens" style="margin-top:1rem;margin-bottom:0rem;padding-left:0"><div class="figcap"><span class="num">COLOUR-VISION SIMULATION</span><span class="desc">UI screens rendered through each simulator — hierarchy and call-to-action readable in every condition.</span></div></div>
+</div>
+</section>
+<section class="grad" data-screen-label="08 Open-source" style="padding-top:0rem !important;padding-bottom:8rem !important;">
+<div style="max-width:67.5rem;margin:0 auto;padding:0 2rem;display:flex;flex-direction:row;gap:4rem;align-items:stretch;">
+<div style="flex:0 0 18.75rem;"><img src="compass-login.webp" data-img-label="Compass Login Screen" alt="Compass login screen on mobile." style="width:100%;height:auto;display:block;border-radius:1.75rem;"></div>
+<div style="flex:1;display:flex;flex-direction:column;justify-content:center;height:100%;">
+<h2>Compass graduated, <br/>and is now open-source</h2>
+<p>Tabiya graduated from the Google.org Accelerator and the MVP was adopted and sustained post-accelerator by partner organisations. Tabiya continues to develop Compass as open source. The UX roadmap and strategic design guide I produced are still in use for their planning.</p>
+<a class="btn btn-secondary" href="#" target="_blank" style="margin-top:2rem;align-self:flex-start;">Try the prototype <span class="arrow">→</span></a>
+</div>
+</div>
+</section>
+<!-- ===================== WHAT CARRIED FORWARD ===================== -->
+<section class="carried" data-screen-label="09 What carried forward" style="padding-top:8rem !important;padding-bottom:8rem !important;width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;">
+<div style="max-width:67.5rem;margin:0 auto;padding:0 2rem;">
+<h2>What carried forward</h2>
+<p><span style="color: rgb(255, 255, 255);">The Tabiya project was humbling, showing me so many things I don't know about life. It also taught me that the hardest part of designing for unfamiliar contexts isn't the research itself — it's translating it into a form that lets people who weren't in the interviews realise the different realities and make good decisions anyway.</span></p>
+</div>
+</section>
+<!-- ===================== QUOTE ===================== -->
+<section class="quote" data-screen-label="10 Testimonial" style="padding-top:8rem !important;padding-bottom:8rem !important;">
+<div class="quote-inner" style="font-size: 0.875rem;">
+<div class="quote-photo-wrap" style="font-size: 0.875rem;"><img src="christian.webp" alt="Portrait of Christian Mayer, CEO of Tabiya." style="width:10rem;height:17.5rem;object-fit:cover;object-position:center top;display:block;border-radius:0.25rem;"></div>
+<div class="quote-mark" style="grid-column:2; line-height:1">
+<svg aria-hidden="true" fill="none" height="76" viewbox="0 0 96 76" width="96" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 76V40C0 17.9 17.9 0 40 0V18C28.4 18 19 27.4 19 39H40V76H0Z" fill="#1f2dff"></path>
+<path d="M56 76V40C56 17.9 73.9 0 96 0V18C84.4 18 75 27.4 75 39H96V76H56Z" fill="#1f2dff"></path>
+</svg>
+</div>
+<div class="quote-body">
+      Myrto worked with us on a complex, multi-stakeholder project with a very tight timeline. Myrto demonstrated exceptional skill and professionalism, consistently delivering high-quality work under challenging circumstances. Her ability to manage changing priorities and demands was impressive, and she effectively communicated with all team members, fostering a productive work environment. Her attention to detail, creativity, and deep understanding of UX principles resulted in deliverables that exceeded our expectations.
+      <div class="quote-by"><b>Christian Mayer</b> <span>·</span> CEO, Tabiya</div>
+</div>
+</div>
+</section>
+</main>
+<!-- ===================== FOOTER ===================== -->
+<footer class="pagefoot">
+<div class="pagefoot-inner">
+<a class="back-link" href="#">← Back to selected work</a>
+<div class="next-card">
+<div class="ph ph--next">Next case study</div>
+<div class="next-line">Next case study <a href="#">→ Coming soon</a></div>
+</div>
+</div>
+</footer>
 
-  <!-- ============================================================
-       1. CASE HERO — full-bleed image with overlaid breadcrumb + title
-  ============================================================= -->
-  <header class="case-hero">
-    <!-- The visual itself -->
-    <div class="case-hero-media" role="img" aria-label="Opening hero image">
-      <img src="images/image-01.jpeg" alt="Opening photograph, a busy street scene from one of the neighbourhoods at the heart of the Tabiya Compass programme." data-no-zoom />
-    </div>
+<script>
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    <!-- Gradient overlay so text stays legible regardless of underlying photo -->
-    <div class="case-hero-scrim" aria-hidden="true"></div>
+    // Lime grid fade-up
+    const grid = document.querySelector('.lime-grid');
+    if (grid) {
+      const gridObserver = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            grid.classList.add('is-visible');
+            gridObserver.unobserve(grid);
+          }
+        },
+        { threshold: 0.15 }
+      );
+      gridObserver.observe(grid);
+    }
 
-    <!-- Back button placeholder (the real one is sticky, outside the header) -->
+    // Gif player
+    const player = document.getElementById('compass-gif');
+    if (player) {
+      const gif    = player.querySelector('.video-player__gif');
+      const btn    = player.querySelector('.video-player__btn');
+      const gifSrc = gif.src;
+      const GIF_DURATION = 25150;
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    <!-- Title block, bottom — content aligned to prose column -->
-    <div class="case-hero-text">
-      <div class="case-hero-text-inner">
-        <div class="case-eyebrow">Case study</div>
-        <h1 class="case-title" id="caseTitle">Tabiya Compass</h1>
-        <p class="case-hero-intro">Most skills frameworks recognise paid work. They don't recognise the woman who has raised six siblings, run a household, and managed a community network — and so neither does the labour market she's trying to enter. Tabiya Compass set out to change that.</p>
-      </div>
-    </div>
-  </header>
-
-  <main>
-
-    <!-- ============================================================
-         2. CASE METADATA BLOCK
-    ============================================================= -->
-    <div class="case-meta-wrap">
-      <section class="container case-meta" aria-label="Project metadata">
-      <dl class="case-meta-row">
-        <div>
-          <dt>Type</dt>
-          <dd>0→1 GenAI, B2B2C</dd>
-        </div>
-        <div>
-          <dt>Role</dt>
-          <dd>UX Lead</dd>
-        </div>
-        <div>
-          <dt>Year</dt>
-          <dd>2024</dd>
-        </div>
-        <div class="co-created">
-          <dt>Co-created with</dt>
-          <dd>Tabiya, Google.org, Oxford University, GOYN, and others</dd>
-        </div>
-      </dl>
-    </section>
-    </div>
-
-    <!-- ============================================================
-         4. CASE STUDY SECTIONS
-    ============================================================= -->
-
-    <!-- Section 1: One designer, three continents -->
-    <section class="container case-section">
-      <h2 class="section-h2">One-designer brief, three continents</h2>
-      <div class="prose">
-        <p>Tabiya joined the Google.org Accelerator with a working hypothesis: that an AI chatbot could help young jobseekers surface skills the formal labour market doesn't see — caregiving, informal trade, community organising, unpaid work of every kind — and translate those skills into a CV they could use.</p>
-        <p>The hypothesis was promising. The conditions weren't simple. <span style="font-weight: bold;">I was the only designer on the programme, working with partner organisations across India, Kenya, and South Africa — including Google.org, Oxford University, Harambee, GOYN, and four community-level NGOs serving young people in rural and urban contexts I had never worked in. </span>The MVP had to ship in six months.</p>
-        <p>When I joined Tabiya I had no experience with any of the three countries, the communities there, or the dense network of counsellors, mentors and intermediaries who do the actual work of getting young people into jobs. Discovery and design had to land fast enough not to hold engineering up.</p>
-      </div>
-
-      <figure class="figure-wide">
-        <img src="images/image-02.jpeg" alt="Excerpt of research findings presentation with map showing programme reach: India (Transform Rural India, Head Held High), Kenya (eMobilis, Swahilipot), and South Africa (Harambee). Two continents, three countries, five communities." data-label="Presentation excerpt: Programme reach map" />
-      </figure>
-    </section>
-
-    <!-- Section 2: Five workflows -->
-    <section class="container case-section">
-      <h2 class="section-h2">Five distinct workflows mapped into one shared framework</h2>
-      <div class="prose">
-        <p>I worked outward from stakeholders into communities. Semi-structured interviews with senior people at each partner organisation — to understand their interventions, their assumptions, and what success looked like from their side — then desk research on technology access, internet coverage, and how young people across the three countries actually use their phones.</p>
-      </div>
-
-      <figure class="figure-wide">
-        <img src="images/image-03.jpeg" alt="Research artifacts from the Tabiya Discovery project — desk research boards for Swahili Pot Foundation, Ajira Program, Transform Rural India, and Head Held High Foundation." data-label="Knowledge transfer FigJam board excerpt" />
-      </figure>
-
-      <div class="prose">
-        <p>The jobseeker and counsellor interviews used the TED method (Tell, Explain, Describe) to surface narrative detail rather than yes/no answers. With GOYN's and Harambee's recruitment support, I ran interviews with 25 counsellors and 35 jobseekers across Swahilipot Hub Foundation, eMobilis (Ajira Program), Head Held High, and Transform Rural India. For South Africa, I interviewed Harambee SMEs and stakeholders but had no direct access to South African jobseekers. Tumelo and Kabo, the two South African personas, were built by sifting through Harambee's existing personas — they had more than ten — selecting the two that fit Compass's purpose, and modifying them against my SME interviews and desk research. A call made under timeline pressure, not a clean methodology, and I flagged it on stage.</p>
-      </div>
-
-      <figure class="figure-full">
-        <img src="images/image-04.jpeg" alt="Four screenshots from Condens research tool showing stakeholder interviews, counsellor interview recordings, interview highlights, and research artifacts from the Tabiya Discovery project." data-label="Interviews analysis (Condens)" />
-      </figure>
-
-      <div class="prose">
-        <p>The bigger synthesis challenge was process. Each organisation had its own way of taking a young person from first contact through to job placement. Different steps, different sequencing, different roles for the people involved. The vocabulary mirrored that: counsellors and students at Head Held High and Transform Rural India, trainers and trainees at eMobilis, mentors and mentees at Swahilipot, SMEs and stakeholders at Harambee. Five organisations, five workflows. Before any of the research could speak to product decisions, those workflows had to be mapped out separately and then synthesised onto a common consultation flow the whole programme could reference. So I created the shared process framework Compass was built around.</p>
-        <p>Another core outcome was a set of personas. They had three jobs from the start: product specifications informing how the AI agent would adapt tone, pacing, and questions across different user contexts; research synthesis across the five communities; and a documented reference for the wider programme. I'd been building them as part of the research synthesis.</p>
-      </div>
-
-      <figure class="figure-full">
-        <img src="images/image-05.jpeg" alt="FigJam analysis and synthesis board showing four community process maps (Swahilipot, eMobilis, Transform Rural India, Head Held High) synthesised into a shared high-level consultation flow." data-label="Organisations' workflow analysis and synthesis (Figma)" />
-      </figure>
-    </section>
-
-    <!-- Section 3: The hour that aligned the room -->
-    <section class="container case-section">
-      <h2 class="section-h2">The hour that aligned the room</h2>
-      <div class="prose">
-        <p>Two months in, I had an hour to present to Google.org leads, Tabiya engineers, Oxford researchers, and Harambee partners. The session had three scopes: a handoff of the research findings, a feedback and approval of the personas, and a first look at the consultation flow and early mockups that would shape the prototype. Three goals, one hour.</p>
-        <p>The first version of the presentation was the version most researchers default to: country profiles, comparison tables, recurring themes. Kenya's 55 million people. 12.3% youth unemployment. 22 million internet users, 99% on smartphones. Three countries' worth of these. I rehearsed it. It was thorough. It was also going to lose the room. Most of the people in it had never spent time in coastal Mombasa or Pretoria, and most of them were going to make product decisions in the weeks that followed. A data-dense deck would land as information. It wouldn't land as understanding.</p>
-      </div>
-
-                  <figure class="figure-wide slide-viewer" aria-label="Desk research presentation — country and technology context for India, Kenya, and South Africa">
-        <div class="slide-track">
-          <img class="slide-img" src="images/image-06.jpeg" alt="Slide 1 of 10" />
-        </div>
-        <div class="slide-controls">
-          <button class="slide-btn prev" aria-label="Previous slide" disabled>←</button>
-          <span class="slide-counter"><span class="slide-current">1</span> / 10</span>
-          <button class="slide-btn next" aria-label="Next slide">→</button>
-        </div>
-        <script>
-          (function() {
-            var slides = [
-    "images/image-07.jpeg",
-    "images/image-08.jpeg",
-    "images/image-09.jpeg",
-    "images/image-10.jpeg",
-    "images/image-11.jpeg",
-    "images/image-12.jpeg",
-    "images/image-13.jpeg",
-    "images/image-14.jpeg",
-    "images/image-15.jpeg",
-    "images/image-16.jpeg"
-            ];
-            var current = 0;
-            var fig = document.currentScript.closest('.slide-viewer');
-            var img = fig.querySelector('.slide-img');
-            var counter = fig.querySelector('.slide-current');
-            var prevBtn = fig.querySelector('.prev');
-            var nextBtn = fig.querySelector('.next');
-            function go(n) {
-              current = n;
-              img.src = slides[current];
-              img.alt = 'Slide ' + (current + 1) + ' of ' + slides.length;
-              counter.textContent = current + 1;
-              prevBtn.disabled = current === 0;
-              nextBtn.disabled = current === slides.length - 1;
-            }
-            prevBtn.addEventListener('click', function() { if (current > 0) go(current - 1); });
-            nextBtn.addEventListener('click', function() { if (current < slides.length - 1) go(current + 1); });
-            fig.setAttribute('tabindex', '0');
-            fig.addEventListener('keydown', function(e) {
-              if (e.key === 'ArrowLeft' && current > 0) go(current - 1);
-              if (e.key === 'ArrowRight' && current < slides.length - 1) go(current + 1);
-            });
-          })();
-        </script>
-      </figure>
-
-      <div class="prose">
-        <p>The pivot was small but it was the right one. The personas were already there, already shaped to communicate the texture of the research. I rebuilt the presentation around them. Compass was never going to replace the counsellor relationship. It had to fit inside it. So the personas captured both sides of the consultation, not just the young people. Three jobseekers, two counsellors — five composite characters told as one continuous story: Aisha, a young artist in Mombasa, sole carer for six siblings, looking for work through Swahilipot. Amina, the program manager at Swahilipot who guides her. James, a trainer at eMobilis who Aisha consults about a digital-skills programme. Tumelo, a certified mechanic in Cape Town who has been out of work for years. Kabo, a minimum-wage worker in Pretoria who uses Harambee's job platform every day.</p>
-      </div>
-
-      <figure class="figure-full">
-        <div class="placeholder" role="img" aria-label="Personas and user journey maps (placeholder)">
-          <span class="ph-corner" aria-hidden="true">07</span>
-          <span class="ph-label" aria-hidden="true">
-            Synthesising personas and user journeys — Aisha, Tumelo, Kabo with the journey maps
-            <span class="ph-dim">Full-width</span>
-          </span>
-        </div>
-      </figure>
-
-      <div class="prose">
-        <p>The narrative spine served all three scopes at once. The research findings landed in a form the room could carry into the CUJ and feature prioritisation work that followed. The personas were stretch-tested and approved through the stories that brought them to life. The early designs opened up cross-organisational discussion among stakeholders. The product team left the session able to describe, in their own words, the difference between a Swahilipot counsellor's caseload and a Harambee SME's mandate — and what that meant for how Compass needed to behave. By the end of that hour, all participating organisations had a common understanding and language for Compass.</p>
-      </div>
-    </section>
-
-    <!-- Section 4: The Accelerator MVP -->
-    <section class="container case-section">
-      <h2 class="section-h2">The Accelerator MVP:<br>Four features, one consultation flow</h2>
-      <div class="prose">
-        <p>The design direction was already on the table. What the team still needed to decide was scope: what would actually ship in the six-month accelerator window, and what would wait. The CUJ workshop served this purpose and converged faster than it would have without the persona presentation underneath it. The output was a defined accelerator MVP: onboarding, the consultation chatbot flow, and CV generation — with everything else placed on the wider roadmap.</p>
-      </div>
-
-      <figure class="figure-wide">
-        <div class="placeholder" role="img" aria-label="Critical user journey workshop output (placeholder)">
-          <span class="ph-corner" aria-hidden="true">08</span>
-          <span class="ph-label" aria-hidden="true">
-            Identifying the critical user journeys (CUJs) — workshop affinity board + CUJ table
-            <span class="ph-dim">Wide</span>
-          </span>
-        </div>
-      </figure>
-
-      <figure class="figure-wide">
-        <div class="placeholder" role="img" aria-label="Compass MVP flow diagram (placeholder)">
-          <span class="ph-corner" aria-hidden="true">09</span>
-          <span class="ph-label" aria-hidden="true">
-            Defining Compass MVP — flow diagram
-            <span class="ph-dim">Wide</span>
-          </span>
-        </div>
-      </figure>
-
-      <figure class="figure-full">
-        <div class="placeholder" role="img" aria-label="MVP chat screens (placeholder)">
-          <span class="ph-corner" aria-hidden="true">10</span>
-          <span class="ph-label" aria-hidden="true">
-            Designing the MVP — chat screens, Consultation Phase 1 + Phase 3
-            <span class="ph-dim">Full-width</span>
-          </span>
-        </div>
-      </figure>
-
-      <div class="prose">
-        <p>The consultation flow that anchored the MVP was structured in three phases — building rapport, exploring the jobseeker's history, and surfacing skills — adapted across cultural and linguistic contexts in tone, pacing, and prompts.</p>
-      </div>
-    </section>
-
-    <!-- Section 5: Shipped and open-sourced -->
-    <section class="container case-section">
-      <h2 class="section-h2">Compass graduated, and now open-source</h2>
-      <div class="prose">
-        <p>Tabiya graduated from the Google.org Accelerator and the MVP was adopted and sustained post-accelerator by partner organisations. Tabiya continues to develop Compass as open source. The UX roadmap and strategic design guide I produced are still in use for their planning.</p>
-      </div>
-
-            <figure class="prototype-embed">
-        <a class="prototype-btn" href="https://myrto-pap.github.io/portfolio-compass" target="_blank" rel="noopener">
-          Try the prototype <span class="arrow">→</span>
-        </a>
-      </figure>
-    </section>
-
-    <!-- Section 6: Reflection -->
-    <div class="case-reflection-wrap">
-      <section class="container case-section">
-        <h2 class="section-h2">What carried forward</h2>
-        <div class="prose">
-          <p>The Tabiya project was humbling, showing me so many things I don't know about life. It also taught me that the hardest part of designing for unfamiliar contexts isn't the research itself — it's translating it into a form that lets people who weren't in the interviews realise the different realities and make good decisions anyway.</p>
-        </div>
-      </section>
-    </div>
-
-    <!-- ============================================================
-         5. TESTIMONIAL
-    ============================================================= -->
-    <section class="container testimonial" aria-label="Testimonial">
-      <div class="testimonial-inner">
-        <blockquote class="testimonial-quote">
-          Myrto worked with us on a complex, multi-stakeholder project with a very tight timeline. Myrto demonstrated exceptional skill and professionalism, consistently delivering high-quality work under challenging circumstances. Her ability to manage changing priorities and demands was impressive, and she effectively communicated with all team members, fostering a productive work environment. Her attention to detail, creativity, and deep understanding of UX principles resulted in deliverables that exceeded our expectations.
-        </blockquote>
-        <p class="testimonial-attribution">
-          <strong>Christian Meyer</strong> · CEO, Tabiya
-        </p>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         6. CASE NAV — back + next
-    ============================================================= -->
-    <nav class="container case-nav" aria-label="Case study navigation" id="caseNav">
-      <div class="case-nav-inner">
-        <a href="index.html#work">
-          <span aria-hidden="true">←</span> Back to selected work
-        </a>
-        <!-- TODO: wire up "next case study" once another case study exists -->
-        <div class="case-nav-next">
-          <div class="case-nav-thumb" role="img" aria-label="Next case study thumbnail (placeholder)">
-            <span class="ph-corner" aria-hidden="true">→</span>
-            <span class="ph-label" aria-hidden="true">Next case study</span>
-          </div>
-          <a class="next" href="index.html#work" aria-label="Next case study (placeholder)">
-            Next case study
-            <strong>→ Coming soon</strong>
-          </a>
-        </div>
-      </div>
-    </nav>
-
-  </main>
-
-  <script>
-    (function () {
-      const btn = document.getElementById('backBtn');
-      const hero = document.querySelector('.case-hero');
-      const metaWrap = document.querySelector('.case-meta-wrap');
-      const reflectionWrap = document.querySelector('.case-reflection-wrap');
-
-      function updateColour() {
-        const btnY = btn.getBoundingClientRect().top + btn.offsetHeight / 2;
-
-        const heroRect = hero ? hero.getBoundingClientRect() : null;
-        const metaRect = metaWrap ? metaWrap.getBoundingClientRect() : null;
-        const reflRect = reflectionWrap ? reflectionWrap.getBoundingClientRect() : null;
-
-        btn.style.opacity = '1';
-        btn.style.pointerEvents = 'auto';
-
-        const inReflection = reflRect && btnY >= reflRect.top && btnY <= reflRect.bottom;
-        const inMeta = metaRect && btnY >= metaRect.top && btnY <= metaRect.bottom;
-        const inHero = heroRect && btnY >= heroRect.top && btnY <= heroRect.bottom;
-
-        if (inReflection || inMeta) {
-          btn.classList.remove('on-light');
-          btn.classList.add('on-blue');
-        } else if (inHero) {
-          btn.classList.remove('on-light');
-          btn.classList.remove('on-blue');
-        } else {
-          btn.classList.add('on-light');
-          btn.classList.remove('on-blue');
-        }
+      function pause() {
+        gif.src = '';
+        player.classList.add('is-paused');
+        btn.setAttribute('aria-label', 'Play animation');
       }
 
-      window.addEventListener('scroll', updateColour, { passive: true });
-      updateColour();
-    })();
-  </script>
+      function play() {
+        gif.src = gifSrc;
+        player.classList.remove('is-paused');
+        btn.setAttribute('aria-label', 'Pause animation');
+        setTimeout(pause, GIF_DURATION);
+      }
 
+      if (reducedMotion) {
+        gif.src = '';
+        player.classList.add('is-paused');
+        btn.setAttribute('aria-label', 'Play animation');
+      } else {
+        setTimeout(pause, GIF_DURATION);
+      }
 
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (player.classList.contains('is-paused')) { play(); } else { pause(); }
+      });
 
-  <!-- ════════════════════════════════════════════
-         LIGHTBOX COMPONENT — copy from here
-    ════════════════════════════════════════════ -->
-    <div id="imgZoomOverlay" class="img-zoom-overlay" role="dialog" aria-modal="true" aria-label="Image viewer">
-  
-      <div class="img-zoom-controls">
-        <span class="img-zoom-label" id="zoomLabel"></span>
-        <div class="img-zoom-btns">
-          <button class="img-zoom-btn" id="zoomOut" aria-label="Zoom out" title="Zoom out (−)">−</button>
-          <span class="img-zoom-scale" id="zoomScale">100%</span>
-          <button class="img-zoom-btn" id="zoomIn" aria-label="Zoom in" title="Zoom in (+)">+</button>
-          <div class="img-zoom-sep"></div>
-          <button class="img-zoom-btn" id="zoomReset" aria-label="Reset zoom" title="Reset (0)" style="font-size:11px;letter-spacing:0.06em;width:auto;padding:0 10px;font-family:var(--mono)">Reset</button>
-          <div class="img-zoom-sep"></div>
-          <button class="img-zoom-btn" id="zoomClose" aria-label="Close" title="Close (Esc)" style="font-size:16px;">✕</button>
-        </div>
-      </div>
-  
-      <div class="img-zoom-canvas" id="zoomCanvas">
-        <img id="zoomImg" src="" alt="" draggable="false" />
-      </div>
-  
-      <p class="img-zoom-hint" id="zoomHint">Scroll to zoom · Drag to pan · Double-click to reset</p>
-    </div>
-  
-    <script>
-      (function () {
-        var overlay  = document.getElementById('imgZoomOverlay');
-        var canvas   = document.getElementById('zoomCanvas');
-        var img      = document.getElementById('zoomImg');
-        var label    = document.getElementById('zoomLabel');
-        var scaleEl  = document.getElementById('zoomScale');
-        var hint     = document.getElementById('zoomHint');
-  
-        var scale = 1, tx = 0, ty = 0;
-        var dragging = false, startX, startY, startTx, startTy;
-        var hintTimer;
-  
-        /* ── Transform ── */
-        function applyTransform() {
-          img.style.transform = 'translate(' + tx + 'px,' + ty + 'px) scale(' + scale + ')';
-          scaleEl.textContent = Math.round(scale * 100) + '%';
-        }
-  
-        function reset() {
-          scale = 1; tx = 0; ty = 0;
-          applyTransform();
-        }
-  
-        function zoom(delta, cx, cy) {
-          cx = cx || 0; cy = cy || 0;
-          var next = Math.min(10, Math.max(0.25, scale + delta));
-          var ratio = next / scale;
-          tx = cx + (tx - cx) * ratio;
-          ty = cy + (ty - cy) * ratio;
-          scale = next;
-          applyTransform();
-          showHint();
-        }
-  
-        /* ── Hint auto-hide ── */
-        function showHint() {
-          hint.classList.remove('hidden');
-          clearTimeout(hintTimer);
-          hintTimer = setTimeout(function () { hint.classList.add('hidden'); }, 2000);
-        }
-  
-        /* ── Scroll to zoom ── */
-        overlay.addEventListener('wheel', function (e) {
-          e.preventDefault();
-          var r = canvas.getBoundingClientRect();
-          var cx = e.clientX - r.left - r.width / 2;
-          var cy = e.clientY - r.top  - r.height / 2;
-          zoom(e.deltaY < 0 ? 0.25 : -0.25, cx, cy);
-        }, { passive: false });
-  
-        /* ── Mouse drag ── */
-        canvas.addEventListener('mousedown', function (e) {
-          if (e.button !== 0) return;
-          dragging = true;
-          startX = e.clientX; startY = e.clientY;
-          startTx = tx; startTy = ty;
-          canvas.classList.add('dragging');
-          e.preventDefault();
-        });
-        window.addEventListener('mousemove', function (e) {
-          if (!dragging) return;
-          tx = startTx + (e.clientX - startX);
-          ty = startTy + (e.clientY - startY);
-          applyTransform();
-        });
-        window.addEventListener('mouseup', function () {
-          dragging = false;
-          canvas.classList.remove('dragging');
-        });
-  
-        /* ── Touch pinch+pan ── */
-        var lastTouches = null, lastDist = null;
-        overlay.addEventListener('touchstart', function (e) {
-          lastTouches = e.touches;
-          if (e.touches.length === 2) {
-            lastDist = Math.hypot(
-              e.touches[0].clientX - e.touches[1].clientX,
-              e.touches[0].clientY - e.touches[1].clientY
-            );
-          }
-        }, { passive: true });
-  
-        overlay.addEventListener('touchmove', function (e) {
-          e.preventDefault();
-          if (e.touches.length === 2 && lastDist) {
-            var dist = Math.hypot(
-              e.touches[0].clientX - e.touches[1].clientX,
-              e.touches[0].clientY - e.touches[1].clientY
-            );
-            var cx = (e.touches[0].clientX + e.touches[1].clientX) / 2 - canvas.getBoundingClientRect().width / 2;
-            var cy = (e.touches[0].clientY + e.touches[1].clientY) / 2 - canvas.getBoundingClientRect().height / 2;
-            zoom((dist - lastDist) * 0.01, cx, cy);
-            lastDist = dist;
-          } else if (e.touches.length === 1 && lastTouches && lastTouches.length === 1) {
-            tx += e.touches[0].clientX - lastTouches[0].clientX;
-            ty += e.touches[0].clientY - lastTouches[0].clientY;
-            applyTransform();
-          }
-          lastTouches = e.touches;
-        }, { passive: false });
-  
-        /* ── Double-click to reset ── */
-        canvas.addEventListener('dblclick', reset);
-  
-        /* ── Buttons ── */
-        document.getElementById('zoomIn').addEventListener('click',    function () { zoom(0.5, 0, 0); });
-        document.getElementById('zoomOut').addEventListener('click',   function () { zoom(-0.5, 0, 0); });
-        document.getElementById('zoomReset').addEventListener('click', reset);
-        document.getElementById('zoomClose').addEventListener('click', close);
-  
-        /* ── Open ── */
-        function open(src, alt) {
-          img.src = src;
-          label.textContent = alt || '';
-          reset();
-          overlay.classList.add('active');
-          document.body.style.overflow = 'hidden';
-          showHint();
-        }
-  
-        document.querySelectorAll('figure img:not(.slide-img)').forEach(function (el) {
-          el.addEventListener('click', function () {
-            open(this.src, this.alt);
-          });
-        });
-  
-        /* ── Close ── */
-        function close() {
-          overlay.classList.remove('active');
-          document.body.style.overflow = '';
-          setTimeout(function () { img.src = ''; }, 300);
-        }
-  
-        /* ── Keyboard ── */
-        document.addEventListener('keydown', function (e) {
-          if (!overlay.classList.contains('active')) return;
-          if (e.key === 'Escape')              close();
-          if (e.key === '+' || e.key === '=') zoom(0.4, 0, 0);
-          if (e.key === '-')                   zoom(-0.4, 0, 0);
-          if (e.key === '0')                   reset();
-        });
-      })();
-    </script>
+      player.addEventListener('click', () => {
+        if (!player.classList.contains('is-paused')) { pause(); }
+      });
+    }
 
+    // Quote mark bounce
+    const mark = document.querySelector('.quote-mark');
+    if (!mark) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          mark.classList.add('is-visible');
+          observer.unobserve(mark);
+        }
+      },
+      { threshold: 0.8 }
+    );
+    observer.observe(mark);
+
+    // Dyslexia font toggle
+    const fontToggle = document.getElementById('font-toggle');
+    const PREF_KEY = 'tabiya-dyslexic-font';
+    if (localStorage.getItem(PREF_KEY) === 'on') {
+      document.body.classList.add('dyslexic-font');
+      fontToggle.setAttribute('aria-pressed', 'true');
+    }
+    fontToggle.addEventListener('click', () => {
+      const isOn = document.body.classList.toggle('dyslexic-font');
+      fontToggle.setAttribute('aria-pressed', isOn ? 'true' : 'false');
+      localStorage.setItem(PREF_KEY, isOn ? 'on' : 'off');
+    });
+
+    // Back button colour swap — blue/white default, lime/blue on dark sections
+    const backBtn = document.getElementById('backBtn');
+    const darkSections = document.querySelectorAll('.carried, .hero-meta');
+    const limeSections = document.querySelectorAll('.lime');
+    function updateBackBtn() {
+      const btnBottom = backBtn.getBoundingClientRect().bottom;
+      let onBlue = false;
+      let onLime = false;
+      darkSections.forEach(sec => {
+        const r = sec.getBoundingClientRect();
+        if (btnBottom >= r.top && btnBottom <= r.bottom) onBlue = true;
+      });
+      limeSections.forEach(sec => {
+        const r = sec.getBoundingClientRect();
+        if (btnBottom >= r.top && btnBottom <= r.bottom) onLime = true;
+      });
+      backBtn.classList.remove('on-blue', 'on-lime-bg');
+      if (onLime) backBtn.classList.add('on-lime-bg');
+      else if (onBlue) backBtn.classList.add('on-blue');
+    }
+    window.addEventListener('scroll', updateBackBtn, { passive: true });
+    updateBackBtn();
+
+  })();
+
+</script>
 </body></html>
