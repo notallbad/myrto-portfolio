@@ -4,6 +4,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ERGO NEO Case Study — Coming Soon | Myrto Papagiannakou</title>
 <meta name="description" content="Coming soon: UX Lead on ERGO NEO — replacing EASY, ERGO's nationwide legacy system for insurance agents. A two-year enterprise digital transformation.">
+<link href="https://fonts.cdnfonts.com/css/opendyslexic" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
   :root{
@@ -82,11 +83,107 @@
     .hero-meta-inner{grid-template-columns:1fr 1fr;}
     .hero h1{font-size:2.25rem;}
   }
+
+  /* ── Dyslexia toggle ── */
+  .font-toggle{
+    position:fixed;bottom:1.5rem;right:1.5rem;z-index:900;
+    display:flex;align-items:center;gap:0.5rem;
+    background:#fff;border:0.0625rem solid var(--line);
+    padding:0.5rem 0.875rem;border-radius:6.25rem;
+    box-shadow:0 0.125rem 0.75rem rgba(0,0,0,.08);
+    cursor:pointer;
+    font-family:"JetBrains Mono",monospace;font-size:0.625rem;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+    transition:box-shadow .2s, color .2s;
+    user-select:none;
+  }
+  .font-toggle:hover{box-shadow:0 0.25rem 1.125rem rgba(0,0,0,.13);color:var(--ink);}
+  .font-toggle__dot{
+    width:0.5rem;height:0.5rem;border-radius:50%;
+    background:var(--line);
+    transition:background .2s;
+    flex-shrink:0;
+  }
+  body.dyslexic-font .font-toggle__dot{background:var(--blue);}
+  body.dyslexic-font .font-toggle{color:var(--blue);}
+
+  body.dyslexic-font,
+  body.dyslexic-font p,
+  body.dyslexic-font .hero-lead,
+  body.dyslexic-font .hero-eyebrow,
+  body.dyslexic-font .hero-meta-inner div,
+  body.dyslexic-font .back,
+  body.dyslexic-font .pagefoot .next-line,
+  body.dyslexic-font .hero-meta-inner .k,
+  body.dyslexic-font .hero-meta-inner .v,
+  body.dyslexic-font .coming-soon-badge{
+    font-family:"OpenDyslexic",sans-serif;
+    letter-spacing:0.05em;
+    line-height:2;
+    word-spacing:0.2em;
+  }
+  body.dyslexic-font h1,
+  body.dyslexic-font h2{
+    font-family:"OpenDyslexic",sans-serif;
+    font-weight:700;
+    letter-spacing:0.02em;
+    line-height:1.5;
+    word-spacing:0.1em;
+  }
+  body.dyslexic-font p{ font-size:1.125rem; }
+  body.dyslexic-font .hero-lead{ font-size:1.375rem; line-height:1.9; }
+  body.dyslexic-font h1{ font-size:clamp(2rem,5vw,4rem); }
+  body.dyslexic-font .wrap-narrow{ max-width:51.25rem; }
+  body.dyslexic-font p + p{ margin-top:1.6em; }
+
+
+  /* ===== HERO STAGGER ===== */
+  @media (prefers-reduced-motion: no-preference) {
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(1rem); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .coming-soon-badge,
+    .hero-eyebrow,
+    .hero h1,
+    .hero-lead {
+      opacity: 0;
+      animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    .coming-soon-badge { animation-delay: 0.00s; }
+    .hero-eyebrow      { animation-delay: 0.08s; }
+    .hero h1           { animation-delay: 0.22s; }
+    .hero-lead         { animation-delay: 0.42s; }
+    /* Meta bar stagger */
+    .hero-meta-inner > div {
+      opacity: 0;
+      animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    .hero-meta-inner > div:nth-child(1) { animation-delay: 0.66s; }
+    .hero-meta-inner > div:nth-child(2) { animation-delay: 0.74s; }
+    .hero-meta-inner > div:nth-child(3) { animation-delay: 0.82s; }
+    .hero-meta-inner > div:nth-child(4) { animation-delay: 0.90s; }
+    /* Coming body fade-up on scroll */
+    .coming-body { opacity: 0; }
+    .coming-body.is-visible {
+      animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    /* Thumb fade-up */
+    .coming-thumb { opacity: 0; }
+    .coming-thumb.is-visible {
+      animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards;
+    }
+  }
+
 </style>
 </head>
 <body>
 
 <a class="skip-link" href="#main-content">Skip to main content</a>
+<button class="font-toggle" id="font-toggle" aria-pressed="false" title="Toggle dyslexia-friendly version">
+  <span class="font-toggle__dot" aria-hidden="true"></span>
+  <span class="font-toggle__label" style="font-family:'OpenDyslexic',sans-serif;">Dyslexia-friendly version</span>
+</button>
 
 <!-- HERO -->
 <header class="hero">
@@ -131,4 +228,38 @@
   </div>
 </footer>
 
+
+<script>
+  (function () {
+    const fontToggle = document.getElementById('font-toggle');
+    const PREF_KEY = 'tabiya-dyslexic-font';
+    if (localStorage.getItem(PREF_KEY) === 'on') {
+      document.body.classList.add('dyslexic-font');
+      fontToggle.setAttribute('aria-pressed', 'true');
+    }
+    fontToggle.addEventListener('click', () => {
+      const isOn = document.body.classList.toggle('dyslexic-font');
+      fontToggle.setAttribute('aria-pressed', isOn ? 'true' : 'false');
+      localStorage.setItem(PREF_KEY, isOn ? 'on' : 'off');
+    });
+
+    // Coming body + thumb fade-up on scroll
+    if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+      const targets = document.querySelectorAll('.coming-body, .coming-thumb');
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15 }
+      );
+      targets.forEach(t => observer.observe(t));
+    }
+
+  })();
+</script>
 </body></html>
