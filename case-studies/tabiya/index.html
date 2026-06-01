@@ -737,6 +737,35 @@
     opacity: 0.15;
   }
 
+
+  /* ── Simplified view ── */
+  body.simplified * {
+    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease !important;
+  }
+  /* Hero */
+  body.simplified .hero { background: #fff !important; }
+  body.simplified .hero::before { display: none !important; }
+  body.simplified .hero h1 { color: var(--blue) !important; }
+  body.simplified .hero-lead { color: var(--ink-soft) !important; border-color: var(--line) !important; }
+  body.simplified .hero-eyebrow { color: var(--blue) !important; }
+  body.simplified .hero-eyebrow::before { background: var(--blue) !important; }
+  body.simplified .hero-caption { color: var(--muted) !important; }
+  body.simplified .hero__img { opacity: 0 !important; }
+  /* Hero meta bar */
+  body.simplified .hero-meta { background: var(--bg-soft) !important; }
+  body.simplified .hero-meta-inner .k { color: var(--muted) !important; }
+  body.simplified .hero-meta-inner .v { color: var(--ink) !important; }
+  /* Lime section */
+  body.simplified .lime { background: #fff !important; border-top: 1px solid var(--line) !important; border-bottom: 1px solid var(--line) !important; }
+  /* Carried section */
+  body.simplified .carried { background: #fff !important; width: auto !important; position: static !important; left: auto !important; margin-left: 0 !important; margin-right: 0 !important; }
+  body.simplified .carried h2 { color: var(--blue) !important; }
+  body.simplified .carried p { color: var(--ink-soft) !important; }
+  body.simplified .carried p span { color: var(--ink-soft) !important; }
+  /* Back button */
+  body.simplified .back { background: var(--blue) !important; color: #fff !important; }
+  body.simplified .back.on-blue { background: var(--lime) !important; color: var(--blue) !important; }
+
 </style>
 </head>
 <body>
@@ -748,10 +777,15 @@
   <span id="pref-trigger__dot" aria-hidden="true"></span>
   Reading preferences
 </button>
-<div id="pref-panel" role="dialog" aria-label="Neurodiverse and reading preferences">
+<div id="pref-panel" role="dialog" aria-label="Neurodiverse and reading preferences" aria-modal="true">
   <div class="pref-panel__title">
-    READING PREFERENCES
-    <span>Neurodiverse-friendly adjustments for reading, focus and cognitive comfort.</span>
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+      <div>
+        READING PREFERENCES
+        <span>Neurodiverse-friendly adjustments for reading, focus and cognitive comfort.</span>
+      </div>
+      <button id="pref-close" aria-label="Close reading preferences" style="background:none;border:none;cursor:pointer;font-size:1rem;color:var(--muted);padding:0;line-height:1;flex-shrink:0;margin-left:1rem;">✕</button>
+    </div>
   </div>
   <div class="pref-row" id="row-ruler">
     <span class="pref-row__label">Reading ruler</span>
@@ -765,6 +799,13 @@
     <div class="pref-toggle-wrap">
       <button class="pref-toggle" id="toggle-focus" aria-pressed="false" aria-label="Toggle focus mode"></button>
       <span class="pref-state" id="state-focus">OFF</span>
+    </div>
+  </div>
+  <div class="pref-row" id="row-simplified">
+    <span class="pref-row__label">Simplified view</span>
+    <div class="pref-toggle-wrap">
+      <button class="pref-toggle" id="toggle-simplified" aria-pressed="false" aria-label="Toggle simplified view"></button>
+      <span class="pref-state" id="state-simplified">OFF</span>
     </div>
   </div>
   <div class="pref-row" id="row-progress">
@@ -1153,6 +1194,29 @@
       localStorage.setItem(PREF_FOCUS, isOn ? 'on' : 'off');
     });
 
+
+    // ── Simplified view ──
+    const toggleSimplified = document.getElementById('toggle-simplified');
+    const stateSimplified  = document.getElementById('state-simplified');
+    const PREF_SIMPLIFIED  = 'tabiya-simplified-view';
+
+    function setSimplifiedState(isOn) {
+      document.body.classList.toggle('simplified', isOn);
+      toggleSimplified.classList.toggle('is-on', isOn);
+      toggleSimplified.setAttribute('aria-pressed', isOn ? 'true' : 'false');
+      stateSimplified.textContent = isOn ? 'ON' : 'OFF';
+      stateSimplified.classList.toggle('is-on', isOn);
+    }
+
+    setSimplifiedState(localStorage.getItem(PREF_SIMPLIFIED) === 'on');
+
+    toggleSimplified.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOn = !toggleSimplified.classList.contains('is-on');
+      setSimplifiedState(isOn);
+      localStorage.setItem(PREF_SIMPLIFIED, isOn ? 'on' : 'off');
+    });
+
     const PREF_DYS     = 'tabiya-dyslexic-font';
     const PREF_PROG    = 'tabiya-progress-bar';
     const PREF_RULER   = 'tabiya-reading-ruler';
@@ -1216,16 +1280,56 @@
     setDysState(localStorage.getItem(PREF_DYS) === 'on');
 
     // Open/close panel
+    function openPanel() {
+      prefPanel.classList.add('is-open');
+      prefTrigger.setAttribute('aria-expanded', 'true');
+      // Move focus to close button
+      document.getElementById('pref-close').focus();
+    }
+
+    function closePanel() {
+      prefPanel.classList.remove('is-open');
+      prefTrigger.setAttribute('aria-expanded', 'false');
+      prefTrigger.focus();
+    }
+
     prefTrigger.addEventListener('click', () => {
-      const isOpen = prefPanel.classList.toggle('is-open');
-      prefTrigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      prefPanel.classList.contains('is-open') ? closePanel() : openPanel();
+    });
+
+    // Close button
+    document.getElementById('pref-close').addEventListener('click', closePanel);
+
+    // Escape key closes panel
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && prefPanel.classList.contains('is-open')) {
+        closePanel();
+      }
+    });
+
+    // Focus trap
+    prefPanel.addEventListener('keydown', (e) => {
+      if (e.key !== 'Tab') return;
+      const focusable = Array.from(prefPanel.querySelectorAll('button'));
+      const first = focusable[0];
+      const last  = focusable[focusable.length - 1];
+      if (e.shiftKey) {
+        if (document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        }
+      } else {
+        if (document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
     });
 
     // Close on outside click
     document.addEventListener('click', (e) => {
       if (!prefPanel.contains(e.target) && e.target !== prefTrigger) {
-        prefPanel.classList.remove('is-open');
-        prefTrigger.setAttribute('aria-expanded', 'false');
+        closePanel();
       }
     });
 
