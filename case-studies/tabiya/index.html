@@ -1224,14 +1224,20 @@
       stateSimplified.textContent = isOn ? 'ON' : 'OFF';
       stateSimplified.classList.toggle('is-on', isOn);
       if (!init) {
-        // Image swap for simplified mode — uncomment when files are ready
-        // const still = document.querySelector('.video-player__still');
-        // if (still) still.src = isOn ? SIMP_STILL : ORIG_STILL;
-        // if (window.updateGifSrc) window.updateGifSrc(isOn ? SIMP_GIF : ORIG_GIF);
+        const still = document.querySelector('.video-player__still');
+        if (still) still.src = isOn ? SIMP_STILL : ORIG_STILL;
+        if (window.updateGifSrc) window.updateGifSrc(isOn ? SIMP_GIF : ORIG_GIF);
       }
     }
 
     setSimplifiedState(localStorage.getItem(PREF_SIMPLIFIED) === 'on', true);
+
+    // If simplified was saved as on, load the right images on init
+    if (localStorage.getItem(PREF_SIMPLIFIED) === 'on') {
+      const still = document.querySelector('.video-player__still');
+      if (still) still.src = SIMP_STILL;
+      if (window.updateGifSrc) window.updateGifSrc(SIMP_GIF);
+    }
 
     toggleSimplified.addEventListener('click', (e) => {
       e.stopPropagation();
