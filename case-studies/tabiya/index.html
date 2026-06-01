@@ -750,9 +750,8 @@
   body.simplified .hero-eyebrow { color: var(--blue) !important; }
   body.simplified .hero-eyebrow::before { background: var(--blue) !important; }
   body.simplified .hero-caption { color: var(--muted) !important; }
-  body.simplified .video-player__still { content: url('images/compass-preview-simplified.webp'); opacity: 1 !important; }
   body.simplified .video-player__gif { display: none !important; }
-  body.simplified .video-player.is-paused .video-player__still { opacity: 1 !important; }
+  body.simplified .video-player__still { opacity: 1 !important; }
   body.simplified .hero__img { opacity: 0 !important; }
   body.simplified img { background: #fff !important; }
   body.simplified .grad-grid > div:first-child { background: #fff !important; padding: 1rem; border-radius: 0.375rem; }
@@ -1212,6 +1211,13 @@
       toggleSimplified.setAttribute('aria-pressed', isOn ? 'true' : 'false');
       stateSimplified.textContent = isOn ? 'ON' : 'OFF';
       stateSimplified.classList.toggle('is-on', isOn);
+      // Swap compass preview still image
+      const still = document.querySelector('.video-player__still');
+      if (still) {
+        still.src = isOn
+          ? 'images/compass-preview-simplified.webp'
+          : 'images/compass-preview.webp';
+      }
     }
 
     setSimplifiedState(localStorage.getItem(PREF_SIMPLIFIED) === 'on');
