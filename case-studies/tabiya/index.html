@@ -739,7 +739,7 @@
 
 
   /* ── Simplified view ── */
-  body.simplified * {
+  body.simplified *:not(#reading-ruler):not(#reading-progress):not(img):not(video):not(iframe) {
     transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease !important;
   }
   /* Hero */
@@ -750,7 +750,9 @@
   body.simplified .hero-eyebrow { color: var(--blue) !important; }
   body.simplified .hero-eyebrow::before { background: var(--blue) !important; }
   body.simplified .hero-caption { color: var(--muted) !important; }
+  body.simplified .video-player { background: #000 !important; }
   body.simplified .hero__img { opacity: 0 !important; }
+  body.simplified img { background: #fff !important; }
   /* Hero meta bar */
   body.simplified .hero-meta { background: var(--bg-soft) !important; }
   body.simplified .hero-meta-inner .k { color: var(--muted) !important; }
