@@ -1205,22 +1205,26 @@
     const stateSimplified  = document.getElementById('state-simplified');
     const PREF_SIMPLIFIED  = 'tabiya-simplified-view';
 
-    function setSimplifiedState(isOn) {
+    const ORIG_STILL = 'images/compass-preview.webp';
+    const SIMP_STILL = 'images/compass-preview-simplified.webp';
+    const ORIG_GIF   = 'images/compass-preview.gif';
+    const SIMP_GIF   = 'images/compass-preview-simplified.gif';
+
+    function setSimplifiedState(isOn, init = false) {
       document.body.classList.toggle('simplified', isOn);
       toggleSimplified.classList.toggle('is-on', isOn);
       toggleSimplified.setAttribute('aria-pressed', isOn ? 'true' : 'false');
       stateSimplified.textContent = isOn ? 'ON' : 'OFF';
       stateSimplified.classList.toggle('is-on', isOn);
-      // Swap compass preview still image
-      const still = document.querySelector('.video-player__still');
-      if (still) {
-        still.src = isOn
-          ? 'images/compass-preview-simplified.webp'
-          : 'images/compass-preview.webp';
+      if (!init) {
+        const still = document.querySelector('.video-player__still');
+        const gif   = document.querySelector('.video-player__gif');
+        if (still) still.src = isOn ? SIMP_STILL : ORIG_STILL;
+        if (gif)   gif.src   = isOn ? SIMP_GIF   : ORIG_GIF;
       }
     }
 
-    setSimplifiedState(localStorage.getItem(PREF_SIMPLIFIED) === 'on');
+    setSimplifiedState(localStorage.getItem(PREF_SIMPLIFIED) === 'on', true);
 
     toggleSimplified.addEventListener('click', (e) => {
       e.stopPropagation();
