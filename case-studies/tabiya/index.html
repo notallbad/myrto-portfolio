@@ -1100,9 +1100,16 @@
     if (player) {
       const gif    = player.querySelector('.video-player__gif');
       const btn    = player.querySelector('.video-player__btn');
-      const gifSrc = gif.src;
+      let gifSrc   = gif.src;
       const GIF_DURATION = 25150;
       const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      window.updateGifSrc = function(src) {
+        gifSrc = src;
+        if (!player.classList.contains('is-paused')) {
+          gif.src = gifSrc;
+        }
+      };
 
       function pause() {
         gif.src = '';
@@ -1218,9 +1225,8 @@
       stateSimplified.classList.toggle('is-on', isOn);
       if (!init) {
         const still = document.querySelector('.video-player__still');
-        const gif   = document.querySelector('.video-player__gif');
         if (still) still.src = isOn ? SIMP_STILL : ORIG_STILL;
-        if (gif)   gif.src   = isOn ? SIMP_GIF   : ORIG_GIF;
+        if (window.updateGifSrc) window.updateGifSrc(isOn ? SIMP_GIF : ORIG_GIF);
       }
     }
 
