@@ -743,18 +743,21 @@
     transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease !important;
   }
   /* Hero */
-  body.simplified .hero { background: #fff !important; }
+  body.simplified .hero { background: var(--bg-soft) !important; }
   body.simplified .hero::before { display: none !important; }
   body.simplified .hero h1 { color: var(--blue) !important; }
   body.simplified .hero-lead { color: var(--ink-soft) !important; border-color: var(--line) !important; }
   body.simplified .hero-eyebrow { color: var(--blue) !important; }
   body.simplified .hero-eyebrow::before { background: var(--blue) !important; }
   body.simplified .hero-caption { color: var(--muted) !important; }
-  body.simplified .video-player { background: #000 !important; }
+  body.simplified .video-player__still { content: url('images/compass-preview-simplified.webp'); opacity: 1 !important; }
+  body.simplified .video-player__gif { display: none !important; }
+  body.simplified .video-player.is-paused .video-player__still { opacity: 1 !important; }
   body.simplified .hero__img { opacity: 0 !important; }
   body.simplified img { background: #fff !important; }
+  body.simplified .grad-grid > div:first-child { background: #fff !important; padding: 1rem; border-radius: 0.375rem; }
   /* Hero meta bar */
-  body.simplified .hero-meta { background: var(--bg-soft) !important; }
+  body.simplified .hero-meta { background: #e8e8e4 !important; border-top: 1px solid var(--line) !important; }
   body.simplified .hero-meta-inner .k { color: var(--muted) !important; }
   body.simplified .hero-meta-inner .v { color: var(--ink) !important; }
   /* Lime section */
@@ -764,9 +767,10 @@
   body.simplified .carried h2 { color: var(--blue) !important; }
   body.simplified .carried p { color: var(--ink-soft) !important; }
   body.simplified .carried p span { color: var(--ink-soft) !important; }
-  /* Back button */
+  /* Back button stays blue in simplified mode */
   body.simplified .back { background: var(--blue) !important; color: #fff !important; }
-  body.simplified .back.on-blue { background: var(--lime) !important; color: var(--blue) !important; }
+  /* Progress bar stays blue in simplified mode */
+  body.simplified #reading-progress { background: var(--blue) !important; }
 
 </style>
 </head>
