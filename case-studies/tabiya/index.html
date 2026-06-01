@@ -474,7 +474,8 @@
   @media(max-width:900px){.dense-charts__grid{grid-template-columns:repeat(4,1fr);}}
   @media(max-width:600px){.dense-charts__grid{grid-template-columns:repeat(3,1fr);}}
   /* ===== DYSLEXIA FONT TOGGLE ===== */
-  .font-toggle{
+  /* ── Reading preferences panel ── */
+  #pref-trigger{
     position:fixed;bottom:1.5rem;right:1.5rem;z-index:900;
     display:flex;align-items:center;gap:0.5rem;
     background:#fff;border:0.0625rem solid var(--line);
@@ -483,18 +484,63 @@
     cursor:pointer;
     font-family:"JetBrains Mono",monospace;font-size:0.625rem;
     letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
-    transition:box-shadow .2s, color .2s;
-    user-select:none;
+    transition:box-shadow .2s,color .2s;
+    user-select:none;border:none;
   }
-  .font-toggle:hover{box-shadow:0 0.25rem 1.125rem rgba(0,0,0,.13);color:var(--ink);}
-  .font-toggle__dot{
+  #pref-trigger:hover{box-shadow:0 0.25rem 1.125rem rgba(0,0,0,.13);color:var(--ink);}
+  #pref-trigger__dot{
     width:0.5rem;height:0.5rem;border-radius:50%;
-    background:var(--line);
+    background:var(--blue);
     transition:background .2s;
     flex-shrink:0;
   }
-  body.dyslexic-font .font-toggle__dot{background:var(--blue);}
-  body.dyslexic-font .font-toggle{color:var(--blue);}
+  #pref-panel{
+    position:fixed;bottom:4rem;right:1.5rem;z-index:900;
+    background:#fff;border:1px solid var(--line);border-radius:8px;
+    padding:1.5rem 1.75rem;width:400px;
+    box-shadow:0 4px 20px rgba(0,0,0,.12);
+    font-family:"JetBrains Mono",monospace;font-size:0.875rem;color:var(--ink);
+    display:none;
+  }
+  #pref-panel.is-open{display:block;}
+  .pref-panel__title{
+    font-size:0.8125rem;letter-spacing:.10em;text-transform:uppercase;
+    color:var(--ink);margin-bottom:1rem;font-weight:600;line-height:1.4;
+  }
+  .pref-panel__title span{
+    font-family:"JetBrains Mono",monospace;
+    font-size:0.8125rem;display:block;color:var(--muted);
+    letter-spacing:.01em;text-transform:none;margin-top:0.375rem;line-height:1.5;
+    font-weight:400;
+  }
+  .pref-row{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0.875rem 0;border-top:1px solid var(--line);cursor:pointer;
+    gap:1rem;
+  }
+  .pref-row:first-of-type{border-top:none;}
+  .pref-row__label{font-size:0.875rem;color:var(--ink);line-height:1.3;}
+  .pref-toggle-wrap{display:flex;align-items:center;gap:0.5rem;flex-shrink:0;}
+  .pref-toggle-wrap .pref-state{
+    font-size:0.625rem;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--muted);min-width:1.5rem;text-align:left;
+  }
+  .pref-toggle-wrap .pref-state.is-on{color:var(--blue);}
+  .pref-toggle{
+    flex-shrink:0;width:2rem;height:1.125rem;border-radius:100px;
+    background:var(--line);position:relative;
+    transition:background .2s;border:none;cursor:pointer;padding:0;
+  }
+  .pref-toggle::after{
+    content:"";position:absolute;top:2px;left:2px;
+    width:calc(1.125rem - 4px);height:calc(1.125rem - 4px);
+    border-radius:50%;background:#fff;
+    transition:transform .2s;
+  }
+  .pref-toggle.is-on{background:var(--blue);}
+  .pref-toggle.is-on::after{transform:translateX(calc(2rem - 1.125rem));}
+  body.dyslexic-font #pref-trigger{color:var(--blue);}
+  body.dyslexic-font #pref-trigger__dot{background:var(--blue);}
 
   /* When dyslexic font is active — body text */
   body.dyslexic-font,
@@ -643,14 +689,99 @@
   /* Consecutive wrap-narrow blocks — no extra gap */
   .wrap-narrow + .wrap-narrow { margin-top: 0; }
 
+
+  /* ===== READING PREFERENCES PANEL ===== */
+  /* Progress bar */
+  #reading-progress {
+    position: fixed;
+    top: 0; left: 0;
+    width: 0%;
+    height: 6px;
+    background: var(--blue);
+    z-index: 9999;
+    transition: width 0.1s linear, background 0.2s ease;
+  }
+  #reading-progress.on-blue {
+    background: var(--lime);
+  }
+
+
+  /* ── Reading ruler ── */
+  #reading-ruler {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    height: 1.85rem;
+    background: rgba(255, 220, 0, 0.25);
+    border-top: 1px solid rgba(255, 200, 0, 0.35);
+    border-bottom: 1px solid rgba(255, 200, 0, 0.35);
+    pointer-events: none;
+    z-index: 9998;
+    transform: translateY(-50%);
+    display: none;
+    transition: top 0.05s linear;
+  }
+  body.ruler-on #reading-ruler { display: block; }
+  body.ruler-on.ruler-on-lime #reading-ruler {
+    background: rgba(31, 45, 255, 0.12);
+    border-top: 1px solid rgba(31, 45, 255, 0.2);
+    border-bottom: 1px solid rgba(31, 45, 255, 0.2);
+  }
+
+
+  /* ── Focus mode ── */
+  body.focus-on [data-screen-label] {
+    transition: opacity 0.4s ease;
+  }
+  body.focus-on [data-screen-label].focus-dim {
+    opacity: 0.15;
+  }
+
 </style>
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to main content</a>
-<button class="font-toggle" id="font-toggle" aria-pressed="false" title="Toggle dyslexia-friendly version">
-  <span class="font-toggle__dot" aria-hidden="true"></span>
-  <span class="font-toggle__label" style="font-family:'OpenDyslexic',sans-serif;">Dyslexia-friendly version</span>
+<div id="reading-ruler" aria-hidden="true"></div>
+<div id="reading-progress" role="progressbar" aria-label="Reading progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+<!-- Reading preferences panel -->
+<button id="pref-trigger" aria-expanded="false" aria-controls="pref-panel">
+  <span id="pref-trigger__dot" aria-hidden="true"></span>
+  Reading preferences
 </button>
+<div id="pref-panel" role="dialog" aria-label="Neurodiverse and reading preferences">
+  <div class="pref-panel__title">
+    READING PREFERENCES
+    <span>Neurodiverse-friendly adjustments for reading, focus and cognitive comfort.</span>
+  </div>
+  <div class="pref-row" id="row-ruler">
+    <span class="pref-row__label">Reading ruler</span>
+    <div class="pref-toggle-wrap">
+      <button class="pref-toggle" id="toggle-ruler" aria-pressed="false" aria-label="Toggle reading ruler"></button>
+      <span class="pref-state" id="state-ruler">OFF</span>
+    </div>
+  </div>
+  <div class="pref-row" id="row-focus">
+    <span class="pref-row__label">Focus mode</span>
+    <div class="pref-toggle-wrap">
+      <button class="pref-toggle" id="toggle-focus" aria-pressed="false" aria-label="Toggle focus mode"></button>
+      <span class="pref-state" id="state-focus">OFF</span>
+    </div>
+  </div>
+  <div class="pref-row" id="row-progress">
+    <span class="pref-row__label">Reading progress bar</span>
+    <div class="pref-toggle-wrap">
+      <button class="pref-toggle is-on" id="toggle-progress" aria-pressed="true" aria-label="Toggle reading progress bar"></button>
+      <span class="pref-state is-on" id="state-progress">ON</span>
+    </div>
+  </div>
+  <div class="pref-row" id="row-dyslexic">
+    <span class="pref-row__label" style="font-family:'OpenDyslexic',sans-serif;">Dyslexic-friendly font</span>
+    <div class="pref-toggle-wrap">
+      <button class="pref-toggle" id="toggle-dyslexic" aria-pressed="false" aria-label="Toggle dyslexic font"></button>
+      <span class="pref-state" id="state-dyslexic">OFF</span>
+    </div>
+  </div>
+</div>
 <!-- ===================== HERO ===================== -->
 <header class="hero" data-screen-label="01 Hero" style="padding-top:4rem !important;padding-bottom:0rem !important;">
 <img class="hero__img" src="images/hero.webp" alt="Opening photograph: a busy street scene from one of the neighbourhoods at the heart of the Tabiya Compass programme.">
@@ -973,16 +1104,145 @@
     observer.observe(mark);
 
     // Dyslexia font toggle
-    const fontToggle = document.getElementById('font-toggle');
-    const PREF_KEY = 'tabiya-dyslexic-font';
-    if (localStorage.getItem(PREF_KEY) === 'on') {
-      document.body.classList.add('dyslexic-font');
-      fontToggle.setAttribute('aria-pressed', 'true');
+    // ── Reading progress bar ──
+    const progressBar = document.getElementById('reading-progress');
+
+    const prefTrigger  = document.getElementById('pref-trigger');
+    const prefPanel    = document.getElementById('pref-panel');
+    const toggleDys    = document.getElementById('toggle-dyslexic');
+    const toggleProg   = document.getElementById('toggle-progress');
+    const stateDys     = document.getElementById('state-dyslexic');
+    const stateProg    = document.getElementById('state-progress');
+
+    // ── Focus mode ──
+    const toggleFocus = document.getElementById('toggle-focus');
+    const stateFocus  = document.getElementById('state-focus');
+    const PREF_FOCUS  = 'tabiya-focus-mode';
+    const allSections = Array.from(document.querySelectorAll('[data-screen-label]'));
+
+    function setFocusState(isOn) {
+      document.body.classList.toggle('focus-on', isOn);
+      toggleFocus.classList.toggle('is-on', isOn);
+      toggleFocus.setAttribute('aria-pressed', isOn ? 'true' : 'false');
+      stateFocus.textContent = isOn ? 'ON' : 'OFF';
+      stateFocus.classList.toggle('is-on', isOn);
+      if (!isOn) allSections.forEach(s => s.classList.remove('focus-dim'));
     }
-    fontToggle.addEventListener('click', () => {
-      const isOn = document.body.classList.toggle('dyslexic-font');
-      fontToggle.setAttribute('aria-pressed', isOn ? 'true' : 'false');
-      localStorage.setItem(PREF_KEY, isOn ? 'on' : 'off');
+
+    setFocusState(localStorage.getItem(PREF_FOCUS) === 'on');
+
+    allSections.forEach(section => {
+      section.addEventListener('mouseenter', () => {
+        if (!document.body.classList.contains('focus-on')) return;
+        allSections.forEach(s => {
+          s.classList.toggle('focus-dim', s !== section);
+        });
+      });
+    });
+
+    document.addEventListener('mouseleave', () => {
+      if (document.body.classList.contains('focus-on')) {
+        allSections.forEach(s => s.classList.remove('focus-dim'));
+      }
+    });
+
+    toggleFocus.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOn = !toggleFocus.classList.contains('is-on');
+      setFocusState(isOn);
+      localStorage.setItem(PREF_FOCUS, isOn ? 'on' : 'off');
+    });
+
+    const PREF_DYS     = 'tabiya-dyslexic-font';
+    const PREF_PROG    = 'tabiya-progress-bar';
+    const PREF_RULER   = 'tabiya-reading-ruler';
+
+    // ── Reading ruler ──
+    const ruler       = document.getElementById('reading-ruler');
+    const toggleRuler = document.getElementById('toggle-ruler');
+    const stateRuler  = document.getElementById('state-ruler');
+
+    function setRulerState(isOn) {
+      document.body.classList.toggle('ruler-on', isOn);
+      toggleRuler.classList.toggle('is-on', isOn);
+      toggleRuler.setAttribute('aria-pressed', isOn ? 'true' : 'false');
+      stateRuler.textContent = isOn ? 'ON' : 'OFF';
+      stateRuler.classList.toggle('is-on', isOn);
+    }
+
+    setRulerState(localStorage.getItem(PREF_RULER) === 'on');
+
+    const rulerLimeSections = document.querySelectorAll('.lime');
+
+    document.addEventListener('mousemove', (e) => {
+      if (document.body.classList.contains('ruler-on')) {
+        ruler.style.top = e.clientY + 'px';
+        let onLime = false;
+        rulerLimeSections.forEach(sec => {
+          const rect = sec.getBoundingClientRect();
+          if (e.clientY >= rect.top && e.clientY <= rect.bottom) onLime = true;
+        });
+        document.body.classList.toggle('ruler-on-lime', onLime);
+      }
+    });
+
+    toggleRuler.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOn = !toggleRuler.classList.contains('is-on');
+      setRulerState(isOn);
+      localStorage.setItem(PREF_RULER, isOn ? 'on' : 'off');
+    });
+
+    function setProgState(isOn) {
+      toggleProg.classList.toggle('is-on', isOn);
+      toggleProg.setAttribute('aria-pressed', isOn ? 'true' : 'false');
+      stateProg.textContent = isOn ? 'ON' : 'OFF';
+      stateProg.classList.toggle('is-on', isOn);
+      progressBar.style.display = isOn ? 'block' : 'none';
+    }
+
+    function setDysState(isOn) {
+      document.body.classList.toggle('dyslexic-font', isOn);
+      toggleDys.classList.toggle('is-on', isOn);
+      toggleDys.setAttribute('aria-pressed', isOn ? 'true' : 'false');
+      stateDys.textContent = isOn ? 'ON' : 'OFF';
+      stateDys.classList.toggle('is-on', isOn);
+    }
+
+    // Progress bar: on by default
+    setProgState(localStorage.getItem(PREF_PROG) !== 'off');
+
+    // Dyslexic font
+    setDysState(localStorage.getItem(PREF_DYS) === 'on');
+
+    // Open/close panel
+    prefTrigger.addEventListener('click', () => {
+      const isOpen = prefPanel.classList.toggle('is-open');
+      prefTrigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    // Close on outside click
+    document.addEventListener('click', (e) => {
+      if (!prefPanel.contains(e.target) && e.target !== prefTrigger) {
+        prefPanel.classList.remove('is-open');
+        prefTrigger.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Toggle progress bar
+    toggleProg.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOn = !toggleProg.classList.contains('is-on');
+      setProgState(isOn);
+      localStorage.setItem(PREF_PROG, isOn ? 'on' : 'off');
+    });
+
+    // Toggle dyslexic font
+    toggleDys.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOn = !toggleDys.classList.contains('is-on');
+      setDysState(isOn);
+      localStorage.setItem(PREF_DYS, isOn ? 'on' : 'off');
     });
 
     // Back button colour swap — blue/white default, lime/blue on dark sections
@@ -1007,6 +1267,24 @@
     }
     window.addEventListener('scroll', updateBackBtn, { passive: true });
     updateBackBtn();
+
+    // ── Reading progress bar update ──
+    const progressBlueSections = document.querySelectorAll('.hero-meta, .carried');
+    function updateProgress() {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progressBar.style.width = progress + '%';
+      progressBar.setAttribute('aria-valuenow', Math.round(progress));
+      let onBlue = false;
+      progressBlueSections.forEach(sec => {
+        const rect = sec.getBoundingClientRect();
+        if (rect.top <= 6 && rect.bottom >= 0) onBlue = true;
+      });
+      progressBar.classList.toggle('on-blue', onBlue);
+    }
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
 
   })();
 
