@@ -779,6 +779,100 @@
   /* Progress bar stays blue in simplified mode */
   body.simplified #reading-progress { background: var(--blue) !important; }
 
+
+  /* ── Dark mode ── */
+  body.dark-mode { background: #111111 !important; color: #e8e8e8 !important; --lime: #b8e000; }
+
+  /* All section backgrounds → dark */
+  body.dark-mode .section,
+  body.dark-mode .overview,
+  body.dark-mode .lime,
+  body.dark-mode .grad,
+  body.dark-mode .carried,
+  body.dark-mode .quote,
+  body.dark-mode .pagefoot { background: #111111 !important; }
+  body.dark-mode .lime h2,
+  body.dark-mode .lime h3 { color: var(--lime) !important; }
+  body.dark-mode .lime p { color: #f0f0f0 !important; }
+
+  /* All text → light */
+  body.dark-mode h1,
+  body.dark-mode h2,
+  body.dark-mode h3,
+  body.dark-mode h4 { color: var(--lime) !important; }
+  body.dark-mode p { color: #f0f0f0 !important; }
+  body.dark-mode p span { color: #f0f0f0 !important; }
+
+  /* Blue accents → lime */
+  body.dark-mode .eyebrow { color: var(--lime) !important; }
+  body.dark-mode .hero-eyebrow { color: #f0f0f0 !important; }
+  body.dark-mode .hero-eyebrow::before { background: #f0f0f0 !important; }
+  body.dark-mode .figcap .num { color: var(--lime) !important; }
+  body.dark-mode .figcap .desc { color: #f0f0f0 !important; }
+  body.dark-mode .quote-mark,
+  body.dark-mode .quote-mark svg,
+  body.dark-mode .quote-mark svg path { color: var(--lime) !important; fill: var(--lime) !important; }
+  body.dark-mode .quote-body { color: #f0f0f0 !important; }
+  body.dark-mode .quote-by { color: #9a9aaa !important; }
+  body.dark-mode .quote-by b { color: #f0f0f0 !important; }
+  body.dark-mode .quote-by span { color: var(--lime) !important; }
+  body.dark-mode a { color: var(--lime) !important; }
+  body.dark-mode .next-line a { color: var(--lime) !important; }
+  body.dark-mode .grad h2 { color: var(--lime) !important; }
+  body.dark-mode .grad .btn { border-color: var(--lime) !important; color: var(--lime) !important; }
+  body.dark-mode .grad .btn:hover { background: var(--lime) !important; color: var(--ink) !important; }
+  body.dark-mode .section-heading { color: var(--lime) !important; }
+
+  /* Hero */
+  body.dark-mode .hero { background: #111111 !important; }
+  body.dark-mode .hero::before {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.97) 100%) !important;
+  }
+  body.dark-mode .hero h1 { color: var(--lime) !important; }
+  body.dark-mode .hero-lead { color: #c8c8d8 !important; border-color: #555 !important; }
+  body.dark-mode .hero-meta { background: var(--lime) !important; }
+  body.dark-mode .hero-meta-inner .k { color: rgba(0,0,0,0.7) !important; }
+  body.dark-mode .hero-meta-inner .v { color: var(--ink) !important; }
+
+  /* Borders */
+  body.dark-mode .pagefoot { border-color: #333 !important; }
+  body.dark-mode .pref-row { border-color: #333 !important; }
+
+  /* Back button → lime */
+  body.dark-mode .back { background: var(--lime) !important; color: var(--ink) !important; }
+  body.dark-mode .back.on-blue { background: var(--lime) !important; color: var(--ink) !important; }
+
+  /* Progress bar */
+  body.dark-mode #reading-progress { background: var(--lime) !important; }
+  body.dark-mode #reading-progress.on-blue { background: #111111 !important; }
+
+  /* Panel */
+  body.dark-mode #pref-panel { background: #1a1a1a !important; border-color: #333 !important; color: #e8e8e8 !important; }
+  body.dark-mode #pref-trigger { background: #1a1a1a !important; border: 1.5px solid #e8e8e8 !important; color: #f0f0f0 !important; }
+  body.dark-mode #pref-trigger__dot { background: var(--lime) !important; }
+  body.dark-mode .pref-panel__title { color: #f0f0f0 !important; }
+  body.dark-mode .pref-panel__title span { color: #9a9aaa !important; }
+  body.dark-mode .pref-row__label { color: #e8e8e8 !important; }
+  body.dark-mode .pref-toggle { background: #333 !important; }
+  body.dark-mode .pref-toggle.is-on { background: var(--lime) !important; }
+  body.dark-mode .pref-toggle.is-on::after { background: var(--ink) !important; }
+  body.dark-mode .pref-state.is-on { color: var(--lime) !important; }
+  body.dark-mode #reading-ruler {
+    background: rgba(184, 224, 0, 0.2) !important;
+    border-top: 1px solid rgba(184, 224, 0, 0.5) !important;
+    border-bottom: 1px solid rgba(184, 224, 0, 0.5) !important;
+    mix-blend-mode: screen !important;
+  }
+  body.dark-mode .pagefoot-inner { color: #9a9aaa !important; }
+  body.dark-mode.ruler-on-lime #reading-ruler {
+    background: rgba(0, 0, 0, 0.2) !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.4) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4) !important;
+    mix-blend-mode: normal !important;
+  }
+
+
+
 </style>
 </head>
 <body>
@@ -805,6 +899,13 @@
     <div class="pref-toggle-wrap">
       <button class="pref-toggle" id="toggle-ruler" aria-pressed="false" aria-label="Toggle reading ruler"></button>
       <span class="pref-state" id="state-ruler">OFF</span>
+    </div>
+  </div>
+  <div class="pref-row" id="row-dark">
+    <span class="pref-row__label">Dark mode</span>
+    <div class="pref-toggle-wrap">
+      <button class="pref-toggle" id="toggle-dark" aria-pressed="false" aria-label="Toggle dark mode"></button>
+      <span class="pref-state" id="state-dark">OFF</span>
     </div>
   </div>
   <div class="pref-row" id="row-focus">
@@ -1254,6 +1355,37 @@
       localStorage.setItem(PREF_SIMPLIFIED, isOn ? 'on' : 'off');
     });
 
+
+    // ── Dark mode ──
+    const toggleDark = document.getElementById('toggle-dark');
+    const stateDark  = document.getElementById('state-dark');
+    const PREF_DARK  = 'tabiya-dark-mode';
+
+    function setDarkState(isOn) {
+      document.body.classList.toggle('dark-mode', isOn);
+      toggleDark.classList.toggle('is-on', isOn);
+      toggleDark.setAttribute('aria-pressed', isOn ? 'true' : 'false');
+      stateDark.textContent = isOn ? 'ON' : 'OFF';
+      stateDark.classList.toggle('is-on', isOn);
+      // Disable simplified view when dark mode is on
+      const rowSimplified = document.getElementById('row-simplified');
+      if (rowSimplified) {
+        rowSimplified.style.opacity = isOn ? '0.35' : '1';
+        rowSimplified.style.pointerEvents = isOn ? 'none' : '';
+        toggleSimplified.setAttribute('disabled', isOn ? 'true' : '');
+        if (!isOn) toggleSimplified.removeAttribute('disabled');
+      }
+    }
+
+    setDarkState(localStorage.getItem(PREF_DARK) === 'on');
+
+    toggleDark.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOn = !toggleDark.classList.contains('is-on');
+      setDarkState(isOn);
+      localStorage.setItem(PREF_DARK, isOn ? 'on' : 'off');
+    });
+
     const PREF_DYS     = 'tabiya-dyslexic-font';
     const PREF_PROG    = 'tabiya-progress-bar';
     const PREF_RULER   = 'tabiya-reading-ruler';
@@ -1273,7 +1405,7 @@
 
     setRulerState(localStorage.getItem(PREF_RULER) === 'on');
 
-    const rulerLimeSections = document.querySelectorAll('.lime');
+    const rulerLimeSections = document.querySelectorAll('.lime, .hero-meta');
 
     document.addEventListener('mousemove', (e) => {
       if (document.body.classList.contains('ruler-on')) {
