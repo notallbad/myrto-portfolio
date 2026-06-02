@@ -539,6 +539,15 @@
   }
   .pref-toggle.is-on{background:var(--blue);}
   .pref-toggle.is-on::after{transform:translateX(calc(2rem - 1.125rem));}
+  body.dyslexic-font #pref-panel,
+  body.dyslexic-font #pref-trigger,
+  body.dyslexic-font .pref-panel__title,
+  body.dyslexic-font .pref-row__label,
+  body.dyslexic-font .pref-state {
+    font-family: "OpenDyslexic", sans-serif;
+    letter-spacing: 0.05em;
+    line-height: 1.8;
+  }
   body.dyslexic-font #pref-trigger{color:var(--blue);}
   body.dyslexic-font #pref-trigger__dot{background:var(--blue);}
 
@@ -750,8 +759,6 @@
   body.simplified .hero-eyebrow { color: var(--blue) !important; }
   body.simplified .hero-eyebrow::before { background: var(--blue) !important; }
   body.simplified .hero-caption { color: var(--muted) !important; }
-  body.simplified .video-player__gif { opacity: 0 !important; }
-  body.simplified .video-player__still { opacity: 1 !important; }
   body.simplified .hero__img { opacity: 0 !important; }
   body.simplified img:not(.hero__img):not(.video-player__gif) { background: #fff !important; }
   body.simplified .grad-grid > div:first-child { background: #fff !important; padding: 1rem; border-radius: 0.375rem; }
