@@ -477,22 +477,330 @@
   /* ── Reading preferences panel ── */
   #pref-trigger{
     position:fixed;bottom:1.5rem;right:1.5rem;z-index:900;
-    display:flex;align-items:center;gap:0.5rem;
+    display:flex;align-items:center;gap:0.625rem;
     background:#fff;border:0.0625rem solid var(--line);
-    padding:0.5rem 0.875rem;border-radius:6.25rem;
+    padding:0.625rem 1rem;border-radius:6.25rem;
     box-shadow:0 0.125rem 0.75rem rgba(0,0,0,.08);
     cursor:pointer;
-    font-family:"JetBrains Mono",monospace;font-size:0.625rem;
+    font-family:"JetBrains Mono",monospace;font-size:0.6875rem;
     letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
     transition:box-shadow .2s,color .2s;
     user-select:none;border:none;
   }
   #pref-trigger:hover{box-shadow:0 0.25rem 1.125rem rgba(0,0,0,.13);color:var(--ink);}
   #pref-trigger__dot{
-    width:0.5rem;height:0.5rem;border-radius:50%;
-    background:var(--blue);
-    transition:background .2s;
     flex-shrink:0;
+    color:var(--blue);
+    transition:color .2s;
+  }
+  #pref-panel{
+    position:fixed;bottom:4rem;right:1.5rem;z-index:900;
+    background:#fff;border:1px solid var(--line);border-radius:8px;
+    padding:1.5rem 1.75rem;width:400px;
+    box-shadow:0 4px 20px rgba(0,0,0,.12);
+    font-family:"JetBrains Mono",monospace;font-size:0.875rem;color:var(--ink);
+    display:none;
+  }
+  #pref-panel.is-open{display:block;}
+  .pref-panel__title{
+    font-size:0.8125rem;letter-spacing:.10em;text-transform:uppercase;
+    color:var(--ink);margin-bottom:1rem;font-weight:600;line-height:1.4;
+  }
+  .pref-panel__title span{
+    font-family:"JetBrains Mono",monospace;
+    font-size:0.8125rem;display:block;color:var(--muted);
+    letter-spacing:.01em;text-transform:none;margin-top:0.375rem;line-height:1.5;
+    font-weight:400;
+  }
+  .pref-row{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0.875rem 0;border-top:1px solid var(--line);cursor:pointer;
+    gap:1rem;
+  }
+  .pref-row:first-of-type{border-top:none;}
+  .pref-row__label{font-size:0.875rem;color:var(--ink);line-height:1.3;}
+  .pref-toggle-wrap{display:flex;align-items:center;gap:0.5rem;flex-shrink:0;}
+  .pref-toggle-wrap .pref-state{
+    font-size:0.625rem;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--muted);min-width:1.5rem;text-align:left;
+  }
+  .pref-toggle-wrap .pref-state.is-on{color:var(--blue);}
+  .pref-toggle{
+    flex-shrink:0;width:2rem;height:1.125rem;border-radius:100px;
+    background:var(--line);position:relative;
+    transition:background .2s;border:none;cursor:pointer;padding:0;
+  }
+  .pref-toggle::after{
+    content:"";position:absolute;top:2px;left:2px;
+    width:calc(1.125rem - 4px);height:calc(1.125rem - 4px);
+    border-radius:50%;background:#fff;
+    transition:transform .2s;
+  }
+  .pref-toggle.is-on{background:var(--blue);}
+  .pref-toggle.is-on::after{transform:translateX(calc(2rem - 1.125rem));}
+  body.dyslexic-font #pref-panel,
+  body.dyslexic-font #pref-trigger,
+  body.dyslexic-font .pref-panel__title,
+  body.dyslexic-font .pref-panel__title span,
+  body.dyslexic-font .pref-row__label,
+  body.dyslexic-font .pref-state {
+    font-family: "OpenDyslexic", sans-serif;
+    letter-spacing: 0.05em;
+    line-height: 1.8;
+  }
+  body.dyslexic-font #pref-trigger{color:var(--blue);}
+  body.dyslexic-font #pref-trigger__dot{background:var(--blue);}
+
+  /* When dyslexic font is active — body text */
+  body.dyslexic-font,
+  body.dyslexic-font p,
+  body.dyslexic-font .hero-lead,
+  body.dyslexic-font .figcap,
+  body.dyslexic-font .eyebrow,
+  body.dyslexic-font .hero-eyebrow,
+  body.dyslexic-font .hero-meta-inner div,
+  body.dyslexic-font .quote-body,
+  body.dyslexic-font .quote-by,
+  body.dyslexic-font .back,
+  body.dyslexic-font .btn,
+  body.dyslexic-font .charts-tab-btn,
+  body.dyslexic-font .pagefoot .back-link,
+  body.dyslexic-font .pagefoot .next-line,
+  body.dyslexic-font .hero-meta-inner .k,
+  body.dyslexic-font .hero-meta-inner .v,
+  body.dyslexic-font .carried p,
+  body.dyslexic-font .lime p{
+    font-family:"OpenDyslexic",sans-serif;
+    letter-spacing:0.05em;
+    line-height:2;
+    word-spacing:0.2em;
+  }
+
+  /* Headings — OpenDyslexic Bold */
+  body.dyslexic-font h1,
+  body.dyslexic-font h2,
+  body.dyslexic-font h3,
+  body.dyslexic-font .section-heading,
+  body.dyslexic-font .grad h2,
+  body.dyslexic-font .carried h2,
+  body.dyslexic-font .lime h3{
+    font-family:"OpenDyslexic",sans-serif;
+    font-weight:700;
+    letter-spacing:0.02em;
+    line-height:1.5;
+    word-spacing:0.1em;
+  }
+
+  /* Font sizes */
+  body.dyslexic-font p{ font-size:1.125rem; }
+  body.dyslexic-font .hero-lead{max-width:40rem; font-size:1.375rem; line-height:1.9; }
+  body.dyslexic-font h1{ font-size:4rem; }
+  body.dyslexic-font .section-heading{ font-size:2rem; }
+  body.dyslexic-font .lime h3{ font-size:1.625rem; }
+
+  /* Paragraph spacing — more air between blocks */
+  body.dyslexic-font p + p{ margin-top:1.6em; }
+
+  /* Line length — target ~65 chars */
+  body.dyslexic-font .wrap-narrow{ max-width:51.25rem; }
+
+  /* More section padding */
+  body.dyslexic-font .section{ padding:4.5rem 0; }
+  body.dyslexic-font .lime{ padding:5rem 0; }
+
+  /* Quote body */
+  body.dyslexic-font .quote-body{ font-size:1.4375rem; line-height:2.1; }
+
+  /* Figcap — slightly larger so it's readable */
+  body.dyslexic-font .figcap{ font-size:0.8125rem; line-height:1.7; letter-spacing:0.04em; flex-direction:column; gap:0.125rem; }
+  body.dyslexic-font .figcap .num{ font-size:0.75rem; white-space:normal; }
+
+  /* Hero meta bar — redistribute evenly, don't shrink font */
+  body.dyslexic-font .hero-meta-inner{
+    grid-template-columns: auto auto auto auto;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+  body.dyslexic-font .hero-meta-inner .k{ font-size:0.6875rem; letter-spacing:.12em; }
+  body.dyslexic-font .hero-meta-inner .v{ font-size:0.875rem; line-height:1.5; word-spacing:0.05em; white-space:nowrap; }
+
+  /* Left border on hero lead — more padding */
+  body.dyslexic-font .hero-lead{max-width:40rem; padding-left:2rem; }
+
+  /* Lime grid — stack earlier for narrower reading column */
+  @media (min-width:601px){
+    body.dyslexic-font .lime-grid{ grid-template-columns:16.25rem 1fr; gap:3rem; }
+  }
+
+  
+  /* ===== SPACING SYSTEM ===== */
+
+  /* Sections — fluid continuous scroll */
+  .section,
+  .overview,
+  .grad,
+  .carried,
+  .lime,
+  .quote { padding: 8rem 0; }
+
+  /* Consecutive sections — don't double up */
+  .section + .section,
+  .section + .grad,
+  .section + .carried,
+  .section + .lime,
+  .section + .quote,
+  .grad + .section,
+  .carried + .section,
+  .lime + .section,
+  .quote + .section,
+  .overview + .section { padding-top: 0; }
+  /* After figcap — section already has margin from figcap */
+  .figs-rowcap + .section,
+  .figs-rowcap-880 + .section,
+  .figs-rowcap-1080 + .section { padding-top: 0; }
+
+  /* Paragraphs */
+  p + p { margin-top: 1.75em; }
+
+  /* Section heading */
+  .section-heading { margin-bottom: 1.5rem; }
+
+  /* Paragraph → caption (now above image): medium */
+  .wrap-narrow + .figs-rowcap,
+  .wrap-narrow + .figs-rowcap-880,
+  .wrap-narrow + .figs-rowcap-1080 { margin-top: 4rem; }
+
+  /* Paragraph → image (when no caption above): medium */
+  .wrap-narrow + .arts-big,
+  .wrap-narrow + .arts-2,
+  .wrap-narrow + .partner-grid,
+  .wrap-narrow + .charts-tabs,
+  .wrap-narrow + .board,
+  .wrap-narrow + .palettes-grid,
+  .wrap-narrow + .ui-sims { margin-top: 4rem; }
+
+  /* Image → next paragraph: medium */
+  .arts-big + .wrap-narrow,
+  .arts-2 + .wrap-narrow,
+  .figs-rowcap + .wrap-narrow,
+  .figs-rowcap-880 + .wrap-narrow,
+  .figs-rowcap-1080 + .wrap-narrow,
+  .partner-grid + .wrap-narrow,
+  .charts-tabs + .wrap-narrow,
+  .board + .wrap-narrow,
+  .palettes-grid + .wrap-narrow,
+  .ui-sims + .wrap-narrow,
+  .figs-rowcap + .section,
+  .figs-rowcap-880 + .section,
+  .figs-rowcap-1080 + .section,
+  .board + .section { margin-top: 2rem; padding-top: 0; }
+
+  /* Consecutive wrap-narrow blocks — no extra gap */
+  .wrap-narrow + .wrap-narrow { margin-top: 0; }
+
+
+  /* ===== READING PREFERENCES PANEL ===== */
+  /* Progress bar */
+  #reading-progress {
+    position: fixed;
+    top: 0; left: 0;
+    width: 0%;
+    height: 6px;
+    background: var(--blue);
+    z-index: 9999;
+    transition: width 0.1s linear, background 0.2s ease;
+  }
+  #reading-progress.on-blue {
+    background: var(--lime);
+  }
+
+
+  /* ── Reading ruler ── */
+  #reading-ruler {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    height: 1.85rem;
+    background: rgba(255, 220, 0, 0.25);
+    border-top: 1px solid rgba(255, 200, 0, 0.35);
+    border-bottom: 1px solid rgba(255, 200, 0, 0.35);
+    pointer-events: none;
+    z-index: 9998;
+    transform: translateY(-50%);
+    display: none;
+    transition: top 0.05s linear;
+  }
+  body.ruler-on #reading-ruler { display: block; }
+  body.ruler-on.ruler-on-lime #reading-ruler {
+    background: rgba(31, 45, 255, 0.12);
+    border-top: 1px solid rgba(31, 45, 255, 0.2);
+    border-bottom: 1px solid rgba(31, 45, 255, 0.2);
+  }
+
+
+  /* ── Focus mode ── */
+  body.focus-on [data-screen-label] {
+    transition: opacity 0.4s ease;
+  }
+  body.focus-on [data-screen-label].focus-dim {
+    opacity: 0.15;
+  }
+
+
+  /* ── Simplified view ── */
+  body.simplified *:not(#reading-ruler):not(#reading-progress):not(img):not(video):not(iframe) {
+    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease !important;
+  }
+  /* Hero */
+  body.simplified .hero { background: var(--bg-soft) !important; }
+  body.simplified .hero::before { display: none !important; }
+  body.simplified .hero h1 { color: var(--blue) !important; }
+  body.simplified .hero-lead { color: var(--ink-soft) !important; border-color: var(--line) !important; }
+  body.simplified .hero-eyebrow { color: var(--blue) !important; }
+  body.simplified .hero-eyebrow::before { background: var(--blue) !important; }
+  body.simplified .hero-caption { color: var(--muted) !important; }
+  body.simplified .hero__img { opacity: 0 !important; }
+  body.simplified img:not(.hero__img):not(.video-player__gif) { background: #fff !important; }
+  body.simplified .grad-grid > div:first-child { background: #fff !important; padding: 1rem; border-radius: 0.375rem; }
+  /* Hero meta bar */
+  body.simplified .hero-meta { background: #e8e8e4 !important; border-top: 1px solid var(--line) !important; }
+  body.simplified .hero-meta-inner .k { color: var(--muted) !important; }
+  body.simplified .hero-meta-inner .v { color: var(--ink) !important; }
+  /* Lime section */
+  body.simplified .lime { background: #fff !important; border-top: 1px solid var(--line) !important; border-bottom: 1px solid var(--line) !important; }
+  /* Carried section */
+  body.simplified .carried { background: #fff !important; width: auto !important; position: static !important; left: auto !important; margin-left: 0 !important; margin-right: 0 !important; }
+  body.simplified .carried h2 { color: var(--blue) !important; }
+  body.simplified .carried p { color: var(--ink-soft) !important; }
+  body.simplified .carried p span { color: var(--ink-soft) !important; }
+  /* Back button stays blue in simplified mode */
+  body.simplified .back { background: var(--blue) !important; color: #fff !important; }
+  /* Progress bar stays blue in simplified mode */
+  body.simplified #reading-progress { background: var(--blue) !important; }
+
+
+  /* DARK MODE — PARKED
+
+  END DARK MODE */
+
+  /* ── Reading preferences panel ── */
+  #pref-trigger{
+    position:fixed;bottom:1.5rem;right:1.5rem;z-index:900;
+    display:flex;align-items:center;gap:0.625rem;
+    background:#fff;border:0.0625rem solid var(--line);
+    padding:0.625rem 1rem;border-radius:6.25rem;
+    box-shadow:0 0.125rem 0.75rem rgba(0,0,0,.08);
+    cursor:pointer;
+    font-family:"JetBrains Mono",monospace;font-size:0.6875rem;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+    transition:box-shadow .2s,color .2s;
+    user-select:none;border:none;
+  }
+  #pref-trigger:hover{box-shadow:0 0.25rem 1.125rem rgba(0,0,0,.13);color:var(--ink);}
+  #pref-trigger__dot{
+    flex-shrink:0;
+    color:var(--blue);
+    transition:color .2s;
   }
   #pref-panel{
     position:fixed;bottom:4rem;right:1.5rem;z-index:900;
@@ -881,7 +1189,13 @@
 <div id="reading-progress" role="progressbar" aria-label="Reading progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 <!-- Reading preferences panel -->
 <button id="pref-trigger" aria-expanded="false" aria-controls="pref-panel">
-  <span id="pref-trigger__dot" aria-hidden="true"></span>
+  <svg id="pref-trigger__dot" aria-hidden="true" width="20" height="12" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="4.5" cy="7" r="3.5" stroke="currentColor" stroke-width="1.5"/>
+  <circle cx="15.5" cy="7" r="3.5" stroke="currentColor" stroke-width="1.5"/>
+  <path d="M8 7h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M1 7C1 5 2 1 4.5 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M19 7C19 5 18 1 15.5 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+</svg>
   Reading preferences
 </button>
 <div id="pref-panel" role="dialog" aria-label="Neurodiverse and reading preferences" aria-modal="true">
@@ -894,25 +1208,14 @@
       <button id="pref-close" aria-label="Close reading preferences" style="background:none;border:none;cursor:pointer;font-size:1rem;color:var(--muted);padding:0;line-height:1;flex-shrink:0;margin-left:1rem;">✕</button>
     </div>
   </div>
-  <div class="pref-row" id="row-ruler">
-    <span class="pref-row__label">Reading ruler</span>
+
+  <!-- Group: Text and display -->
+  <div style="font-size:0.625rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:0.75rem 0 0.25rem;font-weight:600;">Text and display</div>
+  <div class="pref-row" id="row-dyslexic">
+    <span class="pref-row__label" style="font-family:'OpenDyslexic',sans-serif;">Dyslexic-friendly font</span>
     <div class="pref-toggle-wrap">
-      <button class="pref-toggle" id="toggle-ruler" aria-pressed="false" aria-label="Toggle reading ruler"></button>
-      <span class="pref-state" id="state-ruler">OFF</span>
-    </div>
-  </div>
-  <div class="pref-row" id="row-dark">
-    <span class="pref-row__label">Dark mode</span>
-    <div class="pref-toggle-wrap">
-      <button class="pref-toggle" id="toggle-dark" aria-pressed="false" aria-label="Toggle dark mode"></button>
-      <span class="pref-state" id="state-dark">OFF</span>
-    </div>
-  </div>
-  <div class="pref-row" id="row-focus">
-    <span class="pref-row__label">Focus mode</span>
-    <div class="pref-toggle-wrap">
-      <button class="pref-toggle" id="toggle-focus" aria-pressed="false" aria-label="Toggle focus mode"></button>
-      <span class="pref-state" id="state-focus">OFF</span>
+      <button class="pref-toggle" id="toggle-dyslexic" aria-pressed="false" aria-label="Toggle dyslexic font"></button>
+      <span class="pref-state" id="state-dyslexic">OFF</span>
     </div>
   </div>
   <div class="pref-row" id="row-simplified">
@@ -922,6 +1225,9 @@
       <span class="pref-state" id="state-simplified">OFF</span>
     </div>
   </div>
+
+  <!-- Group: Concentration aids -->
+  <div style="font-size:0.625rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:1.25rem 0 0.25rem;font-weight:600;">Concentration aids</div>
   <div class="pref-row" id="row-progress">
     <span class="pref-row__label">Reading progress bar</span>
     <div class="pref-toggle-wrap">
@@ -929,11 +1235,18 @@
       <span class="pref-state is-on" id="state-progress">ON</span>
     </div>
   </div>
-  <div class="pref-row" id="row-dyslexic">
-    <span class="pref-row__label" style="font-family:'OpenDyslexic',sans-serif;">Dyslexic-friendly font</span>
+  <div class="pref-row" id="row-ruler">
+    <span class="pref-row__label">Reading ruler</span>
     <div class="pref-toggle-wrap">
-      <button class="pref-toggle" id="toggle-dyslexic" aria-pressed="false" aria-label="Toggle dyslexic font"></button>
-      <span class="pref-state" id="state-dyslexic">OFF</span>
+      <button class="pref-toggle" id="toggle-ruler" aria-pressed="false" aria-label="Toggle reading ruler"></button>
+      <span class="pref-state" id="state-ruler">OFF</span>
+    </div>
+  </div>
+  <div class="pref-row" id="row-focus">
+    <span class="pref-row__label">Focus mode</span>
+    <div class="pref-toggle-wrap">
+      <button class="pref-toggle" id="toggle-focus" aria-pressed="false" aria-label="Toggle focus mode"></button>
+      <span class="pref-state" id="state-focus">OFF</span>
     </div>
   </div>
 </div>
@@ -1356,6 +1669,7 @@
     });
 
 
+    /* DARK MODE JS — PARKED
     // ── Dark mode ──
     const toggleDark = document.getElementById('toggle-dark');
     const stateDark  = document.getElementById('state-dark');
@@ -1386,7 +1700,9 @@
       localStorage.setItem(PREF_DARK, isOn ? 'on' : 'off');
     });
 
-    const PREF_DYS     = 'tabiya-dyslexic-font';
+    END DARK MODE JS */
+
+        const PREF_DYS     = 'tabiya-dyslexic-font';
     const PREF_PROG    = 'tabiya-progress-bar';
     const PREF_RULER   = 'tabiya-reading-ruler';
 
