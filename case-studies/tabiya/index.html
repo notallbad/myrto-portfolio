@@ -496,7 +496,7 @@
   #pref-panel{
     position:fixed;bottom:4rem;right:1.5rem;z-index:900;
     background:#fff;border:1px solid var(--line);border-radius:8px;
-    padding:1.5rem 1.75rem;width:400px;
+    padding:1.5rem 1.75rem;width:400px;max-width:calc(100vw - 3rem);
     box-shadow:0 4px 20px rgba(0,0,0,.12);
     font-family:"JetBrains Mono",monospace;font-size:0.875rem;color:var(--ink);
     display:none;
@@ -805,7 +805,7 @@
   #pref-panel{
     position:fixed;bottom:4rem;right:1.5rem;z-index:900;
     background:#fff;border:1px solid var(--line);border-radius:8px;
-    padding:1.5rem 1.75rem;width:400px;
+    padding:1.5rem 1.75rem;width:400px;max-width:calc(100vw - 3rem);
     box-shadow:0 4px 20px rgba(0,0,0,.12);
     font-family:"JetBrains Mono",monospace;font-size:0.875rem;color:var(--ink);
     display:none;
@@ -1181,6 +1181,51 @@
 
 
 
+
+  @media (max-width: 900px) {
+    .grad-flex { flex-direction: column !important; gap: 2rem !important; }
+    .grad-flex > div { flex: none !important; width: 100% !important; max-width: 18.75rem !important; margin: 0 auto !important; }
+    /* Image wrappers — go wider on tablet */
+    [style*="max-width:70%"], [style*="max-width:75%"] {
+      max-width: 90% !important;
+    }
+  }
+  @media (max-width: 600px) {
+    #pref-trigger {
+      bottom: 1rem;
+      right: 1rem;
+      font-size: 0.5625rem;
+      padding: 0.5rem 0.75rem;
+    }
+    #pref-panel {
+      bottom: 3.5rem;
+      right: 1rem;
+      left: 1rem;
+      width: auto;
+      max-width: none;
+    }
+    /* Bleed images — disable negative margins on mobile */
+    [style*="width:130%"], [style*="width:140%"] {
+      width: 100% !important;
+      margin-left: 0 !important;
+    }
+    /* Bleed captions — reset alignment on mobile */
+    [data-figcap-label="MVP Feature Map"],
+    [data-figcap-label="WCAG Checks"],
+    [data-figcap-label="Colour-Vision Screens"] {
+      width: 100% !important;
+      margin-left: 0 !important;
+    }
+    /* Image wrappers — go full width on mobile */
+    [style*="max-width:70%"], [style*="max-width:75%"], [style*="max-width:80%"] {
+      max-width: 100% !important;
+    }
+    /* Data charts wrapper */
+    [style*="max-width:80%;margin:2.25rem auto"] {
+      max-width: 100% !important;
+    }
+  }
+
 </style>
 </head>
 <body>
@@ -1449,8 +1494,8 @@
 </div>
 </section>
 <section class="grad" data-screen-label="08 Open-source" style="padding-top:0rem !important;padding-bottom:8rem !important;">
-<div style="max-width:67.5rem;margin:0 auto;padding:0 2rem;display:flex;flex-direction:row;gap:4rem;align-items:stretch;">
-<div style="flex:0 0 18.75rem;"><a href="https://notallbad.github.io/myrto-portfolio/case-studies/tabiya/prototype/" target="_blank"><img src="images/compass-login.webp" data-img-label="Compass Login Screen" alt="Compass login screen on mobile — click to try the prototype." style="width:100%;height:auto;display:block;border-radius:1.75rem;"></a></div>
+<div class="grad-flex" style="max-width:67.5rem;margin:0 auto;padding:0 2rem;display:flex;flex-direction:row;gap:4rem;align-items:stretch;flex-wrap:wrap;">
+<div style="flex:0 0 18.75rem;min-width:0;max-width:100%;"><a href="https://notallbad.github.io/myrto-portfolio/case-studies/tabiya/prototype/" target="_blank"><img src="images/compass-login.webp" data-img-label="Compass Login Screen" alt="Compass login screen on mobile — click to try the prototype." style="width:100%;height:auto;display:block;border-radius:1.75rem;"></a></div>
 <div style="flex:1;display:flex;flex-direction:column;justify-content:center;height:100%;">
 <h2>Compass graduated, <br/>and is now open-source</h2>
 <p>Tabiya graduated from the Google.org Accelerator and the MVP was adopted and sustained post-accelerator by partner organisations. Tabiya continues to develop Compass as open source. The UX roadmap and strategic design guide I produced are still in use for their planning.</p>
