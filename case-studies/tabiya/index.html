@@ -1408,11 +1408,22 @@
     .img-wrap--bleed {
       width: 100% !important;
       margin-left: 0 !important;
-    }
-    /* Captions with inline padding:0 — add mobile padding */
-    [data-figcap-label] {
       padding-left: 1.25rem !important;
       padding-right: 1.25rem !important;
+    }
+    /* img-wrap--bleed images themselves should be full width with no padding */
+    .img-wrap--bleed img,
+    .img-wrap--bleed .a11y-tiles,
+    .img-wrap--bleed .palettes-grid {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+    /* Captions with inline padding:0 — add mobile padding */
+    [data-figcap-label],
+    .figs-rowcap-1080 {
+      padding-left: 1.25rem !important;
+      padding-right: 1.25rem !important;
+    }
     }
     /* But not bleed captions that are inside img-wrap */
     .img-wrap [data-figcap-label] {
