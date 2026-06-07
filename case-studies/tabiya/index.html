@@ -2,7 +2,8 @@
 
 <html lang="en"><head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<meta name="theme-color" content="#ffffff">
 <title>Tabiya Compass Case Study | UX Lead: Myrto Papagiannakou</title>
 
 <!-- SEO & AEO -->
@@ -492,6 +493,10 @@
     flex-shrink:0;
     color:var(--blue);
     transition:color .2s;
+    width:20px;
+    height:12px;
+    display:block;
+    overflow:visible;
   }
   #pref-panel{
     position:fixed;bottom:4rem;right:1.5rem;z-index:900;
@@ -549,7 +554,7 @@
     line-height: 1.8;
   }
   body.dyslexic-font #pref-trigger{color:var(--blue);}
-  body.dyslexic-font #pref-trigger__dot{background:var(--blue);}
+  body.dyslexic-font #pref-trigger__dot{color:var(--blue);}
 
   /* When dyslexic font is active — body text */
   body.dyslexic-font,
@@ -703,7 +708,8 @@
   /* Progress bar */
   #reading-progress {
     position: fixed;
-    top: 0; left: 0;
+    top: env(safe-area-inset-top, 0px);
+    left: 0;
     width: 0%;
     height: 6px;
     background: var(--blue);
@@ -804,6 +810,10 @@
     flex-shrink:0;
     color:var(--blue);
     transition:color .2s;
+    width:20px;
+    height:12px;
+    display:block;
+    overflow:visible;
   }
   #pref-panel{
     position:fixed;bottom:4rem;right:1.5rem;z-index:900;
@@ -861,7 +871,7 @@
     line-height: 1.8;
   }
   body.dyslexic-font #pref-trigger{color:var(--blue);}
-  body.dyslexic-font #pref-trigger__dot{background:var(--blue);}
+  body.dyslexic-font #pref-trigger__dot{color:var(--blue);}
 
   /* When dyslexic font is active — body text */
   body.dyslexic-font,
@@ -1015,7 +1025,8 @@
   /* Progress bar */
   #reading-progress {
     position: fixed;
-    top: 0; left: 0;
+    top: env(safe-area-inset-top, 0px);
+    left: 0;
     width: 0%;
     height: 6px;
     background: var(--blue);
@@ -1268,11 +1279,132 @@
     }
   }
 
+
+  /* Safari progress bar fix — cover strip */
+  #reading-progress-cover {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: calc(env(safe-area-inset-top, 0px) + 6px);
+    background: var(--bg);
+    z-index: 99;
+    pointer-events: none;
+  }
+
+
+
+  @media (max-width: 600px) {
+    /* Reading ruler — hide on phone, not meaningful without cursor */
+    body.ruler-on #reading-ruler { display: none !important; }
+    #row-ruler { opacity: 0.4; pointer-events: none; }
+    /* Focus mode — disable on phone as sections are full width */
+    body.focus-on [data-screen-label].focus-dim { opacity: 1 !important; }
+    #row-focus { opacity: 0.4; pointer-events: none; }
+  }
+
+
+  @media (min-width: 601px) {
+    #row-ruler .pref-row__label span,
+    #row-focus .pref-row__label span { display: none !important; }
+  }
+
+
+  @media (max-width: 600px) {
+    /* Trigger — icon only, small, bottom right corner */
+    #pref-trigger {
+      bottom: 5rem !important;
+      right: 1rem !important;
+      left: auto !important;
+      width: auto !important;
+      border-radius: 50% !important;
+      border: 1.5px solid var(--line) !important;
+      border-top: 1.5px solid var(--line) !important;
+      padding: 0.625rem !important;
+      justify-content: center !important;
+      font-size: 0 !important;
+      box-shadow: 0 2px 12px rgba(0,0,0,.12) !important;
+      background: #fff !important;
+    }
+    #pref-trigger #pref-trigger__dot {
+      width: 1.5rem !important;
+      height: 1.5rem !important;
+    }
+    /* Panel — full width bottom sheet stays */
+    #pref-panel {
+      bottom: 0 !important;
+      right: 0 !important;
+      left: 0 !important;
+      top: auto !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      border-radius: 1rem 1rem 0 0 !important;
+      border-left: none !important;
+      border-right: none !important;
+      border-bottom: none !important;
+      padding: 1.25rem 1.5rem 2rem !important;
+      max-height: 80vh !important;
+      overflow-y: auto !important;
+    }
+  }
+
+
+  @media (max-width: 600px) {
+    /* Consistent padding for all content on mobile */
+    .wrap, .wrap-narrow, .quote-inner,
+    .hero-inner, .hero-meta-inner,
+    .lime-grid, .grad-grid, .ov-grid,
+    .arts-big, .arts-2, .dense-charts,
+    .board, .pagefoot-inner {
+      padding-left: 1.25rem !important;
+      padding-right: 1.25rem !important;
+    }
+    /* Image wrappers with inline padding */
+    [style*="padding:0 2rem"] {
+      padding-left: 1.25rem !important;
+      padding-right: 1.25rem !important;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .quote-inner {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 1.5rem !important;
+    }
+    .quote-photo-wrap {
+      order: 1 !important;
+      grid-row: auto !important;
+      grid-column: auto !important;
+    }
+    .quote-photo-wrap img {
+      width: 100% !important;
+      height: 14rem !important;
+      object-fit: cover !important;
+      object-position: center top !important;
+    }
+    .quote-mark {
+      order: 2 !important;
+      grid-column: auto !important;
+      grid-row: auto !important;
+      margin-bottom: -0.5rem !important;
+    }
+    .quote-body {
+      order: 3 !important;
+      grid-column: auto !important;
+      grid-row: auto !important;
+      font-size: 1rem !important;
+    }
+    .quote-by {
+      margin-top: 1rem !important;
+    }
+  }
+
 </style>
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to main content</a>
 <div id="reading-ruler" aria-hidden="true"></div>
+<div id="reading-progress-cover"></div>
 <div id="reading-progress" role="progressbar" aria-label="Reading progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 <!-- Reading preferences panel -->
 <button id="pref-trigger" aria-expanded="false" aria-controls="pref-panel">
@@ -1323,14 +1455,14 @@
     </div>
   </div>
   <div class="pref-row" id="row-ruler">
-    <span class="pref-row__label">Reading ruler</span>
+    <span class="pref-row__label">Reading ruler <span style="font-size:0.625rem;color:var(--muted);display:block;margin-top:0.125rem;">Desktop only</span></span>
     <div class="pref-toggle-wrap">
       <button class="pref-toggle" id="toggle-ruler" aria-pressed="false" aria-label="Toggle reading ruler"></button>
       <span class="pref-state" id="state-ruler">OFF</span>
     </div>
   </div>
   <div class="pref-row" id="row-focus">
-    <span class="pref-row__label">Focus mode</span>
+    <span class="pref-row__label">Focus mode <span style="font-size:0.625rem;color:var(--muted);display:block;margin-top:0.125rem;">Desktop only</span></span>
     <div class="pref-toggle-wrap">
       <button class="pref-toggle" id="toggle-focus" aria-pressed="false" aria-label="Toggle focus mode"></button>
       <span class="pref-state" id="state-focus">OFF</span>
@@ -1799,28 +1931,89 @@
     const stateRuler  = document.getElementById('state-ruler');
 
     function setRulerState(isOn) {
-      document.body.classList.toggle('ruler-on', isOn);
+      // If turning on, wait for panel to close before activating
+      if (isOn) {
+        rulerPending = true;
+        document.body.classList.remove('ruler-on');
+      } else {
+        rulerPending = false;
+        document.body.classList.remove('ruler-on');
+      }
       toggleRuler.classList.toggle('is-on', isOn);
       toggleRuler.setAttribute('aria-pressed', isOn ? 'true' : 'false');
       stateRuler.textContent = isOn ? 'ON' : 'OFF';
       stateRuler.classList.toggle('is-on', isOn);
     }
 
+    let rulerPending = false;
+
+    // Activate ruler when panel closes if pending
+    function activateRulerIfPending() {
+      if (rulerPending) {
+        document.body.classList.add('ruler-on');
+        rulerPending = false;
+        // Position at first visible text element
+        positionRulerAtFirstVisibleText();
+      }
+    }
+
+    function positionRulerAtFirstVisibleText() {
+      const textSelectors = 'p, h1, h2, h3, h4, li, .figcap, .hero-lead, .quote-body';
+      const elements = Array.from(document.querySelectorAll(textSelectors));
+      const viewportHeight = window.innerHeight;
+      for (const el of elements) {
+        const rect = el.getBoundingClientRect();
+        // Find first element that is visible in viewport
+        if (rect.top >= 0 && rect.top < viewportHeight * 0.5) {
+          const firstLineY = rect.top + (parseFloat(getComputedStyle(el).lineHeight) / 2);
+          ruler.style.top = firstLineY + 'px';
+          // Check if on lime
+          let onLime = false;
+          rulerLimeSections.forEach(sec => {
+            const secRect = sec.getBoundingClientRect();
+            if (firstLineY >= secRect.top && firstLineY <= secRect.bottom) onLime = true;
+          });
+          document.body.classList.toggle('ruler-on-lime', onLime);
+          break;
+        }
+      }
+    }
+
     setRulerState(localStorage.getItem(PREF_RULER) === 'on');
+    // If ruler was saved as on, activate immediately (panel is closed on load)
+    if (localStorage.getItem(PREF_RULER) === 'on') {
+      document.body.classList.add('ruler-on');
+      rulerPending = false;
+    }
 
     const rulerLimeSections = document.querySelectorAll('.lime, .hero-meta');
 
+    function updateRulerPosition(clientY) {
+      if (!document.body.classList.contains('ruler-on')) return;
+      ruler.style.top = clientY + 'px';
+      let onLime = false;
+      rulerLimeSections.forEach(sec => {
+        const rect = sec.getBoundingClientRect();
+        if (clientY >= rect.top && clientY <= rect.bottom) onLime = true;
+      });
+      document.body.classList.toggle('ruler-on-lime', onLime);
+    }
+
     document.addEventListener('mousemove', (e) => {
-      if (document.body.classList.contains('ruler-on')) {
-        ruler.style.top = e.clientY + 'px';
-        let onLime = false;
-        rulerLimeSections.forEach(sec => {
-          const rect = sec.getBoundingClientRect();
-          if (e.clientY >= rect.top && e.clientY <= rect.bottom) onLime = true;
-        });
-        document.body.classList.toggle('ruler-on-lime', onLime);
-      }
+      updateRulerPosition(e.clientY);
     });
+
+    document.addEventListener('touchmove', (e) => {
+      if (e.touches.length > 0) {
+        updateRulerPosition(e.touches[0].clientY);
+      }
+    }, { passive: true });
+
+    document.addEventListener('touchstart', (e) => {
+      if (e.touches.length > 0) {
+        updateRulerPosition(e.touches[0].clientY);
+      }
+    }, { passive: true });
 
     toggleRuler.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -1863,6 +2056,7 @@
       prefPanel.classList.remove('is-open');
       prefTrigger.setAttribute('aria-expanded', 'false');
       prefTrigger.focus();
+      activateRulerIfPending();
     }
 
     prefTrigger.addEventListener('click', () => {
