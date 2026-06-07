@@ -769,7 +769,7 @@
   body.simplified .hero { background: var(--bg-soft) !important; }
   body.simplified .hero::before { display: none !important; }
   body.simplified .hero h1 { color: var(--blue) !important; }
-  body.simplified .hero-lead { color: var(--ink-soft) !important; border-color: var(--line) !important; }
+  body.simplified .hero-lead { color: var(--ink-soft) !important; border-left-color: var(--blue) !important; }
   body.simplified .hero-eyebrow { color: var(--blue) !important; }
   body.simplified .hero-eyebrow::before { background: var(--blue) !important; }
   body.simplified .hero-caption { color: var(--muted) !important; }
@@ -1086,7 +1086,7 @@
   body.simplified .hero { background: var(--bg-soft) !important; }
   body.simplified .hero::before { display: none !important; }
   body.simplified .hero h1 { color: var(--blue) !important; }
-  body.simplified .hero-lead { color: var(--ink-soft) !important; border-color: var(--line) !important; }
+  body.simplified .hero-lead { color: var(--ink-soft) !important; border-left-color: var(--blue) !important; }
   body.simplified .hero-eyebrow { color: var(--blue) !important; }
   body.simplified .hero-eyebrow::before { background: var(--blue) !important; }
   body.simplified .hero-caption { color: var(--muted) !important; }
@@ -1488,6 +1488,21 @@
     }
   }
 
+
+  @media (max-width: 600px) {
+    /* All CSS-classed containers that use padding:0 2rem */
+    .lime-grid, .logos-inner, .charts-row, .charts-row2, .charts-row3,
+    .a11y-tiles, .quote-inner {
+      padding-left: 1.25rem !important;
+      padding-right: 1.25rem !important;
+    }
+    /* Inline-padded wrap divs — target by inline style */
+    [style*="padding:0 2rem"] {
+      padding-left: 1.25rem !important;
+      padding-right: 1.25rem !important;
+    }
+  }
+
 </style>
 </head>
 <body>
@@ -1757,7 +1772,7 @@
 </div>
 </section>
 <section class="grad" data-screen-label="08 Open-source" style="padding-top:0rem !important;padding-bottom:8rem !important;">
-<div class="grad-flex" style="max-width:67.5rem;margin:0 auto;padding:0 2rem;display:flex;flex-direction:row;gap:4rem;align-items:stretch;flex-wrap:wrap;">
+<div class="wrap grad-flex" style="max-width:67.5rem;margin:0 auto;padding:0 2rem;display:flex;flex-direction:row;gap:4rem;align-items:stretch;flex-wrap:wrap;">
 <div style="flex:0 0 18.75rem;min-width:0;max-width:100%;"><a href="https://notallbad.github.io/myrto-portfolio/case-studies/tabiya/prototype/" target="_blank"><img src="images/compass-login.webp" data-img-label="Compass Login Screen" alt="Compass login screen on mobile — click to try the prototype." style="width:100%;height:auto;display:block;border-radius:1.75rem;"></a></div>
 <div style="flex:1;display:flex;flex-direction:column;justify-content:center;height:100%;">
 <h2>Compass graduated, <br/>and is now open-source</h2>
@@ -1768,7 +1783,7 @@
 </section>
 <!-- ===================== WHAT CARRIED FORWARD ===================== -->
 <section class="carried" data-screen-label="09 What carried forward" data-carried style="padding-top:8rem;padding-bottom:8rem;width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;">
-<div style="max-width:67.5rem;margin:0 auto;padding:0 2rem;">
+<div class="wrap" style="max-width:67.5rem;margin:0 auto;padding:0 2rem;">
 <h2>What carried forward</h2>
 <p><span style="color: rgb(255, 255, 255);">The Tabiya project was humbling, showing me so many things I don't know about life. It also taught me that the hardest part of designing for unfamiliar contexts isn't the research itself — it's translating it into a form that lets people who weren't in the interviews realise the different realities and make good decisions anyway.</span></p>
 </div>
