@@ -90,7 +90,7 @@
     --sp-3xl: 6rem;    /* 96px */
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html{font-size:16px;}
+  html{font-size:16px;overflow-x:hidden;}
   html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:"IBM Plex Mono",ui-monospace,monospace;line-height:2;-webkit-font-smoothing:antialiased;}
   body{font-size:1.125rem;overflow-x:hidden}
   a{color:inherit;text-decoration:none}
@@ -1593,6 +1593,21 @@
     }
   }
 
+
+  /* Captions inside bleed wrappers — compensate for bleed offset to align with text */
+  [style*="width:130%"] .figs-rowcap,
+  [style*="width:130%"] .figs-rowcap-880,
+  [style*="width:130%"] .figs-rowcap-1080 {
+    padding-left: calc(15% + 2rem) !important;
+    padding-right: 2rem !important;
+  }
+  [style*="width:140%"] .figs-rowcap,
+  [style*="width:140%"] .figs-rowcap-880,
+  [style*="width:140%"] .figs-rowcap-1080 {
+    padding-left: calc(20% + 2rem) !important;
+    padding-right: 2rem !important;
+  }
+
 </style>
 </head>
 <body>
@@ -1801,8 +1816,10 @@
 <h2 class="section-heading">The Accelerator MVP</h2>
 <p>The design direction was already on the table. What the team still needed to decide was scope: what would actually ship in the six-month accelerator window, and what would wait. The CUJ workshop served this purpose and converged faster than it would have without the persona presentation underneath it. The output was a defined accelerator MVP: onboarding, the consultation chatbot flow, and CV generation — with everything else placed on the wider roadmap.</p>
 </div>
-<div data-img-label="MVP Feature Map" style="width:130%;margin-left:-15%;margin-top:5rem;margin-bottom:0rem"><img src="images/cross-country-features.svg" alt="MVP feature map showing accelerator scope set against the wider product roadmap." style="width:100%;height:auto;display:block;"></div>
-<div class="figs-rowcap" data-figcap-label="MVP Feature Map" style="margin-top:1rem;width:130%;margin-left:-15%;margin-bottom:2.5rem;padding:0"><div class="figcap"><span class="num">MVP FEATURE MAP</span><span class="desc">MVP scope set against the wider product roadmap.</span></div></div>
+<div style="width:130%;margin-left:-15%;margin-top:5rem;">
+<div data-img-label="MVP Feature Map"><img src="images/cross-country-features.svg" alt="MVP feature map showing accelerator scope set against the wider product roadmap." style="width:100%;height:auto;display:block;"></div>
+<div class="figs-rowcap" data-figcap-label="MVP Feature Map" style="margin-top:1rem;margin-bottom:2.5rem;padding:0"><div class="figcap"><span class="num">MVP FEATURE MAP</span><span class="desc">MVP scope set against the wider product roadmap.</span></div></div>
+</div>
 <div class="wrap-narrow">
 <p>The consultation flow that anchored the MVP was structured in three phases — building rapport, exploring the jobseeker's history, and surfacing skills — adapted across cultural and linguistic contexts in tone, pacing, and prompts.</p>
 </div>
