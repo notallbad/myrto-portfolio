@@ -1310,26 +1310,7 @@
 
 
   @media (max-width: 600px) {
-    /* Trigger — icon only, small, bottom right corner */
-    #pref-trigger {
-      bottom: 5rem !important;
-      right: 1rem !important;
-      left: auto !important;
-      width: auto !important;
-      border-radius: 50% !important;
-      border: 1.5px solid var(--line) !important;
-      border-top: 1.5px solid var(--line) !important;
-      padding: 0.625rem !important;
-      justify-content: center !important;
-      font-size: 0 !important;
-      box-shadow: 0 2px 12px rgba(0,0,0,.12) !important;
-      background: #fff !important;
-    }
-    #pref-trigger #pref-trigger__dot {
-      width: 1.5rem !important;
-      height: 1.5rem !important;
-    }
-    /* Panel — full width bottom sheet stays */
+    /* Panel — full width bottom sheet */
     #pref-panel {
       bottom: 0 !important;
       right: 0 !important;
@@ -1348,22 +1329,52 @@
   }
 
 
+
   @media (max-width: 600px) {
-    /* Consistent padding for all content on mobile */
-    .wrap, .wrap-narrow, .quote-inner,
-    .hero-inner, .hero-meta-inner,
-    .lime-grid, .grad-grid, .ov-grid,
-    .arts-big, .arts-2, .dense-charts,
-    .board, .pagefoot-inner {
+    /* All section content wrappers */
+    .wrap, .wrap-narrow {
       padding-left: 1.25rem !important;
       padding-right: 1.25rem !important;
     }
-    /* Image wrappers with inline padding */
-    [style*="padding:0 2rem"] {
+    /* Image class containers */
+    .arts-big, .arts-2, .ov-grid, .dense-charts,
+    .figs-rowcap, .figs-rowcap-880, .figs-rowcap-1080,
+    .board, .ph--flow, .ph--board {
+      padding-left: 1.25rem !important;
+      padding-right: 1.25rem !important;
+    }
+    /* Centered image wrappers with inline max-width */
+    [style*="max-width:80%;margin"], [style*="max-width:70%;margin"],
+    [style*="max-width:75%;margin"] {
+      max-width: 100% !important;
+      padding-left: 1.25rem !important;
+      padding-right: 1.25rem !important;
+    }
+    /* Bleed image wrappers */
+    [style*="width:130%"], [style*="width:140%"] {
+      width: 100% !important;
+      margin-left: 0 !important;
+      padding-left: 1.25rem !important;
+      padding-right: 1.25rem !important;
+    }
+    /* Captions with padding:0 inline — override with section padding */
+    [data-figcap-label] {
+      padding-left: 1.25rem !important;
+      padding-right: 1.25rem !important;
+    }
+    /* Images with padding:0 inline — keep zero padding, let wrapper handle it */
+    [data-img-label] {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+    /* Hero, meta, lime, grad etc */
+    .hero-inner, .hero-meta-inner, .lime-grid,
+    .quote-inner, .pagefoot-inner {
       padding-left: 1.25rem !important;
       padding-right: 1.25rem !important;
     }
   }
+
 
   @media (max-width: 600px) {
     .quote-inner {
@@ -1378,7 +1389,7 @@
     }
     .quote-photo-wrap img {
       width: 100% !important;
-      height: 14rem !important;
+      height: 20rem !important;
       object-fit: cover !important;
       object-position: center top !important;
     }
