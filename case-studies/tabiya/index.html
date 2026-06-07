@@ -330,6 +330,9 @@
 
   @media (max-width: 900px){
     .hero h1{font-size:3.375rem;}
+    section h2.section-heading{font-size:2rem;}
+    .grad h2{font-size:2rem;}
+    .carried h2{font-size:2rem;}
     .hero-meta-inner{grid-template-columns:repeat(2,1fr);}
     .lime-grid,.grad-grid,.ov-grid{grid-template-columns:1fr;}
     .a11y-tiles,.charts-row,.ui-sims{grid-template-columns:repeat(2,1fr);}
@@ -348,13 +351,15 @@
     .back{top:1.25rem;left:1rem;}
     .wrap,.wrap-narrow{padding:0 1.25rem;}
     .lime-grid,.grad-grid{gap:2rem;}
-    .section-heading{font-size:1.625rem;}
+    section h2.section-heading{font-size:1.5rem;}
+    .grad h2{font-size:1.5rem;}
     .logos-row{grid-template-columns:repeat(2,1fr);}
     .figcap{overflow-wrap:break-word;word-break:break-word;flex-direction:column;gap:0.25rem;}
     .figcap .num{white-space:normal;}
     .desc{max-width:100%;display:inline-block;}
     .a11y-tiles,.charts-row,.ui-sims{grid-template-columns:1fr;}
-    .carried h2{font-size:1.625rem;}
+    .carried h2{font-size:1.5rem;}
+    .lime h3{font-size:1.25rem;}
     .quote-text{font-size:1rem;}
     .video-player{max-width:17.5rem;margin:0 auto;}
   }
@@ -1339,30 +1344,11 @@
     /* Image class containers */
     .arts-big, .arts-2, .ov-grid, .dense-charts,
     .figs-rowcap, .figs-rowcap-880, .figs-rowcap-1080,
-    .board, .ph--flow, .ph--board {
+    .board { 
       padding-left: 1.25rem !important;
       padding-right: 1.25rem !important;
     }
-    /* Centered image wrappers with inline max-width */
-    [style*="max-width:80%;margin"], [style*="max-width:70%;margin"],
-    [style*="max-width:75%;margin"] {
-      max-width: 100% !important;
-      padding-left: 1.25rem !important;
-      padding-right: 1.25rem !important;
-    }
-    /* Bleed image wrappers */
-    [style*="width:130%"], [style*="width:140%"] {
-      width: 100% !important;
-      margin-left: 0 !important;
-      padding-left: 1.25rem !important;
-      padding-right: 1.25rem !important;
-    }
-    /* Captions with padding:0 inline — override with section padding */
-    [data-figcap-label] {
-      padding-left: 1.25rem !important;
-      padding-right: 1.25rem !important;
-    }
-    /* Images with padding:0 inline — keep zero padding, let wrapper handle it */
+    /* Images with padding:0 inline — keep zero padding */
     [data-img-label] {
       padding-left: 0 !important;
       padding-right: 0 !important;
@@ -1407,6 +1393,29 @@
     }
     .quote-by {
       margin-top: 1rem !important;
+    }
+  }
+
+
+  @media (max-width: 600px) {
+    .img-wrap {
+      max-width: 100% !important;
+      padding-left: 1.25rem !important;
+      padding-right: 1.25rem !important;
+    }
+    .img-wrap--bleed {
+      width: 100% !important;
+      margin-left: 0 !important;
+    }
+    /* Captions with inline padding:0 — add mobile padding */
+    [data-figcap-label] {
+      padding-left: 1.25rem !important;
+      padding-right: 1.25rem !important;
+    }
+    /* But not bleed captions that are inside img-wrap */
+    .img-wrap [data-figcap-label] {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
     }
   }
 
@@ -1544,7 +1553,7 @@
 </section>
 <!-- ===================== OVERVIEW ===================== -->
 <section class="overview" data-screen-label="02c Overview" style="padding-top:2.25rem !important;padding-bottom:6rem !important;">
-<div style="max-width:80%;margin:1rem auto 0;">
+<div class="img-wrap" style="max-width:80%;margin:1rem auto 0;">
 <div class="ov-grid" data-img-label="Map" style="height:auto;display:block;border-radius:0.25rem;padding:0;margin:0;max-width:none;margin-bottom:0rem"><img src="images/map-cover.webp" alt="World map showing India, Kenya and South Africa highlighted, with partner organisations pinned" style="width:100%;height:auto;display:block;border-radius:0.25rem;"></div>
 <div class="figs-rowcap-1080" data-figcap-label="Programme Geography" style="margin-top:0;padding:0"><div class="figcap"><span class="num">PROGRAMME GEOGRAPHY</span><span class="desc">Two continents, three countries, five partner organisations.</span></div></div>
 </div>
@@ -1557,7 +1566,7 @@
 <p style="font-weight: 400;">The hypothesis was promising. The conditions weren't simple. <strong style="font-weight: 400;">I was the only designer on the programme, working with partner organisations across India, Kenya, and South Africa — including Google.org, Oxford University, Harambee, GOYN, and four community-level NGOs serving young people in rural and urban contexts I had never worked in.</strong> The MVP had to ship in six months.</p>
 <p>When I joined Tabiya I had no experience with any of the three countries, the communities there, or the dense network of counsellors, mentors and intermediaries who do the actual work of getting young people into jobs. Discovery and design had to land fast enough not to hold engineering up.</p>
 </div>
-<div style="max-width:80%;margin:4.5rem auto 0;">
+<div class="img-wrap" style="max-width:80%;margin:4.5rem auto 0;">
 <div class="arts-big" data-img-label="Desk Research" style="height:auto;display:block;border-radius:0.25rem;padding:0;margin:0;max-width:none"><img src="images/desk-research-interventions-and-media.webp" alt="Desk research composite: partner organisation profiles, intervention frameworks, and media landscape across Swahili Pot Foundation (Mombasa, Kenya), Ajira Programme / eMobilis (Nairobi, Kenya), Transform Rural India (New Delhi, India), and Head Held High Foundation (Karnataka, India)." style="width:100%;height:auto;display:block;border-radius:0.25rem;"></div>
 <div class="figs-rowcap-1080" data-figcap-label="Desk Research" style="margin-top:1rem;margin-bottom:2rem;padding:0"><div class="figcap"><span class="num">DESK RESEARCH</span><span class="desc">Collecting and organising information about each partner organisation and their local context.</span></div></div>
 </div>
@@ -1568,14 +1577,14 @@
 <h2 class="section-heading">Five distinct workflows mapped into one shared framework</h2>
 <p>I worked outward from stakeholders into communities. Semi-structured interviews with senior people at each partner organisation — to understand their interventions, their assumptions, and what success looked like from their side — then desk research on technology access, internet coverage, and how young people across the three countries actually use their phones.</p>
 </div>
-<div style="max-width:70%;margin:4rem auto 0;">
+<div class="img-wrap" style="max-width:70%;margin:4rem auto 0;">
 <div class="arts-2" data-img-label="In-depth Interviews" style="height:auto;display:block;border-radius:0.25rem;padding:0;margin:0;max-width:none"><img src="images/interviews.webp" alt="Research notebooks composite: four views of the Dovetail workspace showing partner profiles, stakeholder interview sessions with transcripts and bookmarks, highlights reel with video clips from jobseeker and counsellor interviews, and the artefacts library with participant summaries across Swahilipot, eMobilis, Head Held High, and Transform Rural India." style="width:100%;height:auto;display:block;border-radius:0.25rem;"></div>
 <div class="figs-rowcap-1080" data-figcap-label="In-depth Interviews" style="margin-top:1rem;padding:0"><div class="figcap"><span class="num">IN-DEPTH INTERVIEWS</span><span class="desc">25 counsellors and 35 jobseekers across five partner organisations.</span></div></div>
 </div>
 <div class="wrap-narrow">
 <p>The jobseeker and counsellor interviews used the TED method (Tell, Explain, Describe) to surface narrative detail rather than yes/no answers. With GOYN's and Harambee's recruitment support, I ran interviews with 25 counsellors and 35 jobseekers across Swahilipot Hub Foundation, eMobilis (Ajira Program), Head Held High, and Transform Rural India. For South Africa, I interviewed Harambee SMEs and stakeholders but had no direct access to South African jobseekers. Tumelo and Kabo, the two South African personas, were built by sifting through Harambee's existing personas — they had more than ten — selecting the two that fit Compass's purpose, and modifying them against my SME interviews and desk research. A call made under timeline pressure, not a clean methodology, and I flagged it on stage.</p>
 </div>
-<div style="max-width:70%;margin:5.5rem auto 0;">
+<div class="img-wrap" style="max-width:70%;margin:5.5rem auto 0;">
 <div class="arts-big" data-img-label="Synthesis Board" style="height:auto;display:block;border-radius:0.25rem;padding:0;margin:0;max-width:none"><img src="images/analysis-of-workflow.webp" alt="Synthesis board excerpt: five partner organisation workflows — Swahilipot, eMobilis, Head Held High, Transform Rural India, and Harambee — mapped side-by-side in FigJam, with the shared consultation framework derived underneath, annotated with colour-coded sticky notes and process steps." style="width:100%;height:auto;display:block;border-radius:0.25rem;"></div>
 <div class="figs-rowcap-1080" data-figcap-label="Synthesis Board" style="margin-top:1rem;margin-bottom:4rem;padding:0"><div class="figcap"><span class="num">SYNTHESIS BOARD EXCERPT</span><span class="desc">Five organisational workflows mapped and synthesised into a shared consultation framework.</span></div></div>
 </div>
@@ -1591,13 +1600,13 @@
 <p>Two months in, I had an hour to present to Google.org leads, Tabiya engineers, Oxford researchers, and Harambee partners. The session had three scopes: a handoff of the research findings, a feedback and approval of the personas, and a first look at the consultation flow and early mockups that would shape the prototype. Three goals, one hour.</p>
 <p>The first version of the presentation was the version most researchers default to: country profiles, comparison tables, recurring themes. Kenya's 55 million people. 12.3% youth unemployment. 22 million internet users, 99% on smartphones. Three countries' worth of these. I rehearsed it. It was thorough. It was also going to lose the room. Most of the people in it had never spent time in coastal Mombasa or Pretoria, and most of them were going to make product decisions in the weeks that followed. A data-dense deck would land as information. It wouldn't land as understanding.</p>
 </div>
-<div style="max-width:80%;margin:2.25rem auto 0;"><img data-img-label="Data Charts" src="images/data-board.webp" alt="Country profile data dashboard showing youth unemployment, internet penetration, and phone usage patterns across India, Kenya, and South Africa." style="width:100%;height:auto;display:block;">
+<div class="img-wrap" style="max-width:80%;margin:2.25rem auto 0;"><img data-img-label="Data Charts" src="images/data-board.webp" alt="Country profile data dashboard showing youth unemployment, internet penetration, and phone usage patterns across India, Kenya, and South Africa." style="width:100%;height:auto;display:block;">
 <div class="figs-rowcap" data-figcap-label="Country Profile Data" style="margin-top:1rem;padding:0"><div class="figcap"><span class="num">COUNTRY PROFILE DATA</span><span class="desc">Two countries' worth of data, before it could land as understanding and support any decision.</span></div></div>
 </div>
 <div class="wrap-narrow">
 <p >The pivot was small but it was the right one. The personas were already there, already shaped to communicate the texture of the research. I rebuilt the presentation around them. Compass was never going to replace the counsellor relationship. It had to fit inside it. So the personas captured both sides of the consultation, not just the young people. Three jobseekers, two counsellors — five composite characters told as one continuous story: Aisha, a young artist in Mombasa, sole carer for six siblings, looking for work through Swahilipot. Amina, the program manager at Swahilipot who guides her. James, a trainer at eMobilis who Aisha consults about a digital-skills programme. Tumelo, a certified mechanic in Cape Town who has been out of work for years. Kabo, a minimum-wage worker in Pretoria who uses Harambee's job platform every day.</p>
 </div>
-<div style="max-width:75%;margin:4.75rem auto 0;">
+<div class="img-wrap" style="max-width:75%;margin:4.75rem auto 0;">
 <div class="figs-rowcap-880" data-img-label="Persona Video" style="margin:0;padding:0;max-width:none">
 <!-- Cloudinary hosted video — captions available via player controls. WCAG 1.2.2 satisfied. -->
 <iframe src="https://player.cloudinary.com/embed/?cloud_name=dyldtrxqt&public_id=research-presentation_z7pr9j" style="width:100%;aspect-ratio:16/9;display:block;border:none;border-radius:0.375rem;" allow="autoplay; fullscreen; encrypted-media; picture-in-picture" allowfullscreen title="Persona presentation excerpt: narrative walkthrough of five composite characters — Aisha, Amina, James, Tumelo, and Kabo — used to align Google.org, Oxford, Tabiya engineering, and Harambee partners on the Compass MVP scope."></iframe>
@@ -1629,18 +1638,18 @@
 <h2 class="section-heading">Accessibility built into the palette,<br/>not bolted on</h2>
 <p>Compass was built for jobseekers in low-bandwidth contexts, on a wide range of devices, with screen brightness and ambient light conditions outside my Berlin office's range. The visual palette had to hold up across all of that — including for users with colour vision deficiencies.</p>
 </div>
-<div style="width:130%;margin-left:-15%;margin-top:3.75rem;">
+<div class="img-wrap img-wrap--bleed" style="width:130%;margin-left:-15%;margin-top:3.75rem;">
 <div class="a11y-tiles" data-img-label="WCAG Checks" style="margin-top:0;margin-bottom:0;padding:0"><img src="images/wcag-aa-checks.webp" alt="WCAG AA contrast checks for the Compass palette." style="width:100%;height:auto;display:block;border-radius:0.25rem;"></div>
 <div class="figs-rowcap-1080" data-figcap-label="WCAG Checks" style="margin-top:1rem;padding-left:0"><div class="figcap"><span class="num">WCAG AA CONTRAST CHECKS</span><span class="desc">Every primary colour pairing passes normal-text, large-text, and graphic-component thresholds.</span></div></div>
 </div>
 <div class="wrap-narrow">
 <p>I tested the UI on two axes. WCAG AA contrast checks across every component, which flagged places where contrast ratios fell short and got tightened before launch. And deficiency simulators for anomalous trichromacy, dichromacy, and monochromacy, which revealed that individual colours rendered differently for colour-blind users but the combinations still worked as intended.</p>
 </div>
-<div style="width:130%;margin-left:-15%;margin-top:6.25rem;">
+<div class="img-wrap img-wrap--bleed" style="width:130%;margin-left:-15%;margin-top:6.25rem;">
 <div class="palettes-grid" data-img-label="Colour Palette Simulation" style="margin-top:0;margin-bottom:0;padding:0"><img src="images/palette-simulation.svg" alt="Compass palette grid showing all nine colour-vision condition simulations side by side." style="width:100%;height:auto;display:block;border-radius:0.25rem;"></div>
 
 </div>
-<div style="width:140%;margin-left:-20%;margin-top:4rem;">
+<div class="img-wrap img-wrap--bleed" style="width:140%;margin-left:-20%;margin-top:4rem;">
 <div class="ui-sims" data-img-label="UI Colour Simulations" style="background:rgb(244,244,241);padding:1.5rem;border-radius:0.375rem;margin-bottom:0px">
 <figure >
   <div style="font-family:'JetBrains Mono',monospace;font-size:0.6875rem;letter-spacing:.1em;text-transform:uppercase;color:#3a3a3a;font-weight:600">Protanomaly</div>
@@ -1935,6 +1944,17 @@
         const PREF_DYS     = 'tabiya-dyslexic-font';
     const PREF_PROG    = 'tabiya-progress-bar';
     const PREF_RULER   = 'tabiya-reading-ruler';
+    const PREF_VERSION = 'tabiya-prefs-v2';
+
+    // Reset stale prefs from earlier sessions that don't match current defaults
+    if (!localStorage.getItem(PREF_VERSION)) {
+      localStorage.removeItem(PREF_RULER);  // ruler: default OFF
+      // Only reset progress bar if it was never explicitly set
+      if (localStorage.getItem(PREF_PROG) === 'on') {
+        localStorage.removeItem(PREF_PROG); // will default to ON via !== 'off'
+      }
+      localStorage.setItem(PREF_VERSION, '1');
+    }
 
     // ── Reading ruler ──
     const ruler       = document.getElementById('reading-ruler');
