@@ -1559,6 +1559,38 @@
     }
   }
 
+
+  @media (max-width: 600px) {
+    /* Force arts-big to respect container padding */
+    .arts-big, .arts-2 {
+      max-width: 100% !important;
+      overflow: hidden !important;
+    }
+    /* Board images need padding on their container */
+    .board > div,
+    .board > [data-img-label] {
+      padding-left: 1.25rem !important;
+      padding-right: 1.25rem !important;
+    }
+    /* img inside board should fill the padded container */
+    .board img {
+      width: 100% !important;
+    }
+    /* img-wrap: the padding is on the wrapper, arts-big fills it */
+    .img-wrap .arts-big,
+    .img-wrap .arts-2 {
+      padding: 0 !important;
+      max-width: 100% !important;
+    }
+    /* Any data-img-label directly inside a section or board gets padding */
+    .board [data-img-label],
+    .section [data-img-label]:not(.img-wrap [data-img-label]),
+    .lime [data-img-label]:not(.img-wrap [data-img-label]) {
+      padding-left: 1.25rem !important;
+      padding-right: 1.25rem !important;
+    }
+  }
+
 </style>
 </head>
 <body>
