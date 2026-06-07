@@ -1350,11 +1350,7 @@
       padding-left: 1.25rem !important;
       padding-right: 1.25rem !important;
     }
-    /* Images with padding:0 inline — keep zero padding */
-    [data-img-label] {
-      padding-left: 0 !important;
-      padding-right: 0 !important;
-    }
+
     /* Hero, meta, lime, grad etc */
     .hero-inner, .hero-meta-inner, .lime-grid,
     .quote-inner, .pagefoot-inner {
@@ -1494,13 +1490,7 @@
       padding-left: 1.25rem !important;
       padding-right: 1.25rem !important;
     }
-    /* But not when inside an img-wrap */
-    .img-wrap .figs-rowcap,
-    .img-wrap .figs-rowcap-880,
-    .img-wrap .figs-rowcap-1080 {
-      padding-left: 0 !important;
-      padding-right: 0 !important;
-    }
+
   }
 
 
@@ -1515,6 +1505,57 @@
     [style*="padding:0 2rem"] {
       padding-left: 1.25rem !important;
       padding-right: 1.25rem !important;
+    }
+  }
+
+
+  @media (max-width: 600px) {
+    /* ── UNIVERSAL MOBILE PADDING ── 
+       Single source of truth: everything gets 1.25rem except 
+       images/media inside padded wrappers */
+    
+    /* All content containers */
+    .wrap, .wrap-narrow,
+    .lime-grid, .logos-inner, .ov-grid,
+    .arts-big, .arts-2, .dense-charts,
+    .board, .charts-row, .charts-row2, .charts-row3,
+    .a11y-tiles, .quote-inner,
+    .figs-rowcap, .figs-rowcap-880, .figs-rowcap-1080,
+    .hero-inner, .hero-meta-inner {
+      padding-left: 1.25rem !important;
+      padding-right: 1.25rem !important;
+    }
+    
+    /* Image wrappers */
+    .img-wrap {
+      max-width: 100% !important;
+      padding-left: 1.25rem !important;
+      padding-right: 1.25rem !important;
+    }
+    .img-wrap--bleed {
+      width: 100% !important;
+      margin-left: 0 !important;
+      padding-left: 1.25rem !important;
+      padding-right: 1.25rem !important;
+    }
+    
+    /* Images and media INSIDE padded wrappers — fill the container */
+    .img-wrap img, .img-wrap iframe,
+    .img-wrap .arts-big, .img-wrap .arts-2,
+    .img-wrap .a11y-tiles, .img-wrap .palettes-grid,
+    .img-wrap .figs-rowcap, .img-wrap .figs-rowcap-880, .img-wrap .figs-rowcap-1080 {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+    
+    /* Inline style overrides */
+    [style*="padding:0 2rem"] {
+      padding-left: 1.25rem !important;
+      padding-right: 1.25rem !important;
+    }
+    [style*="width:130%"], [style*="width:140%"] {
+      width: 100% !important;
+      margin-left: 0 !important;
     }
   }
 
