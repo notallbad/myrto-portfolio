@@ -343,7 +343,7 @@
     .hero-inner{padding:6.25rem 2rem 3.75rem;}
   }
   @media (max-width: 600px){
-    .hero h1{font-size:2.25rem;letter-spacing:-0.02em;}
+    .hero h1{font-size:2.75rem;letter-spacing:-0.03em;}
     .hero-lead{max-width:40rem;font-size:1rem;}
     .hero-meta-inner{grid-template-columns:1fr 1fr;}
     .hero{padding:5rem 0 2.5rem;}
@@ -351,15 +351,15 @@
     .back{top:1.25rem;left:1rem;}
     .wrap,.wrap-narrow{padding:0 1.25rem;}
     .lime-grid,.grad-grid{gap:2rem;}
-    section h2.section-heading{font-size:1.5rem;}
-    .grad h2{font-size:1.5rem;}
+    section h2.section-heading{font-size:2rem;}
+    .grad h2{font-size:2rem;}
     .logos-row{grid-template-columns:repeat(2,1fr);}
     .figcap{overflow-wrap:break-word;word-break:break-word;flex-direction:column;gap:0.25rem;}
     .figcap .num{white-space:normal;}
     .desc{max-width:100%;display:inline-block;}
     .a11y-tiles,.charts-row,.ui-sims{grid-template-columns:1fr;}
-    .carried h2{font-size:1.5rem;}
-    .lime h3{font-size:1.25rem;}
+    .carried h2{font-size:2rem;}
+    .lime h3{font-size:1.875rem;}
     .quote-text{font-size:1rem;}
     .video-player{max-width:17.5rem;margin:0 auto;}
   }
@@ -1213,6 +1213,8 @@
     }
   }
   @media (max-width: 600px) {
+    /* Hide back button on mobile */
+    .back { display: none !important; }
     /* Hero meta */
     .hero-meta-inner { padding: 1rem 1.25rem !important; gap: 1rem !important; }
     .hero-meta-inner .v { font-size: 0.75rem !important; }
@@ -1417,6 +1419,27 @@
       padding-left: 0 !important;
       padding-right: 0 !important;
     }
+  }
+
+
+  @media (max-width: 600px) {
+    /* Reduce section vertical padding on mobile */
+    .section, .overview, .grad, .lime, .quote {
+      padding-top: 3rem !important;
+      padding-bottom: 3rem !important;
+    }
+    /* Carried forward */
+    .carried {
+      padding-top: 3rem !important;
+      padding-bottom: 3rem !important;
+    }
+    /* Sections with explicit inline padding — reduce proportionally */
+    [style*="padding-top:8rem"] { padding-top: 3rem !important; }
+    [style*="padding-bottom:8rem"] { padding-bottom: 3rem !important; }
+    [style*="padding-top:5rem"] { padding-top: 2.5rem !important; }
+    [style*="padding-bottom:4.5rem"] { padding-bottom: 2.5rem !important; }
+    [style*="padding-top:3rem"] { padding-top: 2rem !important; }
+    [style*="padding-top:1rem"] { padding-top: 1rem !important; }
   }
 
 </style>
