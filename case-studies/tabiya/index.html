@@ -1904,7 +1904,7 @@
 
 <div class="next-card">
 <img src="../ergo/images/neo-thumb.webp" alt="ERGO EASY case study thumbnail." style="width:100%;height:auto;display:block;border-radius:0.25rem;">
-<div class="next-line" style="text-align:right;margin-top:0.75rem;">Coming soon:<br><a href="../ergo/" style="text-decoration:underline;">Replacing EASY, ERGO's nationwide legacy system for insurance agents →</a></div>
+<div class="next-line" style="text-align:right;margin-top:0.75rem;">Coming soon:<br><a href="../ergo/" style="text-decoration:underline;">ERGO Digital Transformation →</a></div>
 </div>
 </div>
 </footer>
@@ -2243,6 +2243,20 @@
       const isOn = !toggleDys.classList.contains('is-on');
       setDysState(isOn);
       localStorage.setItem(PREF_DYS, isOn ? 'on' : 'off');
+    });
+
+    // ── Row click handlers ──
+    [
+      ['row-dyslexic', toggleDys],
+      ['row-progress', toggleProg],
+      ['row-ruler', toggleRuler],
+      ['row-focus', toggleFocus],
+      ['row-simplified', toggleSimplified],
+    ].forEach(([id, btn]) => {
+      const row = document.getElementById(id);
+      if (row) row.addEventListener('click', e => {
+        if (!e.target.closest('button')) btn.click();
+      });
     });
 
     // Back button colour swap — blue/white default, lime/blue on dark sections
