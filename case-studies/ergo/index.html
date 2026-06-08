@@ -1,216 +1,1387 @@
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ERGO NEO Case Study — Coming Soon | Myrto Papagiannakou</title>
+<meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#8B1A1A">
+<title>ERGO Digital Transformation — Coming Soon | Myrto Papagiannakou</title>
 <meta name="description" content="Coming soon: UX Lead on ERGO NEO — replacing EASY, ERGO's nationwide legacy system for insurance agents. A two-year enterprise digital transformation.">
 <link href="https://fonts.cdnfonts.com/css/opendyslexic" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.cdnfonts.com/css/opendyslexic" rel="stylesheet"/>
 <style>
   :root{
-    --navy-1:#0a1240;--navy-2:#1a2055;--blue:#1f2dff;--blue-deep:#1822c4;
-    --lime:#d2ff02;--ink:#10122b;--ink-soft:#2a2d4a;--muted:#6a6d85;
-    --line:#e6e6ec;--bg:#ffffff;--bg-soft:#f4f4f1;
-    --sp-xs:0.5rem;--sp-sm:1rem;--sp-md:1.5rem;--sp-lg:2rem;
-    --sp-xl:3rem;--sp-2xl:4rem;--sp-3xl:6rem;
+    --ergo-red:#FF1400;
+    --ergo-dark:#5D1913;
+    --blue:#1f2dff;
+    --lime:#d2ff02;
+    --ink:#10122b;
+    --ink-soft:#2a2d4a;
+    --muted:#6a6d85;
+    --line:#e6e6ec;
+    --bg:#ffffff;
+    --bg-soft:#f4f4f1;
+    --sp-sm:1rem;--sp-md:1.5rem;--sp-lg:2rem;--sp-xl:3rem;--sp-2xl:4rem;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{font-size:16px;}
-  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:"JetBrains Mono",ui-monospace,monospace;line-height:1.85;-webkit-font-smoothing:antialiased;}
-  body{font-size:1.125rem;overflow-x:hidden}
-  a{color:inherit;text-decoration:none}
-  img{display:block;max-width:100%}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:"IBM Plex Mono",ui-monospace,monospace;line-height:2;-webkit-font-smoothing:antialiased;}
+  body{font-size:1.125rem;overflow-x:hidden;}
+  a{color:inherit;text-decoration:none;}
+  img{display:block;max-width:100%;}
   .wrap{max-width:67.5rem;margin:0 auto;padding:0 2rem;}
   .wrap-narrow{max-width:52rem;margin:0 auto;padding:0 2rem;}
-  p{font-family:"JetBrains Mono",monospace;color:var(--ink-soft);line-height:1.7;font-size:1rem;}
+  p{font-family:"IBM Plex Mono",ui-monospace,monospace;color:var(--ink-soft);line-height:2;font-size:1.125rem;}
   p+p{margin-top:1.25em;}
-  strong{color:var(--ink);font-weight:600;}
 
   /* ── Skip link ── */
-  .skip-link{position:absolute;top:-100%;left:1rem;background:var(--blue);color:#fff;font-family:"JetBrains Mono",monospace;font-size:0.75rem;letter-spacing:.08em;padding:0.5rem 0.875rem;border-radius:0 0 0.25rem 0.25rem;z-index:1000;text-decoration:none;}
+  .skip-link{position:absolute;top:-100%;left:1rem;background:var(--ergo-red);color:#fff;font-family:"IBM Plex Mono",monospace;font-size:0.75rem;letter-spacing:.08em;padding:0.5rem 0.875rem;border-radius:0 0 0.25rem 0.25rem;z-index:1000;text-decoration:none;}
   .skip-link:focus{top:0;}
+
+  /* ── Meta bar (top) ── */
+  .hero-meta{background:var(--ergo-red);color:#fff;position:relative;z-index:10;}
+  .hero-meta-inner{display:grid;grid-template-columns:auto auto auto auto;justify-content:space-between;gap:var(--sp-md);padding:var(--sp-sm) var(--sp-lg);max-width:67.5rem;margin:0 auto;align-items:center;}
+  .hero-meta-inner>div{font-family:"IBM Plex Mono",monospace;}
+  .hero-meta-inner .k{font-size:0.75rem;letter-spacing:.14em;text-transform:uppercase;color:#fff;margin-bottom:0.25rem;}
+  .hero-meta-inner .v{font-size:0.8125rem;color:#fff;white-space:normal;word-break:break-word;}
+
 
   /* ── Back button ── */
   .back{
     display:inline-flex;align-items:center;gap:0.5rem;
-    font-family:"JetBrains Mono",monospace;font-size:0.6875rem;letter-spacing:.14em;text-transform:uppercase;
-    color:var(--blue);background:var(--lime);
+    font-family:"IBM Plex Mono",monospace;font-size:0.6875rem;letter-spacing:.14em;text-transform:uppercase;
+    color:#fff;background:rgba(0,0,0,0.2);border:none;
     padding:0.5rem 0.75rem;border-radius:2px;
-    position:absolute;top:1.25rem;left:1.25rem;z-index:10;
-    transition:color .2s,background .2s;text-decoration:none;
+    position:absolute;top:50%;left:1.5rem;transform:translateY(-50%);z-index:20;
+    transition:background .2s;text-decoration:none;
+    white-space:nowrap;
   }
-  @media(min-width:1024px){.back{position:fixed;top:clamp(1.25rem,3vw,2.25rem);left:clamp(1.25rem,4vw,3.5rem);z-index:200;}}
+  .back:hover{background:rgba(255,255,255,0.25);}
   .back .arrow{display:inline-block;transition:transform .2s;}
   .back:hover .arrow{transform:translateX(-3px);}
 
   /* ── Hero ── */
-  .hero{color:#fff;position:relative;padding:2rem 0 0;overflow:hidden;background:var(--blue);}
-  .hero::before{display:none;}
-  .hero-inner{position:relative;z-index:2;padding:8.125rem var(--sp-lg) var(--sp-2xl);}
-  .hero-eyebrow{display:flex;align-items:center;gap:0.875rem;color:var(--lime);font-family:"JetBrains Mono";font-size:0.75rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;}
-  .hero-eyebrow::before{content:"";display:block;width:2.375rem;height:0.125rem;background:var(--lime);}
-  .hero h1{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:clamp(2.5rem,6vw,5.25rem);line-height:1;letter-spacing:-0.04em;color:#fff;margin:1.375rem 0 1.75rem;}
-  .hero-lead{font-family:"JetBrains Mono",monospace;font-size:1.25rem;line-height:1.7;color:#dde0f5;max-width:42.5rem;border-left:1px dashed #6b78ff;padding-left:1.5rem;}
+  .hero{background:var(--ergo-dark);color:#fff;padding:3rem 0 4rem;position:relative;}
+  .hero-inner{padding:0 var(--sp-lg);max-width:67.5rem;margin:0 auto;}
+  .hero-eyebrow{display:flex;align-items:center;gap:0.875rem;color:#fff;font-family:"IBM Plex Mono",monospace;font-size:0.75rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;margin-bottom:1.25rem;}
+  .hero-eyebrow::before{content:"";display:block;width:2.375rem;height:0.125rem;background:#fff;}
   .coming-soon-badge{
-    display:block;width:100%;
-    font-family:"JetBrains Mono",monospace;font-size:0.6875rem;letter-spacing:.14em;text-transform:uppercase;
-    background:var(--lime);color:var(--ink);font-weight:600;
-    padding:0.4rem 0 0.4rem 1rem;
-    margin-bottom:1.5rem;position:relative;z-index:2;
+    display:inline-block;
+    font-family:"IBM Plex Mono",monospace;font-size:0.6875rem;letter-spacing:.14em;text-transform:uppercase;
+    background:var(--ergo-red);color:#fff;font-weight:600;
+    padding:0.3rem 0.75rem;border-radius:2px;
+    margin-bottom:1.5rem;
   }
-  .hero-meta{background:var(--lime);color:var(--ink);margin-top:var(--sp-xl);position:relative;z-index:2;}
-  .hero-meta-inner{display:grid;grid-template-columns:auto auto auto auto;justify-content:space-between;gap:var(--sp-md);padding:var(--sp-sm) var(--sp-lg);max-width:67.5rem;margin:0 auto;}
-  .hero-meta-inner>div{font-family:"JetBrains Mono",monospace;}
-  .hero-meta-inner .k{font-size:0.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:0.25rem;}
-  .hero-meta-inner .v{font-size:0.8125rem;color:var(--ink);white-space:nowrap;}
+  /* Badge and eyebrow on same row */
+  .hero-top-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;}
+  .hero h1{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:clamp(2.5rem,6vw,4.5rem);line-height:1.05;letter-spacing:-0.03em;color:#fff;margin-bottom:2rem;}
+  .hero-lead{font-family:"IBM Plex Mono",monospace;font-size:1.125rem;line-height:2;color:rgba(255,255,255,0.7);border-left:1px dashed #FF1400;padding-left:1.5rem;}
 
-  /* ── Coming soon section ── */
-  .coming-body{padding:5rem 0 8rem;}
-  .coming-body h2{font-family:"Space Grotesk",sans-serif;color:var(--blue);font-weight:700;font-size:2.5rem;letter-spacing:-0.01em;line-height:1.3;margin-bottom:1.5rem;}
-  .coming-thumb{margin-top:3rem;max-width:32rem;border-radius:0.375rem;overflow:hidden;border:1px solid var(--line);}
+  /* ── Screenshots ── */
+  .screens{background:var(--ergo-dark);padding:0 0 4rem;}
+  .screens-inner{max-width:67.5rem;margin:0 auto;padding:0 2rem;}
+  .screens-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+  .screens-grid img{width:100%;height:auto;border-radius:0.25rem;border:1px solid rgba(255,255,255,0.1);}
 
-  /* ── Placeholder ── */
-  .ph{background:repeating-linear-gradient(135deg,#e6e6e6 0 0.375rem,#f1f1f1 0.375rem 0.75rem);color:#5a5a5a;display:flex;align-items:center;justify-content:center;font-family:"JetBrains Mono",monospace;font-size:0.6875rem;letter-spacing:.02em;text-align:center;padding:1rem;border-radius:0.375rem;border:1px solid #e2e2e2;min-height:5rem;position:relative;}
+  /* ── Body ── */
+  .coming-body{padding:5rem 0 6rem;}
+  .coming-body p{max-width:42.5rem;}
+
+  /* ── CTA Button ── */
+  .btn-outline{
+    display:inline-flex;align-items:center;gap:0.5rem;
+    font-family:"IBM Plex Mono",monospace;font-size:0.8125rem;font-weight:500;
+    letter-spacing:.08em;text-transform:uppercase;
+    color:var(--ergo-red);border:1px solid var(--ergo-red);
+    padding:0.875rem 1.5rem;border-radius:0;
+    cursor:pointer;background:none;
+    transition:background .2s,color .2s;
+    margin-top:2rem;
+    text-decoration:none;
+  }
+  .btn-outline:hover{background:var(--ergo-red);color:#fff;}
+
+  /* ── Copy confirmation bar ── */
+  .copy-confirm{
+    display:none;
+    align-items:center;justify-content:space-between;gap:1rem;
+    background:var(--bg-soft);color:var(--ink);
+    font-family:"IBM Plex Mono",monospace;font-size:0.8125rem;letter-spacing:.02em;
+    padding:0.875rem 1.25rem;border-radius:0.25rem;
+    border-left:3px solid var(--line);
+    margin-top:1rem;
+  }
+  .copy-confirm.is-visible{display:flex;}
+  .copy-confirm a{color:var(--ink);text-decoration:underline;white-space:nowrap;}
 
   /* ── Footer ── */
   .pagefoot{padding:var(--sp-md) 0 var(--sp-2xl);border-top:1px solid var(--line);}
-  .pagefoot-inner{max-width:67.5rem;margin:0 auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;}
+  .pagefoot-inner{max-width:67.5rem;margin:0 auto;padding:0 2rem;display:flex;justify-content:flex-end;align-items:flex-end;gap:2rem;}
   .next-card{width:12.5rem;}
-  .pagefoot .next-line{margin-top:0.625rem;font-family:"JetBrains Mono";font-size:0.6875rem;color:#111;text-align:right;}
-  .pagefoot .next-line a{color:var(--blue);}
+  .pagefoot .next-line{margin-top:0.625rem;font-family:"IBM Plex Mono";font-size:0.6875rem;color:#111;text-align:right;}
+  .pagefoot .next-line a{color:var(--blue);text-decoration:underline;}
 
-  @media(max-width:600px){
-    .hero-meta-inner{grid-template-columns:1fr 1fr;}
-    .hero h1{font-size:2.25rem;}
-  }
 
-  /* ── Dyslexia toggle ── */
-  .font-toggle{
+
+  /* ── Reading preferences panel ── */
+  #pref-trigger{
     position:fixed;bottom:1.5rem;right:1.5rem;z-index:900;
-    display:flex;align-items:center;gap:0.5rem;
+    display:flex;align-items:center;gap:0.625rem;
     background:#fff;border:0.0625rem solid var(--line);
-    padding:0.5rem 0.875rem;border-radius:6.25rem;
+    padding:0.625rem 1rem;border-radius:6.25rem;
     box-shadow:0 0.125rem 0.75rem rgba(0,0,0,.08);
     cursor:pointer;
-    font-family:"JetBrains Mono",monospace;font-size:0.625rem;
+    font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:0.6875rem;
     letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
-    transition:box-shadow .2s, color .2s;
-    user-select:none;
+    transition:box-shadow .2s,color .2s;
+    user-select:none;border:none;
   }
-  .font-toggle:hover{box-shadow:0 0.25rem 1.125rem rgba(0,0,0,.13);color:var(--ink);}
-  .font-toggle__dot{
-    width:0.5rem;height:0.5rem;border-radius:50%;
-    background:var(--line);
-    transition:background .2s;
+  #pref-trigger:hover{box-shadow:0 0.25rem 1.125rem rgba(0,0,0,.13);color:var(--ink);}
+  #pref-trigger__dot{
     flex-shrink:0;
+    color:var(--blue);
+    transition:color .2s;
+    width:20px;
+    height:12px;
+    display:block;
+    overflow:visible;
   }
-  body.dyslexic-font .font-toggle__dot{background:var(--blue);}
-  body.dyslexic-font .font-toggle{color:var(--blue);}
+  #pref-panel{
+    position:fixed;bottom:4rem;right:1.5rem;z-index:900;
+    background:#fff;border:1px solid var(--line);border-radius:8px;
+    padding:1.5rem 1.75rem;width:400px;max-width:calc(100vw - 3rem);
+    box-shadow:0 4px 20px rgba(0,0,0,.12);
+    font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:0.875rem;color:var(--ink);
+    display:none;
+  }
+  #pref-panel.is-open{display:block;}
+  .pref-panel__title{
+    font-size:0.8125rem;letter-spacing:.10em;text-transform:uppercase;
+    color:var(--ink);margin-bottom:1rem;font-weight:600;line-height:1.4;
+  }
+  .pref-panel__title span{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:0.8125rem;display:block;color:var(--muted);
+    letter-spacing:.01em;text-transform:none;margin-top:0.375rem;line-height:1.5;
+    font-weight:400;
+  }
+  .pref-row{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0.875rem 0;border-top:1px solid var(--line);cursor:pointer;
+    gap:1rem;
+  }
+  .pref-row:first-of-type{border-top:none;}
+  .pref-row__label{font-size:0.875rem;color:var(--ink);line-height:1.3;}
+  .pref-toggle-wrap{display:flex;align-items:center;gap:0.5rem;flex-shrink:0;}
+  .pref-toggle-wrap .pref-state{
+    font-size:0.625rem;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--muted);min-width:1.5rem;text-align:left;
+  }
+  .pref-toggle-wrap .pref-state.is-on{color:var(--blue);}
+  .pref-toggle{
+    flex-shrink:0;width:2rem;height:1.125rem;border-radius:100px;
+    background:var(--line);position:relative;
+    transition:background .2s;border:none;cursor:pointer;padding:0;
+  }
+  .pref-toggle::after{
+    content:"";position:absolute;top:2px;left:2px;
+    width:calc(1.125rem - 4px);height:calc(1.125rem - 4px);
+    border-radius:50%;background:#fff;
+    transition:transform .2s;
+  }
+  .pref-toggle.is-on{background:var(--blue);}
+  .pref-toggle.is-on::after{transform:translateX(calc(2rem - 1.125rem));}
+  body.dyslexic-font #pref-panel,
+  body.dyslexic-font #pref-trigger,
+  body.dyslexic-font .pref-panel__title,
+  body.dyslexic-font .pref-panel__title span,
+  body.dyslexic-font .pref-row__label,
+  body.dyslexic-font .pref-state {
+    font-family: "OpenDyslexic", sans-serif;
+    letter-spacing: 0.05em;
+    line-height: 1.8;
+  }
+  body.dyslexic-font #pref-trigger{color:var(--blue);}
+  body.dyslexic-font #pref-trigger__dot{color:var(--blue);}
 
+  /* When dyslexic font is active — body text */
   body.dyslexic-font,
   body.dyslexic-font p,
   body.dyslexic-font .hero-lead,
+  body.dyslexic-font .figcap,
+  body.dyslexic-font .eyebrow,
   body.dyslexic-font .hero-eyebrow,
   body.dyslexic-font .hero-meta-inner div,
+  body.dyslexic-font .quote-body,
+  body.dyslexic-font .quote-by,
   body.dyslexic-font .back,
+  body.dyslexic-font .btn,
+  body.dyslexic-font .charts-tab-btn,
+  body.dyslexic-font .pagefoot .back-link,
   body.dyslexic-font .pagefoot .next-line,
   body.dyslexic-font .hero-meta-inner .k,
   body.dyslexic-font .hero-meta-inner .v,
-  body.dyslexic-font .coming-soon-badge{
+  body.dyslexic-font .carried p,
+  body.dyslexic-font .lime p{
     font-family:"OpenDyslexic",sans-serif;
     letter-spacing:0.05em;
     line-height:2;
     word-spacing:0.2em;
   }
+
+  /* Headings — OpenDyslexic Bold */
   body.dyslexic-font h1,
-  body.dyslexic-font h2{
+  body.dyslexic-font h2,
+  body.dyslexic-font h3,
+  body.dyslexic-font .section-heading,
+  body.dyslexic-font .grad h2,
+  body.dyslexic-font .carried h2,
+  body.dyslexic-font .lime h3{
     font-family:"OpenDyslexic",sans-serif;
     font-weight:700;
     letter-spacing:0.02em;
     line-height:1.5;
     word-spacing:0.1em;
   }
+
+  /* Font sizes */
   body.dyslexic-font p{ font-size:1.125rem; }
-  body.dyslexic-font .hero-lead{ font-size:1.375rem; line-height:1.9; }
-  body.dyslexic-font h1{ font-size:clamp(2rem,5vw,4rem); }
-  body.dyslexic-font .wrap-narrow{ max-width:51.25rem; }
+  body.dyslexic-font .hero-lead{max-width:40rem; font-size:1.375rem; line-height:1.9; }
+  body.dyslexic-font h1{ font-size:4rem; }
+  body.dyslexic-font .section-heading{ font-size:2rem; }
+  body.dyslexic-font .lime h3{ font-size:1.625rem; }
+
+  /* Paragraph spacing — more air between blocks */
   body.dyslexic-font p + p{ margin-top:1.6em; }
 
+  /* Line length — target ~65 chars */
+  body.dyslexic-font .wrap-narrow{ max-width:51.25rem; }
 
-  /* ===== HERO STAGGER ===== */
-  @media (prefers-reduced-motion: no-preference) {
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(1rem); }
-      to   { opacity: 1; transform: translateY(0); }
+  /* More section padding */
+  body.dyslexic-font .section{ padding:4.5rem 0; }
+  body.dyslexic-font .lime{ padding:5rem 0; }
+
+  /* Quote body */
+  body.dyslexic-font .quote-body{ font-size:1.4375rem; line-height:2.1; }
+
+  /* Figcap — slightly larger so it's readable */
+  body.dyslexic-font .figcap{ font-size:0.8125rem; line-height:1.7; letter-spacing:0.04em; flex-direction:column; gap:0.125rem; }
+  body.dyslexic-font .figcap .num{ font-size:0.75rem; white-space:normal; }
+
+  /* Hero meta bar — redistribute evenly, don't shrink font */
+  body.dyslexic-font .hero-meta-inner{
+    grid-template-columns: auto auto auto auto;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+  body.dyslexic-font .hero-meta-inner .k{ font-size:0.6875rem; letter-spacing:.12em; }
+  body.dyslexic-font .hero-meta-inner .v{ font-size:0.875rem; line-height:1.5; word-spacing:0.05em; white-space:nowrap; }
+
+  /* Left border on hero lead — more padding */
+  body.dyslexic-font .hero-lead{max-width:40rem; padding-left:2rem; }
+
+  /* Lime grid — stack earlier for narrower reading column */
+  @media (min-width:601px){
+    body.dyslexic-font .lime-grid{ grid-template-columns:16.25rem 1fr; gap:3rem; }
+  }
+
+  
+  /* ===== SPACING SYSTEM ===== */
+
+  /* Sections — fluid continuous scroll */
+  .section,
+  .overview,
+  .grad,
+  .carried,
+  .lime,
+  .quote { padding: 8rem 0; }
+
+  /* Consecutive sections — don't double up */
+  .section + .section,
+  .section + .grad,
+  .section + .carried,
+  .section + .lime,
+  .section + .quote,
+  .grad + .section,
+  .carried + .section,
+  .lime + .section,
+  .quote + .section,
+  .overview + .section { padding-top: 0; }
+  /* After figcap — section already has margin from figcap */
+  .figs-rowcap + .section,
+  .figs-rowcap-880 + .section,
+  .figs-rowcap-1080 + .section { padding-top: 0; }
+
+  /* Paragraphs */
+  p + p { margin-top: 1.75em; }
+
+  /* Section heading */
+  .section-heading { margin-bottom: 1.5rem; }
+
+  /* Paragraph → caption (now above image): medium */
+  .wrap-narrow + .figs-rowcap,
+  .wrap-narrow + .figs-rowcap-880,
+  .wrap-narrow + .figs-rowcap-1080 { margin-top: 4rem; }
+
+  /* Paragraph → image (when no caption above): medium */
+  .wrap-narrow + .arts-big,
+  .wrap-narrow + .arts-2,
+  .wrap-narrow + .partner-grid,
+  .wrap-narrow + .charts-tabs,
+  .wrap-narrow + .board,
+  .wrap-narrow + .palettes-grid,
+  .wrap-narrow + .ui-sims { margin-top: 4rem; }
+
+  /* Image → next paragraph: medium */
+  .arts-big + .wrap-narrow,
+  .arts-2 + .wrap-narrow,
+  .figs-rowcap + .wrap-narrow,
+  .figs-rowcap-880 + .wrap-narrow,
+  .figs-rowcap-1080 + .wrap-narrow,
+  .partner-grid + .wrap-narrow,
+  .charts-tabs + .wrap-narrow,
+  .board + .wrap-narrow,
+  .palettes-grid + .wrap-narrow,
+  .ui-sims + .wrap-narrow,
+  .figs-rowcap + .section,
+  .figs-rowcap-880 + .section,
+  .figs-rowcap-1080 + .section,
+  .board + .section { margin-top: 2rem; padding-top: 0; }
+
+  /* Consecutive wrap-narrow blocks — no extra gap */
+  .wrap-narrow + .wrap-narrow { margin-top: 0; }
+
+
+  /* ===== READING PREFERENCES PANEL ===== */
+  /* Progress bar */
+  #reading-progress {
+    position: fixed;
+    top: env(safe-area-inset-top, 0px);
+    left: 0;
+    width: 0%;
+    height: 6px;
+    background: var(--ergo-red);
+    z-index: 100;
+    pointer-events: none;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    transition: width 0.1s linear, background 0.2s ease;
+  }
+  #reading-progress.on-blue {
+    background: #fff;
+  }
+
+
+  /* ── Reading ruler ── */
+  #reading-ruler {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    height: 1.85rem;
+    background: rgba(255, 220, 0, 0.25);
+    border-top: 1px solid rgba(255, 200, 0, 0.35);
+    border-bottom: 1px solid rgba(255, 200, 0, 0.35);
+    pointer-events: none;
+    z-index: 9998;
+    transform: translateY(-50%);
+    display: none;
+    transition: top 0.05s linear;
+  }
+  body.ruler-on #reading-ruler { display: block; }
+  body.ruler-on.ruler-on-lime #reading-ruler {
+    background: rgba(31, 45, 255, 0.12);
+    border-top: 1px solid rgba(31, 45, 255, 0.2);
+    border-bottom: 1px solid rgba(31, 45, 255, 0.2);
+  }
+
+
+  /* ── Focus mode ── */
+  body.focus-on [data-screen-label] {
+    transition: opacity 0.4s ease;
+  }
+  body.focus-on [data-screen-label].focus-dim {
+    opacity: 0.15;
+  }
+
+
+  /* ── Simplified view ── */
+  body.simplified *:not(#reading-ruler):not(#reading-progress):not(img):not(video):not(iframe) {
+    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease !important;
+  }
+  /* Hero */
+  body.simplified .hero { background: var(--bg-soft) !important; }
+  body.simplified .hero::before { display: none !important; }
+  body.simplified .hero h1 { color: var(--blue) !important; }
+  body.simplified .hero-lead { color: var(--ink-soft) !important; border-left-color: var(--blue) !important; }
+  body.simplified .hero-eyebrow { color: var(--blue) !important; }
+  body.simplified .hero-eyebrow::before { background: var(--blue) !important; }
+  body.simplified .hero-caption { color: var(--muted) !important; }
+  body.simplified .hero__img { opacity: 0 !important; }
+  body.simplified img:not(.hero__img):not(.video-player__gif) { background: #fff !important; }
+  body.simplified .grad-grid > div:first-child { background: #fff !important; padding: 1rem; border-radius: 0.375rem; }
+  /* Hero meta bar */
+  body.simplified .hero-meta { background: #e8e8e4 !important; border-top: 1px solid var(--line) !important; }
+  body.simplified .hero-meta-inner .k { color: var(--muted) !important; }
+  body.simplified .hero-meta-inner .v { color: var(--ink) !important; }
+  /* Lime section */
+  body.simplified .lime { background: #fff !important; border-top: 1px solid var(--line) !important; border-bottom: 1px solid var(--line) !important; }
+  /* Carried section */
+  body.simplified .carried { background: #fff !important; width: auto !important; position: static !important; left: auto !important; margin-left: 0 !important; margin-right: 0 !important; }
+  body.simplified .carried h2 { color: var(--blue) !important; }
+  body.simplified .carried p { color: var(--ink-soft) !important; }
+  body.simplified .carried p span { color: var(--ink-soft) !important; }
+  /* Back button stays blue in simplified mode */
+  body.simplified .back { background: var(--blue) !important; color: #fff !important; }
+  /* Progress bar stays blue in simplified mode */
+  body.simplified #reading-progress { background: var(--blue) !important; }
+
+
+  /* DARK MODE — PARKED
+
+  END DARK MODE */
+
+  /* ── Reading preferences panel ── */
+  #pref-trigger{
+    position:fixed;bottom:1.5rem;right:1.5rem;z-index:900;
+    display:flex;align-items:center;gap:0.625rem;
+    background:#fff;border:0.0625rem solid var(--line);
+    padding:0.625rem 1rem;border-radius:6.25rem;
+    box-shadow:0 0.125rem 0.75rem rgba(0,0,0,.08);
+    cursor:pointer;
+    font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:0.6875rem;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+    transition:box-shadow .2s,color .2s;
+    user-select:none;border:none;
+  }
+  #pref-trigger:hover{box-shadow:0 0.25rem 1.125rem rgba(0,0,0,.13);color:var(--ink);}
+  #pref-trigger__dot{
+    flex-shrink:0;
+    color:var(--blue);
+    transition:color .2s;
+    width:20px;
+    height:12px;
+    display:block;
+    overflow:visible;
+  }
+  #pref-panel{
+    position:fixed;bottom:4rem;right:1.5rem;z-index:900;
+    background:#fff;border:1px solid var(--line);border-radius:8px;
+    padding:1.5rem 1.75rem;width:400px;max-width:calc(100vw - 3rem);
+    box-shadow:0 4px 20px rgba(0,0,0,.12);
+    font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:0.875rem;color:var(--ink);
+    display:none;
+  }
+  #pref-panel.is-open{display:block;}
+  .pref-panel__title{
+    font-size:0.8125rem;letter-spacing:.10em;text-transform:uppercase;
+    color:var(--ink);margin-bottom:1rem;font-weight:600;line-height:1.4;
+  }
+  .pref-panel__title span{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:0.8125rem;display:block;color:var(--muted);
+    letter-spacing:.01em;text-transform:none;margin-top:0.375rem;line-height:1.5;
+    font-weight:400;
+  }
+  .pref-row{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0.875rem 0;border-top:1px solid var(--line);cursor:pointer;
+    gap:1rem;
+  }
+  .pref-row:first-of-type{border-top:none;}
+  .pref-row__label{font-size:0.875rem;color:var(--ink);line-height:1.3;}
+  .pref-toggle-wrap{display:flex;align-items:center;gap:0.5rem;flex-shrink:0;}
+  .pref-toggle-wrap .pref-state{
+    font-size:0.625rem;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--muted);min-width:1.5rem;text-align:left;
+  }
+  .pref-toggle-wrap .pref-state.is-on{color:var(--blue);}
+  .pref-toggle{
+    flex-shrink:0;width:2rem;height:1.125rem;border-radius:100px;
+    background:var(--line);position:relative;
+    transition:background .2s;border:none;cursor:pointer;padding:0;
+  }
+  .pref-toggle::after{
+    content:"";position:absolute;top:2px;left:2px;
+    width:calc(1.125rem - 4px);height:calc(1.125rem - 4px);
+    border-radius:50%;background:#fff;
+    transition:transform .2s;
+  }
+  .pref-toggle.is-on{background:var(--blue);}
+  .pref-toggle.is-on::after{transform:translateX(calc(2rem - 1.125rem));}
+  body.dyslexic-font #pref-panel,
+  body.dyslexic-font #pref-trigger,
+  body.dyslexic-font .pref-panel__title,
+  body.dyslexic-font .pref-panel__title span,
+  body.dyslexic-font .pref-row__label,
+  body.dyslexic-font .pref-state {
+    font-family: "OpenDyslexic", sans-serif;
+    letter-spacing: 0.05em;
+    line-height: 1.8;
+  }
+  body.dyslexic-font #pref-trigger{color:var(--blue);}
+  body.dyslexic-font #pref-trigger__dot{color:var(--blue);}
+
+  /* When dyslexic font is active — body text */
+  body.dyslexic-font,
+  body.dyslexic-font p,
+  body.dyslexic-font .hero-lead,
+  body.dyslexic-font .figcap,
+  body.dyslexic-font .eyebrow,
+  body.dyslexic-font .hero-eyebrow,
+  body.dyslexic-font .hero-meta-inner div,
+  body.dyslexic-font .quote-body,
+  body.dyslexic-font .quote-by,
+  body.dyslexic-font .back,
+  body.dyslexic-font .btn,
+  body.dyslexic-font .charts-tab-btn,
+  body.dyslexic-font .pagefoot .back-link,
+  body.dyslexic-font .pagefoot .next-line,
+  body.dyslexic-font .hero-meta-inner .k,
+  body.dyslexic-font .hero-meta-inner .v,
+  body.dyslexic-font .carried p,
+  body.dyslexic-font .lime p{
+    font-family:"OpenDyslexic",sans-serif;
+    letter-spacing:0.05em;
+    line-height:2;
+    word-spacing:0.2em;
+  }
+
+  /* Headings — OpenDyslexic Bold */
+  body.dyslexic-font h1,
+  body.dyslexic-font h2,
+  body.dyslexic-font h3,
+  body.dyslexic-font .section-heading,
+  body.dyslexic-font .grad h2,
+  body.dyslexic-font .carried h2,
+  body.dyslexic-font .lime h3{
+    font-family:"OpenDyslexic",sans-serif;
+    font-weight:700;
+    letter-spacing:0.02em;
+    line-height:1.5;
+    word-spacing:0.1em;
+  }
+
+  /* Font sizes */
+  body.dyslexic-font p{ font-size:1.125rem; }
+  body.dyslexic-font .hero-lead{max-width:40rem; font-size:1.375rem; line-height:1.9; }
+  body.dyslexic-font h1{ font-size:4rem; }
+  body.dyslexic-font .section-heading{ font-size:2rem; }
+  body.dyslexic-font .lime h3{ font-size:1.625rem; }
+
+  /* Paragraph spacing — more air between blocks */
+  body.dyslexic-font p + p{ margin-top:1.6em; }
+
+  /* Line length — target ~65 chars */
+  body.dyslexic-font .wrap-narrow{ max-width:51.25rem; }
+
+  /* More section padding */
+  body.dyslexic-font .section{ padding:4.5rem 0; }
+  body.dyslexic-font .lime{ padding:5rem 0; }
+
+  /* Quote body */
+  body.dyslexic-font .quote-body{ font-size:1.4375rem; line-height:2.1; }
+
+  /* Figcap — slightly larger so it's readable */
+  body.dyslexic-font .figcap{ font-size:0.8125rem; line-height:1.7; letter-spacing:0.04em; flex-direction:column; gap:0.125rem; }
+  body.dyslexic-font .figcap .num{ font-size:0.75rem; white-space:normal; }
+
+  /* Hero meta bar — redistribute evenly, don't shrink font */
+  body.dyslexic-font .hero-meta-inner{
+    grid-template-columns: auto auto auto auto;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+  body.dyslexic-font .hero-meta-inner .k{ font-size:0.6875rem; letter-spacing:.12em; }
+  body.dyslexic-font .hero-meta-inner .v{ font-size:0.875rem; line-height:1.5; word-spacing:0.05em; white-space:nowrap; }
+
+  /* Left border on hero lead — more padding */
+  body.dyslexic-font .hero-lead{max-width:40rem; padding-left:2rem; }
+
+  /* Lime grid — stack earlier for narrower reading column */
+  @media (min-width:601px){
+    body.dyslexic-font .lime-grid{ grid-template-columns:16.25rem 1fr; gap:3rem; }
+  }
+
+  
+  /* ===== SPACING SYSTEM ===== */
+
+  /* Sections — fluid continuous scroll */
+  .section,
+  .overview,
+  .grad,
+  .carried,
+  .lime,
+  .quote { padding: 8rem 0; }
+
+  /* Consecutive sections — don't double up */
+  .section + .section,
+  .section + .grad,
+  .section + .carried,
+  .section + .lime,
+  .section + .quote,
+  .grad + .section,
+  .carried + .section,
+  .lime + .section,
+  .quote + .section,
+  .overview + .section { padding-top: 0; }
+  /* After figcap — section already has margin from figcap */
+  .figs-rowcap + .section,
+  .figs-rowcap-880 + .section,
+  .figs-rowcap-1080 + .section { padding-top: 0; }
+
+  /* Paragraphs */
+  p + p { margin-top: 1.75em; }
+
+  /* Section heading */
+  .section-heading { margin-bottom: 1.5rem; }
+
+  /* Paragraph → caption (now above image): medium */
+  .wrap-narrow + .figs-rowcap,
+  .wrap-narrow + .figs-rowcap-880,
+  .wrap-narrow + .figs-rowcap-1080 { margin-top: 4rem; }
+
+  /* Paragraph → image (when no caption above): medium */
+  .wrap-narrow + .arts-big,
+  .wrap-narrow + .arts-2,
+  .wrap-narrow + .partner-grid,
+  .wrap-narrow + .charts-tabs,
+  .wrap-narrow + .board,
+  .wrap-narrow + .palettes-grid,
+  .wrap-narrow + .ui-sims { margin-top: 4rem; }
+
+  /* Image → next paragraph: medium */
+  .arts-big + .wrap-narrow,
+  .arts-2 + .wrap-narrow,
+  .figs-rowcap + .wrap-narrow,
+  .figs-rowcap-880 + .wrap-narrow,
+  .figs-rowcap-1080 + .wrap-narrow,
+  .partner-grid + .wrap-narrow,
+  .charts-tabs + .wrap-narrow,
+  .board + .wrap-narrow,
+  .palettes-grid + .wrap-narrow,
+  .ui-sims + .wrap-narrow,
+  .figs-rowcap + .section,
+  .figs-rowcap-880 + .section,
+  .figs-rowcap-1080 + .section,
+  .board + .section { margin-top: 2rem; padding-top: 0; }
+
+  /* Consecutive wrap-narrow blocks — no extra gap */
+  .wrap-narrow + .wrap-narrow { margin-top: 0; }
+
+
+  /* ===== READING PREFERENCES PANEL ===== */
+  /* Progress bar */
+  #reading-progress {
+    position: fixed;
+    top: env(safe-area-inset-top, 0px);
+    left: 0;
+    width: 0%;
+    height: 6px;
+    background: var(--ergo-red);
+    z-index: 100;
+    pointer-events: none;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    transition: width 0.1s linear, background 0.2s ease;
+  }
+  #reading-progress.on-blue {
+    background: #fff;
+  }
+
+
+  /* ── Reading ruler ── */
+  #reading-ruler {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    height: 1.85rem;
+    background: rgba(255, 220, 0, 0.25);
+    border-top: 1px solid rgba(255, 200, 0, 0.35);
+    border-bottom: 1px solid rgba(255, 200, 0, 0.35);
+    pointer-events: none;
+    z-index: 9998;
+    transform: translateY(-50%);
+    display: none;
+    transition: top 0.05s linear;
+  }
+  body.ruler-on #reading-ruler { display: block; }
+  body.ruler-on.ruler-on-lime #reading-ruler {
+    background: rgba(31, 45, 255, 0.12);
+    border-top: 1px solid rgba(31, 45, 255, 0.2);
+    border-bottom: 1px solid rgba(31, 45, 255, 0.2);
+  }
+
+
+  /* ── Focus mode ── */
+  body.focus-on [data-screen-label] {
+    transition: opacity 0.4s ease;
+  }
+  body.focus-on [data-screen-label].focus-dim {
+    opacity: 0.15;
+  }
+
+
+  /* ── Simplified view ── */
+  body.simplified *:not(#reading-ruler):not(#reading-progress):not(img):not(video):not(iframe) {
+    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease !important;
+  }
+  /* Hero */
+  body.simplified .hero { background: var(--bg-soft) !important; }
+  body.simplified .hero::before { display: none !important; }
+  body.simplified .hero h1 { color: var(--blue) !important; }
+  body.simplified .hero-lead { color: var(--ink-soft) !important; border-left-color: var(--blue) !important; }
+  body.simplified .hero-eyebrow { color: var(--blue) !important; }
+  body.simplified .hero-eyebrow::before { background: var(--blue) !important; }
+  body.simplified .hero-caption { color: var(--muted) !important; }
+  body.simplified .hero__img { opacity: 0 !important; }
+  body.simplified img:not(.hero__img):not(.video-player__gif) { background: #fff !important; }
+  body.simplified .grad-grid > div:first-child { background: #fff !important; padding: 1rem; border-radius: 0.375rem; }
+  /* Hero meta bar */
+  body.simplified .hero-meta { background: #e8e8e4 !important; border-top: 1px solid var(--line) !important; }
+  body.simplified .hero-meta-inner .k { color: var(--muted) !important; }
+  body.simplified .hero-meta-inner .v { color: var(--ink) !important; }
+  /* Lime section */
+  body.simplified .lime { background: #fff !important; border-top: 1px solid var(--line) !important; border-bottom: 1px solid var(--line) !important; }
+  /* Carried section */
+  body.simplified .carried { background: #fff !important; width: auto !important; position: static !important; left: auto !important; margin-left: 0 !important; margin-right: 0 !important; }
+  body.simplified .carried h2 { color: var(--blue) !important; }
+  body.simplified .carried p { color: var(--ink-soft) !important; }
+  body.simplified .carried p span { color: var(--ink-soft) !important; }
+  /* Back button stays blue in simplified mode */
+  body.simplified .back { background: var(--blue) !important; color: #fff !important; }
+  /* Progress bar stays blue in simplified mode */
+  body.simplified #reading-progress { background: var(--blue) !important; }
+
+
+  /* ── Dark mode ── */
+  body.dark-mode { background: #111111 !important; color: #e8e8e8 !important; --lime: #b8e000; }
+
+  /* All section backgrounds → dark */
+  body.dark-mode .section,
+  body.dark-mode .overview,
+  body.dark-mode .lime,
+  body.dark-mode .grad,
+  body.dark-mode .carried,
+  body.dark-mode .quote,
+  body.dark-mode .pagefoot { background: #111111 !important; }
+  body.dark-mode .lime h2,
+  body.dark-mode .lime h3 { color: var(--lime) !important; }
+  body.dark-mode .lime p { color: #f0f0f0 !important; }
+
+  /* All text → light */
+  body.dark-mode h1,
+  body.dark-mode h2,
+  body.dark-mode h3,
+  body.dark-mode h4 { color: var(--lime) !important; }
+  body.dark-mode p { color: #f0f0f0 !important; }
+  body.dark-mode p span { color: #f0f0f0 !important; }
+
+  /* Blue accents → lime */
+  body.dark-mode .eyebrow { color: var(--lime) !important; }
+  body.dark-mode .hero-eyebrow { color: #f0f0f0 !important; }
+  body.dark-mode .hero-eyebrow::before { background: #f0f0f0 !important; }
+  body.dark-mode .figcap .num { color: var(--lime) !important; }
+  body.dark-mode .figcap .desc { color: #f0f0f0 !important; }
+  body.dark-mode .quote-mark,
+  body.dark-mode .quote-mark svg,
+  body.dark-mode .quote-mark svg path { color: var(--lime) !important; fill: var(--lime) !important; }
+  body.dark-mode .quote-body { color: #f0f0f0 !important; }
+  body.dark-mode .quote-by { color: #9a9aaa !important; }
+  body.dark-mode .quote-by b { color: #f0f0f0 !important; }
+  body.dark-mode .quote-by span { color: var(--lime) !important; }
+  body.dark-mode a { color: var(--lime) !important; }
+  body.dark-mode .next-line a { color: var(--lime) !important; }
+  body.dark-mode .grad h2 { color: var(--lime) !important; }
+  body.dark-mode .grad .btn { border-color: var(--lime) !important; color: var(--lime) !important; }
+  body.dark-mode .grad .btn:hover { background: var(--lime) !important; color: var(--ink) !important; }
+  body.dark-mode .section-heading { color: var(--lime) !important; }
+
+  /* Hero */
+  body.dark-mode .hero { background: #111111 !important; }
+  body.dark-mode .hero::before {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.97) 100%) !important;
+  }
+  body.dark-mode .hero h1 { color: var(--lime) !important; }
+  body.dark-mode .hero-lead { color: #c8c8d8 !important; border-color: #555 !important; }
+  body.dark-mode .hero-meta { background: var(--lime) !important; }
+  body.dark-mode .hero-meta-inner .k { color: rgba(0,0,0,0.7) !important; }
+  body.dark-mode .hero-meta-inner .v { color: var(--ink) !important; }
+
+  /* Borders */
+  body.dark-mode .pagefoot { border-color: #333 !important; }
+  body.dark-mode .pref-row { border-color: #333 !important; }
+
+  /* Back button → lime */
+  body.dark-mode .back { background: var(--lime) !important; color: var(--ink) !important; }
+  body.dark-mode .back.on-blue { background: var(--lime) !important; color: var(--ink) !important; }
+
+  /* Progress bar */
+  body.dark-mode #reading-progress { background: var(--lime) !important; }
+  body.dark-mode #reading-progress.on-blue { background: #111111 !important; }
+
+  /* Panel */
+  body.dark-mode #pref-panel { background: #1a1a1a !important; border-color: #333 !important; color: #e8e8e8 !important; }
+  body.dark-mode #pref-trigger { background: #1a1a1a !important; border: 1.5px solid #e8e8e8 !important; color: #f0f0f0 !important; }
+  body.dark-mode #pref-trigger__dot { background: var(--lime) !important; }
+  body.dark-mode .pref-panel__title { color: #f0f0f0 !important; }
+  body.dark-mode .pref-panel__title span { color: #9a9aaa !important; }
+  body.dark-mode .pref-row__label { color: #e8e8e8 !important; }
+  body.dark-mode .pref-toggle { background: #333 !important; }
+  body.dark-mode .pref-toggle.is-on { background: var(--lime) !important; }
+  body.dark-mode .pref-toggle.is-on::after { background: var(--ink) !important; }
+  body.dark-mode .pref-state.is-on { color: var(--lime) !important; }
+  body.dark-mode #reading-ruler {
+    background: rgba(184, 224, 0, 0.2) !important;
+    border-top: 1px solid rgba(184, 224, 0, 0.5) !important;
+    border-bottom: 1px solid rgba(184, 224, 0, 0.5) !important;
+    mix-blend-mode: screen !important;
+  }
+  body.dark-mode .pagefoot-inner { color: #9a9aaa !important; }
+  body.dark-mode.ruler-on-lime #reading-ruler {
+    background: rgba(0, 0, 0, 0.2) !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.4) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4) !important;
+    mix-blend-mode: normal !important;
+  }
+
+
+
+
+  @media (max-width: 900px) {
+    .grad-flex { flex-direction: column !important; gap: 2rem !important; }
+    .grad-flex > div { flex: none !important; width: 100% !important; max-width: 18.75rem !important; margin: 0 auto !important; }
+    /* Image wrappers — go wider on tablet */
+    [style*="max-width:70%"], [style*="max-width:75%"] {
+      max-width: 90% !important;
     }
-    .coming-soon-badge,
-    .hero-eyebrow,
-    .hero h1,
-    .hero-lead {
-      opacity: 0;
-      animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  @media (max-width: 600px) {
+    /* Hide back button on mobile */
+    .back { display: none !important; }
+    /* Hero meta */
+    .hero-meta-inner { padding: 1rem 1.25rem !important; gap: 1rem !important; }
+    .hero-meta-inner .v { font-size: 0.75rem !important; }
+    /* Bleed images — disable negative margins on mobile */
+    [style*="width:130%"], [style*="width:140%"] {
+      width: 100% !important;
+      margin-left: 0 !important;
     }
-    .coming-soon-badge { animation-delay: 0.00s; }
-    .hero-eyebrow      { animation-delay: 0.08s; }
-    .hero h1           { animation-delay: 0.22s; }
-    .hero-lead         { animation-delay: 0.42s; }
-    /* Meta bar stagger */
-    .hero-meta-inner > div {
-      opacity: 0;
-      animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    /* Bleed captions — reset alignment on mobile */
+    [data-figcap-label="MVP Feature Map"],
+    [data-figcap-label="WCAG Checks"],
+    [data-figcap-label="Colour-Vision Screens"] {
+      width: 100% !important;
+      margin-left: 0 !important;
     }
-    .hero-meta-inner > div:nth-child(1) { animation-delay: 0.66s; }
-    .hero-meta-inner > div:nth-child(2) { animation-delay: 0.74s; }
-    .hero-meta-inner > div:nth-child(3) { animation-delay: 0.82s; }
-    .hero-meta-inner > div:nth-child(4) { animation-delay: 0.90s; }
-    /* Coming body fade-up on scroll */
-    .coming-body { opacity: 0; }
-    .coming-body.is-visible {
-      animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    /* Image wrappers — go full width on mobile */
+    [style*="max-width:70%"], [style*="max-width:75%"], [style*="max-width:80%"] {
+      max-width: 100% !important;
     }
-    /* Thumb fade-up */
-    .coming-thumb { opacity: 0; }
-    .coming-thumb.is-visible {
-      animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards;
+    /* Data charts wrapper */
+    [style*="max-width:80%;margin:2.25rem auto"] {
+      max-width: 100% !important;
     }
   }
 
+
+  @media (max-width: 600px) {
+    /* Trigger — full width bar at bottom */
+    #pref-trigger {
+      bottom: 0 !important;
+      right: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      border-radius: 0 !important;
+      border-left: none !important;
+      border-right: none !important;
+      border-bottom: none !important;
+      border-top: 1px solid var(--line) !important;
+      justify-content: center !important;
+      padding: 0.875rem 1.25rem !important;
+      font-size: 0.6875rem !important;
+      box-shadow: 0 -2px 12px rgba(0,0,0,.06) !important;
+    }
+    /* Panel — full width bottom sheet */
+    #pref-panel {
+      bottom: 0 !important;
+      right: 0 !important;
+      left: 0 !important;
+      top: auto !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      border-radius: 1rem 1rem 0 0 !important;
+      border-left: none !important;
+      border-right: none !important;
+      border-bottom: none !important;
+      padding: 1.25rem 1.5rem 2rem !important;
+      max-height: 80vh !important;
+      overflow-y: auto !important;
+    }
+    /* Handle bar */
+    #pref-panel::before {
+      content: "";
+      display: block;
+      width: 2.5rem;
+      height: 0.25rem;
+      background: var(--line);
+      border-radius: 100px;
+      margin: 0 auto 1rem;
+    }
+  }
+
+
+  /* Safari progress bar fix — cover strip */
+  #reading-progress-cover {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: calc(env(safe-area-inset-top, 0px) + 6px);
+    background: var(--bg);
+    z-index: 99;
+    pointer-events: none;
+  }
+
+
+
+  @media (max-width: 600px) {
+    /* Reading ruler — hide on phone, not meaningful without cursor */
+    body.ruler-on #reading-ruler { display: none !important; }
+    #row-ruler { opacity: 0.4; pointer-events: none; }
+    /* Focus mode — disable on phone as sections are full width */
+    body.focus-on [data-screen-label].focus-dim { opacity: 1 !important; }
+    #row-focus { opacity: 0.4; pointer-events: none; }
+  }
+
+
+  @media (min-width: 601px) {
+    #row-ruler .pref-row__label span,
+    #row-focus .pref-row__label span { display: none !important; }
+  }
+
+
+  @media (max-width: 600px) {
+    /* Panel — full width bottom sheet */
+    #pref-panel {
+      bottom: 0 !important;
+      right: 0 !important;
+      left: 0 !important;
+      top: auto !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      border-radius: 1rem 1rem 0 0 !important;
+      border-left: none !important;
+      border-right: none !important;
+      border-bottom: none !important;
+      padding: 1.25rem 1.5rem 2rem !important;
+      max-height: 80vh !important;
+      overflow-y: auto !important;
+    }
+  }
+
+
+
+  @media (max-width: 600px) {
+    /* All section content wrappers */
+    .wrap, .wrap-narrow {
+      padding-left: 1.25rem !important;
+      padding-right: 1.25rem !important;
+    }
+    /* Image class containers */
+    .arts-big, .arts-2, .ov-grid, .dense-charts,
+    .figs-rowcap, .figs-rowcap-880, .figs-rowcap-1080,
+    .board { 
+      padding-left: 1.25rem !important;
+      padding-right: 1.25rem !important;
+    }
+
+    /* Hero, meta, lime, grad etc */
+    .hero-inner, .hero-meta-inner, .lime-grid,
+    .quote-inner, .pagefoot-inner {
+      padding-left: 1.25rem !important;
+      padding-right: 1.25rem !important;
+    }
+  }
+
+
+  @media (max-width: 600px) {
+    .quote-inner {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 1.5rem !important;
+    }
+    .quote-photo-wrap {
+      order: 1 !important;
+      grid-row: auto !important;
+      grid-column: auto !important;
+    }
+    .quote-photo-wrap img {
+      width: 100% !important;
+      height: 20rem !important;
+      object-fit: cover !important;
+      object-position: center top !important;
+    }
+    .quote-mark {
+      order: 2 !important;
+      grid-column: auto !important;
+      grid-row: auto !important;
+      margin-bottom: -0.5rem !important;
+    }
+    .quote-body {
+      order: 3 !important;
+      grid-column: auto !important;
+      grid-row: auto !important;
+      font-size: 1rem !important;
+      font-family: "IBM Plex Mono", ui-monospace, monospace !important;
+    }
+    .quote-by {
+      margin-top: 1rem !important;
+    }
+  }
+
+
+  @media (max-width: 600px) {
+    .img-wrap {
+      max-width: 100% !important;
+      padding-left: 1.25rem !important;
+      padding-right: 1.25rem !important;
+    }
+    .img-wrap--bleed {
+      width: 100% !important;
+      margin-left: 0 !important;
+      padding-left: 1.25rem !important;
+      padding-right: 1.25rem !important;
+    }
+    /* img-wrap--bleed images themselves should be full width with no padding */
+    .img-wrap--bleed img,
+    .img-wrap--bleed .a11y-tiles,
+    .img-wrap--bleed .palettes-grid {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+    /* Captions with inline padding:0 — add mobile padding */
+    [data-figcap-label],
+    .figs-rowcap-1080 {
+      padding-left: 1.25rem !important;
+      padding-right: 1.25rem !important;
+    }
+    }
+    /* But not bleed captions that are inside img-wrap */
+    .img-wrap [data-figcap-label] {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+  }
+
+
+  @media (max-width: 600px) {
+    /* Reduce section vertical padding on mobile */
+    .section, .overview, .grad, .lime, .quote {
+      padding-top: 3rem !important;
+      padding-bottom: 3rem !important;
+    }
+    /* Carried forward — more specific to beat attribute selector */
+    section.carried {
+      padding-top: 2.15rem !important;
+      padding-bottom: 2.15rem !important;
+    }
+    /* Sections with explicit inline padding — reduce proportionally */
+    [style*="padding-top:8rem"] { padding-top: 3rem !important; }
+    [style*="padding-bottom:8rem"] { padding-bottom: 3rem !important; }
+    [style*="padding-top:5rem"] { padding-top: 2.5rem !important; }
+    [style*="padding-bottom:4.5rem"] { padding-bottom: 2.5rem !important; }
+    [style*="padding-top:3rem"] { padding-top: 2rem !important; }
+    [style*="padding-top:1rem"] { padding-top: 1rem !important; }
+  }
+
+
+  @media (max-width: 600px) {
+    [data-carried] {
+      padding-top: 2.15rem !important;
+      padding-bottom: 2.15rem !important;
+    }
+  }
+
+
+  @media (max-width: 600px) {
+    .hero-meta-inner .v {
+      -webkit-user-select: none;
+      user-select: none;
+      pointer-events: none;
+    }
+  }
+
+
+  @media (max-width: 600px) {
+    .img-wrap--bleed .ui-sims,
+    .ui-sims {
+      padding: 1rem !important;
+    }
+    /* ui-sims container itself needs margin on mobile */
+    .img-wrap--bleed:has(.ui-sims) {
+      margin-left: 1.25rem !important;
+      margin-right: 1.25rem !important;
+      width: auto !important;
+    }
+  }
+  /* Keep ui-sims grey bg in simplified view */
+  body.simplified .ui-sims {
+    background: rgb(244,244,241) !important;
+  }
+
+
+  @media (max-width: 600px) {
+    .figs-rowcap, .figs-rowcap-880, .figs-rowcap-1080 {
+      padding-left: 1.25rem !important;
+      padding-right: 1.25rem !important;
+    }
+
+  }
+
+
+  @media (max-width: 600px) {
+    /* All CSS-classed containers that use padding:0 2rem */
+    .lime-grid, .logos-inner, .charts-row, .charts-row2, .charts-row3,
+    .a11y-tiles, .quote-inner, .board {
+      padding-left: 1.25rem !important;
+      padding-right: 1.25rem !important;
+    }
+    /* Inline-padded wrap divs — target by inline style */
+    [style*="padding:0 2rem"] {
+      padding-left: 1.25rem !important;
+      padding-right: 1.25rem !important;
+    }
+  }
+
+
+  @media (max-width: 600px) {
+    /* ── UNIVERSAL MOBILE PADDING ── 
+       Single source of truth: everything gets 1.25rem except 
+       images/media inside padded wrappers */
+    
+    /* All content containers */
+    .wrap, .wrap-narrow,
+    .lime-grid, .logos-inner, .ov-grid,
+    .arts-big, .arts-2, .dense-charts,
+    .board, .charts-row, .charts-row2, .charts-row3,
+    .a11y-tiles, .quote-inner,
+    .figs-rowcap, .figs-rowcap-880, .figs-rowcap-1080,
+    .hero-inner, .hero-meta-inner {
+      padding-left: 1.25rem !important;
+      padding-right: 1.25rem !important;
+    }
+    
+    /* Image wrappers */
+    .img-wrap {
+      max-width: 100% !important;
+      padding-left: 1.25rem !important;
+      padding-right: 1.25rem !important;
+    }
+    .img-wrap--bleed {
+      width: 100% !important;
+      margin-left: 0 !important;
+      padding-left: 1.25rem !important;
+      padding-right: 1.25rem !important;
+    }
+    
+    /* Images and media INSIDE padded wrappers — fill the container */
+    .img-wrap img, .img-wrap iframe,
+    .img-wrap .arts-big, .img-wrap .arts-2,
+    .img-wrap .a11y-tiles, .img-wrap .palettes-grid,
+    .img-wrap .figs-rowcap, .img-wrap .figs-rowcap-880, .img-wrap .figs-rowcap-1080 {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+    
+    /* Inline style overrides */
+    [style*="padding:0 2rem"] {
+      padding-left: 1.25rem !important;
+      padding-right: 1.25rem !important;
+    }
+    [style*="width:130%"], [style*="width:140%"] {
+      width: 100% !important;
+      margin-left: 0 !important;
+    }
+  }
+
+
+  @media (max-width: 600px) {
+    /* Force arts-big to respect container padding */
+    .arts-big, .arts-2 {
+      max-width: 100% !important;
+      overflow: hidden !important;
+    }
+    /* img-wrap: the padding is on the wrapper, arts-big fills it */
+    .img-wrap .arts-big,
+    .img-wrap .arts-2 {
+      padding: 0 !important;
+      max-width: 100% !important;
+    }
+  }
+
+
+
+
+
+
+
+
+  @media (max-width: 600px) {
+    .board {
+      max-width: 100% !important;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+  }
+
+
+
+  /* ── Animations ── */
+  @media(prefers-reduced-motion:no-preference){
+    @keyframes fadeUp{from{opacity:0;transform:translateY(1rem);}to{opacity:1;transform:translateY(0);}}
+    .hero-eyebrow,.hero h1,.hero-lead,.coming-soon-badge{opacity:0;animation:fadeUp 0.9s cubic-bezier(0.22,1,0.36,1) forwards;}
+    .coming-soon-badge{animation-delay:0s;}
+    .hero-eyebrow{animation-delay:0.08s;}
+    .hero h1{animation-delay:0.22s;}
+    .hero-lead{animation-delay:0.42s;}
+    .hero-meta-inner>div{opacity:0;animation:fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) forwards;}
+    .hero-meta-inner>div:nth-child(1){animation-delay:0.66s;}
+    .hero-meta-inner>div:nth-child(2){animation-delay:0.74s;}
+    .hero-meta-inner>div:nth-child(3){animation-delay:0.82s;}
+    .hero-meta-inner>div:nth-child(4){animation-delay:0.9s;}
+    .coming-body{opacity:0;}
+    .coming-body.is-visible{animation:fadeUp 0.9s cubic-bezier(0.22,1,0.36,1) forwards;}
+  }
+
+  @media(max-width:900px){
+    .hero-meta-inner{grid-template-columns:1fr 1fr;}
+    .screens-grid{grid-template-columns:1fr;}
+  }
+  @media(max-width:600px){
+    .hero h1{font-size:2.25rem;}
+    .hero-meta-inner{grid-template-columns:1fr 1fr;padding:1rem 1.25rem;}
+    .meta-back-row{padding:0.75rem 1.25rem;}
+    .hero-inner,.screens-inner,.wrap-narrow{padding-left:1.25rem;padding-right:1.25rem;}
+    .hero-top-row{flex-direction:column;align-items:flex-start;gap:0.75rem;}
+  }
 </style>
 </head>
 <body>
 
 <a class="skip-link" href="#main-content">Skip to main content</a>
-<button class="font-toggle" id="font-toggle" aria-pressed="false" title="Toggle dyslexia-friendly version">
-  <span class="font-toggle__dot" aria-hidden="true"></span>
-  <span class="font-toggle__label" style="font-family:'OpenDyslexic',sans-serif;">Dyslexia-friendly version</span>
+
+<div id="reading-progress-cover" aria-hidden="true"></div>
+<div id="reading-progress" role="progressbar" aria-label="Reading progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+<div id="reading-ruler" aria-hidden="true"></div>
+<!-- Reading preferences panel -->
+<button id="pref-trigger" aria-expanded="false" aria-controls="pref-panel">
+  <svg id="pref-trigger__dot" aria-hidden="true" width="20" height="12" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="4.5" cy="7" r="3.5" stroke="currentColor" stroke-width="1.5"/>
+  <circle cx="15.5" cy="7" r="3.5" stroke="currentColor" stroke-width="1.5"/>
+  <path d="M8 7h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M1 7C1 5 2 1 4.5 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M19 7C19 5 18 1 15.5 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+</svg>
+  Reading preferences
 </button>
+<div id="pref-panel" role="dialog" aria-label="Neurodiverse and reading preferences" aria-modal="true">
+  <div class="pref-panel__title">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+      <div>
+        READING PREFERENCES
+        <span>Neurodiverse-friendly adjustments for reading, focus and cognitive comfort.</span>
+      </div>
+      <button id="pref-close" aria-label="Close reading preferences" style="background:none;border:none;cursor:pointer;font-size:1rem;color:var(--muted);padding:0;line-height:1;flex-shrink:0;margin-left:1rem;">✕</button>
+    </div>
+  </div>
+
+  <!-- Group: Text and display -->
+  <div style="font-size:0.625rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:0.75rem 0 0.25rem;font-weight:600;">Text and display</div>
+  <div class="pref-row" id="row-dyslexic">
+    <span class="pref-row__label" style="font-family:'OpenDyslexic',sans-serif;">Dyslexic-friendly font</span>
+    <div class="pref-toggle-wrap">
+      <button class="pref-toggle" id="toggle-dyslexic" aria-pressed="false" aria-label="Toggle dyslexic font"></button>
+      <span class="pref-state" id="state-dyslexic">OFF</span>
+    </div>
+  </div>
+  <div class="pref-row" id="row-simplified">
+    <span class="pref-row__label">Simplified view</span>
+    <div class="pref-toggle-wrap">
+      <button class="pref-toggle" id="toggle-simplified" aria-pressed="false" aria-label="Toggle simplified view"></button>
+      <span class="pref-state" id="state-simplified">OFF</span>
+    </div>
+  </div>
+
+  <!-- Group: Concentration aids -->
+  <div style="font-size:0.625rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:1.25rem 0 0.25rem;font-weight:600;">Concentration aids</div>
+  <div class="pref-row" id="row-progress">
+    <span class="pref-row__label">Reading progress bar</span>
+    <div class="pref-toggle-wrap">
+      <button class="pref-toggle is-on" id="toggle-progress" aria-pressed="true" aria-label="Toggle reading progress bar"></button>
+      <span class="pref-state is-on" id="state-progress">ON</span>
+    </div>
+  </div>
+  <div class="pref-row" id="row-ruler">
+    <span class="pref-row__label">Reading ruler <span style="font-size:0.625rem;color:var(--muted);display:block;margin-top:0.125rem;">Desktop only</span></span>
+    <div class="pref-toggle-wrap">
+      <button class="pref-toggle" id="toggle-ruler" aria-pressed="false" aria-label="Toggle reading ruler"></button>
+      <span class="pref-state" id="state-ruler">OFF</span>
+    </div>
+  </div>
+  <div class="pref-row" id="row-focus">
+    <span class="pref-row__label">Focus mode <span style="font-size:0.625rem;color:var(--muted);display:block;margin-top:0.125rem;">Desktop only</span></span>
+    <div class="pref-toggle-wrap">
+      <button class="pref-toggle" id="toggle-focus" aria-pressed="false" aria-label="Toggle focus mode"></button>
+      <span class="pref-state" id="state-focus">OFF</span>
+    </div>
+  </div>
+</div>
+
+<!-- META BAR (top) -->
+<div class="hero-meta" role="region" aria-label="Case study metadata">
+  <a class="back" href="../../index.html"><span class="arrow" aria-hidden="true">←</span> Back</a>
+  <div class="hero-meta-inner">
+    <div><div class="k">Type</div><div class="v">Enterprise digital transformation, B2B, B2B2C</div></div>
+    <div><div class="k">Role</div><div class="v">UX Lead</div></div>
+    <div><div class="k">Duration</div><div class="v">2018–2020</div></div>
+    <div><div class="k">Organisation</div><div class="v">ERGO Digital IT</div></div>
+  </div>
+</div>
 
 <!-- HERO -->
 <header class="hero">
-  <a class="back" href="../../index.html">
-    <span class="arrow" aria-hidden="true">←</span> Back
-  </a>
-  <div class="wrap hero-inner">
-    <div class="coming-soon-badge">Coming soon</div>
-    <div class="hero-eyebrow">Case study</div>
-    <h1>Replacing EASY, ERGO's nationwide legacy system for insurance agents</h1>
-    <p class="hero-lead">Two years. Three organisations. A legacy system used by ERGO's tied agents that had defined how German insurance was sold for decades. ERGO NEO was a full enterprise digital transformation — proof-of-concept and MVP streams running in parallel, three insurance products of increasing complexity, and design infrastructure intended to outlast the project itself.</p>
-  </div>
-  <div class="hero-meta">
-    <div class="hero-meta-inner">
-      <div><div class="k" style="color:var(--blue);">Type</div><div class="v">Enterprise digital transformation</div></div>
-      <div><div class="k" style="color:var(--blue);">Role</div><div class="v">UX Lead (team of 5)</div></div>
-      <div><div class="k" style="color:var(--blue);">Duration</div><div class="v">2018 — 2020</div></div>
-      <div><div class="k" style="color:var(--blue);">Organisation</div><div class="v">ERGO Digital IT</div></div>
+  <div class="hero-inner">
+    <div class="hero-top-row">
+      <div class="hero-eyebrow">Case study</div>
+      <div class="coming-soon-badge">Coming soon</div>
     </div>
+    <h1>ERGO Digital Transformation</h1>
+    <p class="hero-lead">Replacing EASY, ERGO's nationwide system for insurance agents. Two years. Three organisations. A legacy system used by ERGO's insurance agents that had defined how German insurance was sold for decades. ERGO NEO was a full enterprise digital transformation: PoC and MVP streams running in parallel, three insurance products of increasing complexity, and design infrastructure intended to outlast the project itself.</p>
   </div>
 </header>
 
+<!-- SCREENSHOTS -->
+<section class="screens" aria-label="Product screenshots">
+  <div class="screens-inner">
+    <div class="screens-grid">
+      <img src="images/ergo-screen-1.webp" alt="ERGO NEO insurance agent interface — screen 1">
+      <img src="images/ergo-screen-2.webp" alt="ERGO NEO insurance agent interface — screen 2">
+      <img src="images/ergo-screen-3.webp" alt="ERGO NEO insurance agent interface — screen 3">
+    </div>
+  </div>
+</section>
+
+<!-- BODY -->
 <main id="main-content">
   <div class="coming-body">
     <div class="wrap-narrow">
-      <h2>Full case study coming soon</h2>
-      <p>This case study is currently being written up. It will cover the full two-year programme — from discovery and design principles through to shipped MVP, usability testing, and production rollout across three insurance products.</p>
+      <p>This case study is currently being written up. If, in the meantime, you need more info about the programme, reach out. I would be happy to share more about the full two-year programme from discovery and design principles through to shipped MVP, usability testing, and production rollout across three insurance products.</p>
+      <button class="btn-outline" id="copy-email-btn" aria-label="Copy email address">
+        Request more info →
+      </button>
+      <div class="copy-confirm" id="copy-confirm" role="status" aria-live="polite">
+        <span>Email address myrto@notallbad.com has been copied.</span>
+        <a href="mailto:myrto@notallbad.com">Open email app →</a>
+      </div>
     </div>
   </div>
 </main>
@@ -218,43 +1389,258 @@
 <!-- FOOTER -->
 <footer class="pagefoot">
   <div class="pagefoot-inner">
-    <div style="flex:1;"></div>
     <div class="next-card">
       <img src="../tabiya/images/hero.webp" alt="Tabiya Compass case study thumbnail." style="width:100%;height:auto;display:block;border-radius:0.25rem;">
       <div class="next-line" style="margin-top:0.75rem;">
-        <a href="../tabiya/" style="text-decoration:underline;">Tabiya Compass →</a>
+        <a href="../tabiya/">Tabiya Compass →</a>
       </div>
     </div>
   </div>
 </footer>
 
-
 <script>
   (function () {
-    const fontToggle = document.getElementById('font-toggle');
-    const PREF_KEY = 'tabiya-dyslexic-font';
-    if (localStorage.getItem(PREF_KEY) === 'on') {
-      document.body.classList.add('dyslexic-font');
-      fontToggle.setAttribute('aria-pressed', 'true');
+    const PREF_DYS      = 'tabiya-dyslexic-font';
+    const PREF_PROG     = 'tabiya-progress-bar';
+    const PREF_VERSION  = 'tabiya-prefs-v2';
+
+    // Reset stale prefs
+    if (!localStorage.getItem(PREF_VERSION)) {
+      localStorage.removeItem('tabiya-reading-ruler');
+      localStorage.setItem(PREF_VERSION, '1');
     }
-    fontToggle.addEventListener('click', () => {
-      const isOn = document.body.classList.toggle('dyslexic-font');
-      fontToggle.setAttribute('aria-pressed', isOn ? 'true' : 'false');
-      localStorage.setItem(PREF_KEY, isOn ? 'on' : 'off');
+
+    // ── Progress bar ──
+    const progressBar = document.getElementById('reading-progress');
+    const progressBlueSections = document.querySelectorAll('.hero-meta, .hero');
+    const toggleProg  = document.getElementById('toggle-progress');
+    const stateProg   = document.getElementById('state-progress');
+
+    function setProgState(isOn) {
+      toggleProg.classList.toggle('is-on', isOn);
+      toggleProg.setAttribute('aria-pressed', isOn ? 'true' : 'false');
+      stateProg.textContent = isOn ? 'ON' : 'OFF';
+      stateProg.classList.toggle('is-on', isOn);
+      progressBar.style.display = isOn ? 'block' : 'none';
+    }
+
+    function updateProgress() {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progressBar.style.width = progress + '%';
+      progressBar.setAttribute('aria-valuenow', Math.round(progress));
+      let onBlue = false;
+      progressBlueSections.forEach(sec => {
+        const rect = sec.getBoundingClientRect();
+        if (rect.top <= 6 && rect.bottom >= 0) onBlue = true;
+      });
+      progressBar.classList.toggle('on-blue', onBlue);
+    }
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+
+    // ── Reading ruler ──
+    const ruler = document.getElementById('reading-ruler');
+    const toggleRuler = document.getElementById('toggle-ruler');
+    const stateRuler  = document.getElementById('state-ruler');
+    const PREF_RULER  = 'tabiya-reading-ruler';
+    const rulerLimeSections = document.querySelectorAll('.hero-meta');
+    let rulerPending = false;
+
+    function setRulerState(isOn) {
+      if (isOn) { rulerPending = true; document.body.classList.remove('ruler-on'); }
+      else { rulerPending = false; document.body.classList.remove('ruler-on'); }
+      toggleRuler.classList.toggle('is-on', isOn);
+      toggleRuler.setAttribute('aria-pressed', isOn ? 'true' : 'false');
+      stateRuler.textContent = isOn ? 'ON' : 'OFF';
+      stateRuler.classList.toggle('is-on', isOn);
+    }
+
+    function positionRulerAtFirstVisibleText() {
+      const els = Array.from(document.querySelectorAll('p, h1, h2, h3, .hero-lead'));
+      for (const el of els) {
+        const rect = el.getBoundingClientRect();
+        if (rect.top >= 0 && rect.top < window.innerHeight * 0.5) {
+          const lh = parseFloat(getComputedStyle(el).lineHeight) / 2;
+          ruler.style.top = (rect.top + lh) + 'px';
+          break;
+        }
+      }
+    }
+
+    function activateRulerIfPending() {
+      if (rulerPending) { document.body.classList.add('ruler-on'); rulerPending = false; positionRulerAtFirstVisibleText(); }
+    }
+
+    setRulerState(localStorage.getItem(PREF_RULER) === 'on');
+    if (localStorage.getItem(PREF_RULER) === 'on') { document.body.classList.add('ruler-on'); rulerPending = false; }
+
+    function updateRulerPosition(clientY) {
+      if (!document.body.classList.contains('ruler-on')) return;
+      ruler.style.top = clientY + 'px';
+      let onLime = false;
+      rulerLimeSections.forEach(sec => {
+        const rect = sec.getBoundingClientRect();
+        if (clientY >= rect.top && clientY <= rect.bottom) onLime = true;
+      });
+      document.body.classList.toggle('ruler-on-lime', onLime);
+    }
+    document.addEventListener('mousemove', e => updateRulerPosition(e.clientY));
+    document.addEventListener('touchmove', e => { if (e.touches.length > 0) updateRulerPosition(e.touches[0].clientY); }, { passive: true });
+    document.addEventListener('touchstart', e => { if (e.touches.length > 0) updateRulerPosition(e.touches[0].clientY); }, { passive: true });
+
+    toggleRuler.addEventListener('click', e => {
+      e.stopPropagation();
+      const isOn = !toggleRuler.classList.contains('is-on');
+      setRulerState(isOn);
+      localStorage.setItem(PREF_RULER, isOn ? 'on' : 'off');
     });
 
-    // Coming body + thumb fade-up on scroll
+    // ── Focus mode ──
+    const toggleFocus = document.getElementById('toggle-focus');
+    const stateFocus  = document.getElementById('state-focus');
+    const PREF_FOCUS  = 'tabiya-focus-mode';
+    const allSections = Array.from(document.querySelectorAll('[data-section]'));
+
+    function setFocusState(isOn) {
+      document.body.classList.toggle('focus-on', isOn);
+      toggleFocus.classList.toggle('is-on', isOn);
+      toggleFocus.setAttribute('aria-pressed', isOn ? 'true' : 'false');
+      stateFocus.textContent = isOn ? 'ON' : 'OFF';
+      stateFocus.classList.toggle('is-on', isOn);
+      if (!isOn) allSections.forEach(s => s.classList.remove('focus-dim'));
+    }
+
+    setFocusState(localStorage.getItem(PREF_FOCUS) === 'on');
+
+    toggleFocus.addEventListener('click', e => {
+      e.stopPropagation();
+      const isOn = !toggleFocus.classList.contains('is-on');
+      setFocusState(isOn);
+      localStorage.setItem(PREF_FOCUS, isOn ? 'on' : 'off');
+    });
+
+    // ── Simplified view ──
+    const toggleSimplified = document.getElementById('toggle-simplified');
+    const stateSimplified  = document.getElementById('state-simplified');
+    const PREF_SIMPLIFIED  = 'tabiya-simplified-view';
+
+    function setSimplifiedState(isOn, init = false) {
+      document.body.classList.toggle('simplified', isOn);
+      toggleSimplified.classList.toggle('is-on', isOn);
+      toggleSimplified.setAttribute('aria-pressed', isOn ? 'true' : 'false');
+      stateSimplified.textContent = isOn ? 'ON' : 'OFF';
+      stateSimplified.classList.toggle('is-on', isOn);
+    }
+
+    setSimplifiedState(localStorage.getItem(PREF_SIMPLIFIED) === 'on', true);
+
+    toggleSimplified.addEventListener('click', e => {
+      e.stopPropagation();
+      const isOn = !toggleSimplified.classList.contains('is-on');
+      setSimplifiedState(isOn);
+      localStorage.setItem(PREF_SIMPLIFIED, isOn ? 'on' : 'off');
+    });
+
+    // ── Dyslexic font ──
+    const toggleDys = document.getElementById('toggle-dyslexic');
+    const stateDys  = document.getElementById('state-dyslexic');
+
+    function setDysState(isOn) {
+      document.body.classList.toggle('dyslexic-font', isOn);
+      toggleDys.classList.toggle('is-on', isOn);
+      toggleDys.setAttribute('aria-pressed', isOn ? 'true' : 'false');
+      stateDys.textContent = isOn ? 'ON' : 'OFF';
+      stateDys.classList.toggle('is-on', isOn);
+    }
+
+    setDysState(localStorage.getItem(PREF_DYS) === 'on');
+
+    toggleDys.addEventListener('click', e => {
+      e.stopPropagation();
+      const isOn = !toggleDys.classList.contains('is-on');
+      setDysState(isOn);
+      localStorage.setItem(PREF_DYS, isOn ? 'on' : 'off');
+    });
+
+    // ── Panel open/close ──
+    const prefTrigger = document.getElementById('pref-trigger');
+    const prefPanel   = document.getElementById('pref-panel');
+
+    function openPanel() {
+      prefPanel.classList.add('is-open');
+      prefTrigger.setAttribute('aria-expanded', 'true');
+      document.getElementById('pref-close').focus();
+    }
+    function closePanel() {
+      prefPanel.classList.remove('is-open');
+      prefTrigger.setAttribute('aria-expanded', 'false');
+      prefTrigger.focus();
+      activateRulerIfPending();
+    }
+
+    setProgState(localStorage.getItem(PREF_PROG) !== 'off');
+
+    prefTrigger.addEventListener('click', () => prefPanel.classList.contains('is-open') ? closePanel() : openPanel());
+    document.getElementById('pref-close').addEventListener('click', closePanel);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && prefPanel.classList.contains('is-open')) closePanel(); });
+    document.addEventListener('click', e => { if (!prefPanel.contains(e.target) && e.target !== prefTrigger) closePanel(); });
+
+    prefPanel.addEventListener('keydown', e => {
+      if (e.key !== 'Tab') return;
+      const focusable = Array.from(prefPanel.querySelectorAll('button'));
+      const first = focusable[0], last = focusable[focusable.length - 1];
+      if (e.shiftKey) { if (document.activeElement === first) { e.preventDefault(); last.focus(); } }
+      else { if (document.activeElement === last) { e.preventDefault(); first.focus(); } }
+    });
+
+    toggleProg.addEventListener('click', e => {
+      e.stopPropagation();
+      const isOn = !toggleProg.classList.contains('is-on');
+      setProgState(isOn);
+      localStorage.setItem(PREF_PROG, isOn ? 'on' : 'off');
+    });
+
+    // ── Row click handlers ──
+    document.getElementById('row-dyslexic').addEventListener('click', e => {
+      if (e.target === toggleDys || e.target.closest('button') === toggleDys) return;
+      toggleDys.click();
+    });
+    document.getElementById('row-simplified').addEventListener('click', e => {
+      if (e.target === toggleSimplified || e.target.closest('button') === toggleSimplified) return;
+      toggleSimplified.click();
+    });
+    document.getElementById('row-progress').addEventListener('click', e => {
+      if (e.target === toggleProg || e.target.closest('button') === toggleProg) return;
+      toggleProg.click();
+    });
+    document.getElementById('row-ruler').addEventListener('click', e => {
+      if (e.target === toggleRuler || e.target.closest('button') === toggleRuler) return;
+      toggleRuler.click();
+    });
+    document.getElementById('row-focus').addEventListener('click', e => {
+      if (e.target === toggleFocus || e.target.closest('button') === toggleFocus) return;
+      toggleFocus.click();
+    });
+
+    // ── Copy email ──
+    const copyBtn = document.getElementById('copy-email-btn');
+    const copyConfirm = document.getElementById('copy-confirm');
+    if (copyBtn) {
+      copyBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText('myrto@notallbad.com').finally(() => {
+          copyConfirm.classList.add('is-visible');
+          copyBtn.style.display = 'none';
+        });
+      });
+    }
+
+    // ── Scroll animations ──
     if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
-      const targets = document.querySelectorAll('.coming-body, .coming-thumb');
+      const targets = document.querySelectorAll('.coming-body');
       const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-visible');
-              observer.unobserve(entry.target);
-            }
-          });
-        },
+        entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); observer.unobserve(e.target); } }),
         { threshold: 0.15 }
       );
       targets.forEach(t => observer.observe(t));
