@@ -1,0 +1,786 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Add a study · Insights Hub</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F9FAFB;color:#111827;font-family:'Inter',ui-sans-serif,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#A3290F}a:hover{color:#7F1D0B}
+button{font:inherit;cursor:pointer}
+button:disabled{cursor:default;opacity:.45}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid #D9381E;outline-offset:2px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.fld{transition:border-color 150ms ease,box-shadow 150ms ease}
+.fld:focus{outline:none;border-color:#F3A58C !important;box-shadow:0 0 0 4px rgba(217,56,30,.12)}
+.fld::placeholder{color:#9CA3AF}
+.ghost{transition:background 120ms ease,border-color 120ms ease}
+.ghost:hover{background:#F3F4F6 !important}
+.primary{transition:background 120ms ease}
+.primary:hover{background:#C2301A !important}
+.opt{transition:border-color 120ms ease,background 120ms ease}
+.opt:hover{border-color:#F3A58C !important}
+.drop{transition:border-color 150ms ease,background 150ms ease}
+.fade-in{animation:fadeIn 360ms ease both}
+.rise{animation:rise 420ms cubic-bezier(.22,.8,.24,1) both}
+.spin{animation:spin 900ms linear infinite;transform-origin:50% 50%}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (max-width:760px){
+.hide-sm{display:none !important}
+.how-grid{grid-template-columns:minmax(0,1fr) !important}
+.two-col{grid-template-columns:minmax(0,1fr) !important}
+.opt-grid{grid-template-columns:minmax(0,1fr) !important}
+.page-pad{padding:24px 16px 48px !important}
+.h1{font-size:26px !important}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
+</style>
+</helmet>
+<div style="min-height: 100vh; background: #F9FAFB; color: #111827; font-family: 'Inter', ui-sans-serif, system-ui, sans-serif">
+
+<header style="min-height: 64px; box-sizing: border-box; padding: 10px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; background: #FFFFFF; border-bottom: 1px solid #E5E7EB">
+<div style="display: flex; align-items: center; gap: 10px; min-width: 0">
+<svg width="30" height="30" viewBox="4 4 16 16" fill="none" aria-hidden="true" style="flex: none"><path d="M18.5 12a6.5 6.5 0 1 1-6.5-6.5" stroke="#E8202A" stroke-width="2" stroke-linecap="round"></path><circle cx="12" cy="12" r="2.4" fill="#F59A23"></circle><circle cx="17.2" cy="6.8" r="1.6" fill="#F59A23"></circle></svg>
+<span style="font-size: 15px; font-weight: 600">Insights Hub</span>
+<span aria-hidden="true" style="width: 1px; height: 20px; background: #E5E7EB"></span>
+<span style="font-size: 15px; color: #4B5563">Add a study</span>
+</div>
+<div style="display: flex; align-items: center; gap: 10px">
+<sc-if value="{{notStart}}" hint-placeholder-val="{{false}}">
+<button type="button" class="ghost" onClick="{{startOver}}" style="min-height: 40px; padding: 0 14px; border: 1px solid #E5E7EB; border-radius: 10px; background: #FFFFFF; color: #111827; font-size: 14px; font-weight: 500">Start over</button>
+</sc-if>
+<span class="hide-sm" style="font-size: 12px; color: #6B7280; padding: 4px 10px; border: 1px solid #E5E7EB; border-radius: 999px; white-space: nowrap">Prototype: Fictional data</span>
+</div>
+</header>
+
+<main class="page-pad" style="max-width: 1080px; margin: 0 auto; padding: 32px 24px 64px; display: flex; flex-direction: column; gap: 28px">
+
+<ol aria-label="Progress" style="list-style: none; margin: 0; padding: 0; display: flex; align-items: center; gap: 12px; flex-wrap: wrap">
+<sc-for list="{{steps}}" as="st" hint-placeholder-count="3">
+<li aria-current="{{st.current}}" style="display: flex; align-items: center; gap: 12px">
+<sc-if value="{{st.showLine}}" hint-placeholder-val="{{false}}"><span aria-hidden="true" style="display: block; width: 40px; height: 2px; border-radius: 2px; background: {{st.lineBg}}"></span></sc-if>
+<span style="display: flex; align-items: center; gap: 8px">
+<span aria-hidden="true" style="display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; box-sizing: border-box; border-radius: 50%; border: 1.5px solid {{st.bd}}; background: {{st.bg}}; color: {{st.fg}}; font-size: 12px; font-weight: 600">
+<sc-if value="{{st.done}}" hint-placeholder-val="{{false}}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></sc-if>
+<sc-if value="{{st.notDone}}" hint-placeholder-val="{{true}}">{{st.n}}</sc-if>
+</span>
+<span style="font-size: 14px; font-weight: {{st.weight}}; color: {{st.labelFg}}">{{st.label}}</span>
+</span>
+</li>
+</sc-for>
+</ol>
+
+<!-- ============ START ============ -->
+<sc-if value="{{isStart}}" hint-placeholder-val="{{true}}">
+<div class="fade-in" style="display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; flex-direction: column; gap: 8px; max-width: 680px">
+<h1 class="h1" style="margin: 0; font-size: 32px; line-height: 1.2; font-weight: 600; letter-spacing: -0.02em">Add a study to Insights Hub</h1>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #4B5563">Share what your team learned, and what changed because of it. The next team with the same question will find it in search.</p>
+</div>
+
+<div class="drop" onDragOver="{{onDragOver}}" onDragLeave="{{onDragLeave}}" onDrop="{{onDrop}}" style="display: flex; flex-direction: column; align-items: center; gap: 14px; padding: 44px 24px; text-align: center; border: 2px dashed {{dropBd}}; border-radius: 16px; background: {{dropBg}}">
+<div aria-hidden="true" style="width: 52px; height: 52px; border-radius: 14px; background: #FDF0EB; color: #D9381E; display: flex; align-items: center; justify-content: center">
+<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4"></path><path d="m7 9 5-5 5 5"></path><path d="M5 20h14"></path></svg>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 17px; font-weight: 600">Drop your report here</span>
+<span style="font-size: 14px; color: #6B7280">PDF, PowerPoint or Word, up to 50 MB</span>
+</div>
+<input id="file-input" type="file" accept=".pdf,.ppt,.pptx,.doc,.docx" class="sr-only" tabindex="-1" aria-hidden="true" ref="{{setFileInput}}" onChange="{{onFile}}">
+<button type="button" class="primary" onClick="{{browse}}" style="min-height: 44px; padding: 0 20px; border: 0; border-radius: 10px; background: #D9381E; color: #FFFFFF; font-size: 15px; font-weight: 600">Browse files</button>
+<sc-if value="{{fileError}}" hint-placeholder-val="{{false}}">
+<p role="alert" style="margin: 0; font-size: 14px; color: #B42318">That file type isn't supported. Use a PDF, PowerPoint or Word file.</p>
+</sc-if>
+<p style="margin: 4px 0 0; font-size: 14px; color: #6B7280">No report at hand? <button type="button" onClick="{{useSample}}" style="min-height: 32px; padding: 0 4px; border: 0; background: transparent; color: #A3290F; font-size: 14px; font-weight: 600; text-decoration: underline; text-underline-offset: 3px">Use a sample report</button></p>
+</div>
+
+<div class="how-grid" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px">
+<div style="display: flex; gap: 12px; align-items: flex-start">
+<span aria-hidden="true" style="flex: none; width: 28px; height: 28px; border-radius: 8px; background: #FDF0EB; color: #A3290F; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center">1</span>
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 14px; font-weight: 600">We read it</span><span style="font-size: 14px; line-height: 1.5; color: #4B5563">Title, markets, method and key findings are pulled from your report.</span></div>
+</div>
+<div style="display: flex; gap: 12px; align-items: flex-start">
+<span aria-hidden="true" style="flex: none; width: 28px; height: 28px; border-radius: 8px; background: #FDF0EB; color: #A3290F; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center">2</span>
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 14px; font-weight: 600">You check it</span><span style="font-size: 14px; line-height: 1.5; color: #4B5563">Fix anything we got wrong and add what happened because of the study.</span></div>
+</div>
+<div style="display: flex; gap: 12px; align-items: flex-start">
+<span aria-hidden="true" style="flex: none; width: 28px; height: 28px; border-radius: 8px; background: #FDF0EB; color: #A3290F; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center">3</span>
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 14px; font-weight: 600">Others find it</span><span style="font-size: 14px; line-height: 1.5; color: #4B5563">It shows up in search answers for every team.</span></div>
+</div>
+</div>
+
+<section aria-labelledby="subs-heading" style="display: flex; flex-direction: column; gap: 12px">
+<h2 id="subs-heading" style="margin: 0; font-size: 16px; font-weight: 600">Your submissions</h2>
+<div style="border: 1px solid #E5E7EB; border-radius: 14px; background: #FFFFFF; overflow: hidden">
+<sc-for list="{{subs}}" as="sb" hint-placeholder-count="3">
+<div class="rise" style="display: flex; flex-direction: column; gap: 12px; padding: 16px 18px; border-top: {{sb.topBorder}}">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px">
+<div style="flex: 1 1 280px; min-width: 0; display: flex; flex-direction: column; gap: 2px">
+<span style="font-size: 15px; font-weight: 500">{{sb.title}}</span>
+<span style="font-size: 13px; color: #6B7280">{{sb.meta}}</span>
+</div>
+<span style="display: inline-flex; align-items: center; height: 26px; padding: 0 10px; border-radius: 999px; background: {{sb.pillBg}}; color: {{sb.pillFg}}; font-size: 12px; font-weight: 600; white-space: nowrap">{{sb.status}}</span>
+<sc-if value="{{sb.canAdd}}" hint-placeholder-val="{{false}}">
+<button type="button" class="ghost" onClick="{{sb.toggle}}" aria-expanded="{{sb.expanded}}" style="min-height: 36px; padding: 0 12px; border: 1px solid #E5E7EB; border-radius: 8px; background: #FFFFFF; color: #111827; font-size: 13px; font-weight: 500">{{sb.toggleText}}</button>
+</sc-if>
+</div>
+
+<sc-if value="{{sb.isOpen}}" hint-placeholder-val="{{false}}">
+<div class="fade-in" style="display: flex; flex-direction: column; gap: 12px; padding: 16px; border-radius: 12px; background: #F9FAFB; border: 1px solid #E5E7EB">
+<span id="{{sb.qId}}" style="font-size: 14px; font-weight: 600">What happened because of this study?</span>
+<div role="radiogroup" aria-labelledby="{{sb.qId}}" style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{sb.opts}}" as="o" hint-placeholder-count="3">
+<button type="button" role="radio" aria-checked="{{o.checked}}" class="opt" onClick="{{o.pick}}" style="min-height: 36px; padding: 0 12px; border-radius: 999px; border: 1px solid {{o.bd}}; background: {{o.bg}}; color: {{o.fg}}; font-size: 13px; font-weight: 500">{{o.label}}</button>
+</sc-for>
+</div>
+<label for="{{sb.tId}}" class="sr-only">Describe the outcome</label>
+<textarea id="{{sb.tId}}" class="fld" rows="2" value="{{sb.draftText}}" onChange="{{sb.onText}}" placeholder="For example: the offline mode moved up the roadmap." style="width: 100%; box-sizing: border-box; padding: 10px 12px; border: 1px solid #D1D5DB; border-radius: 10px; font: inherit; font-size: 14px; line-height: 1.5; color: #111827; background: #FFFFFF; resize: vertical"></textarea>
+<sc-if value="{{sb.err}}" hint-placeholder-val="{{false}}"><p role="alert" style="margin: 0; font-size: 13px; color: #B42318">{{sb.errText}}</p></sc-if>
+<div style="display: flex; gap: 8px">
+<button type="button" class="primary" onClick="{{sb.save}}" style="min-height: 40px; padding: 0 16px; border: 0; border-radius: 10px; background: #D9381E; color: #FFFFFF; font-size: 14px; font-weight: 600">Save outcome</button>
+<button type="button" class="ghost" onClick="{{sb.toggle}}" style="min-height: 40px; padding: 0 14px; border: 1px solid #E5E7EB; border-radius: 10px; background: #FFFFFF; color: #111827; font-size: 14px; font-weight: 500">Cancel</button>
+</div>
+</div>
+</sc-if>
+</div>
+</sc-for>
+</div>
+</section>
+</div>
+</sc-if>
+
+<!-- ============ READING ============ -->
+<sc-if value="{{isReading}}" hint-placeholder-val="{{false}}">
+<div class="fade-in" style="display: flex; justify-content: center; padding-top: 24px">
+<div role="status" aria-live="polite" style="width: 100%; max-width: 560px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px; padding: 28px; border: 1px solid #E5E7EB; border-radius: 16px; background: #FFFFFF; box-shadow: 0 4px 16px rgba(17,24,39,.06)">
+<div style="display: flex; align-items: center; gap: 14px">
+<div aria-hidden="true" style="flex: none; width: 44px; height: 52px; border-radius: 8px; background: #FDF0EB; color: #A3290F; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 8px; box-sizing: border-box; font-size: 10px; font-weight: 700">{{fileExt}}</div>
+<div style="display: flex; flex-direction: column; gap: 2px; min-width: 0">
+<span style="font-size: 15px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap">{{fileName}}</span>
+<span style="font-size: 13px; color: #6B7280">{{fileSize}}</span>
+</div>
+</div>
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px">
+<sc-for list="{{readSteps}}" as="r" hint-placeholder-count="4">
+<li style="display: flex; align-items: center; gap: 12px; font-size: 15px; color: {{r.fg}}">
+<span aria-hidden="true" style="flex: none; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center">
+<sc-if value="{{r.done}}" hint-placeholder-val="{{false}}"><span style="display: flex; width: 22px; height: 22px; border-radius: 50%; background: #D9381E; color: #FFFFFF; align-items: center; justify-content: center"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span></sc-if>
+<sc-if value="{{r.active}}" hint-placeholder-val="{{false}}"><svg class="spin" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D9381E" stroke-width="2.4" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-6.2-8.6"></path></svg></sc-if>
+<sc-if value="{{r.pending}}" hint-placeholder-val="{{true}}"><span style="display: block; width: 18px; height: 18px; box-sizing: border-box; border-radius: 50%; border: 2px solid #E5E7EB"></span></sc-if>
+</span>
+<span>{{r.label}}</span>
+</li>
+</sc-for>
+</ul>
+</div>
+</div>
+</sc-if>
+
+<!-- ============ REVIEW ============ -->
+<sc-if value="{{isReview}}" hint-placeholder-val="{{false}}">
+<div class="fade-in" style="display: flex; flex-direction: column; gap: 20px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h1 class="h1" style="margin: 0; font-size: 28px; line-height: 1.2; font-weight: 600; letter-spacing: -0.02em">Check the details</h1>
+<p style="margin: 0; display: flex; gap: 8px; align-items: flex-start; font-size: 15px; line-height: 1.55; color: #4B5563">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="#D9381E" aria-hidden="true" style="flex: none; margin-top: 2px"><path d="M10 3.5 11.6 8.4 16.5 10l-4.9 1.6L10 16.5 8.4 11.6 3.5 10l4.9-1.6Z"></path><path d="M18 14l.8 2.2L21 17l-2.2.8L18 20l-.8-2.2L15 17l2.2-.8Z"></path></svg>
+<span>We pre-filled {{prefilledCount}} fields from {{fileName}}. Check each one. Fields marked <strong style="font-weight: 600; color: #92400E">Needs input</strong> are up to you.</span>
+</p>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start">
+<div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
+
+<section aria-labelledby="sec-details" style="display: flex; flex-direction: column; gap: 18px; padding: 24px; border: 1px solid #E5E7EB; border-radius: 14px; background: #FFFFFF">
+<h2 id="sec-details" style="margin: 0; font-size: 17px; font-weight: 600">Study details</h2>
+
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px">
+<label for="f-title" style="font-size: 14px; font-weight: 600">Study title</label>
+<span style="display: inline-flex; align-items: center; height: 22px; padding: 0 8px; border-radius: 999px; background: {{tg.title.bg}}; color: {{tg.title.fg}}; font-size: 12px; font-weight: 500">{{tg.title.text}}</span>
+</div>
+<input id="f-title" class="fld" type="text" value="{{form.title}}" onChange="{{h.title}}" aria-invalid="{{inv.title}}" style="width: 100%; box-sizing: border-box; min-height: 44px; padding: 10px 12px; border: 1px solid {{bd.title}}; border-radius: 10px; font: inherit; font-size: 15px; color: #111827; background: #FFFFFF">
+<sc-if value="{{er.title}}" hint-placeholder-val="{{false}}"><p style="margin: 0; font-size: 13px; color: #B42318">Add a title.</p></sc-if>
+</div>
+
+<div class="two-col" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px">
+<label for="f-team" style="font-size: 14px; font-weight: 600">Team that ran it</label>
+<span style="display: inline-flex; align-items: center; height: 22px; padding: 0 8px; border-radius: 999px; background: {{tg.team.bg}}; color: {{tg.team.fg}}; font-size: 12px; font-weight: 500">{{tg.team.text}}</span>
+</div>
+<select id="f-team" class="fld" value="{{form.team}}" onChange="{{h.team}}" aria-invalid="{{inv.team}}" style="width: 100%; box-sizing: border-box; min-height: 44px; padding: 10px 12px; border: 1px solid {{bd.team}}; border-radius: 10px; font: inherit; font-size: 15px; color: #111827; background: #FFFFFF">
+<option value="">Choose a team</option>
+<sc-for list="{{teams}}" as="o" hint-placeholder-count="4"><option value="{{o}}">{{o}}</option></sc-for>
+</select>
+<sc-if value="{{er.team}}" hint-placeholder-val="{{false}}"><p style="margin: 0; font-size: 13px; color: #B42318">Choose the team that ran the study.</p></sc-if>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px">
+<label for="f-group" style="font-size: 14px; font-weight: 600">User group</label>
+<span style="display: inline-flex; align-items: center; height: 22px; padding: 0 8px; border-radius: 999px; background: {{tg.group.bg}}; color: {{tg.group.fg}}; font-size: 12px; font-weight: 500">{{tg.group.text}}</span>
+</div>
+<select id="f-group" class="fld" value="{{form.group}}" onChange="{{h.group}}" style="width: 100%; box-sizing: border-box; min-height: 44px; padding: 10px 12px; border: 1px solid #D1D5DB; border-radius: 10px; font: inherit; font-size: 15px; color: #111827; background: #FFFFFF">
+<sc-for list="{{groups}}" as="o" hint-placeholder-count="4"><option value="{{o}}">{{o}}</option></sc-for>
+</select>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px">
+<label for="f-market" style="font-size: 14px; font-weight: 600">Markets</label>
+<span style="display: inline-flex; align-items: center; height: 22px; padding: 0 8px; border-radius: 999px; background: {{tg.markets.bg}}; color: {{tg.markets.fg}}; font-size: 12px; font-weight: 500">{{tg.markets.text}}</span>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px; min-height: 44px; box-sizing: border-box; padding: 6px 8px; border: 1px solid {{bd.markets}}; border-radius: 10px; background: #FFFFFF">
+<sc-for list="{{markets}}" as="mk" hint-placeholder-count="2">
+<span style="display: inline-flex; align-items: center; gap: 4px; height: 30px; padding: 0 4px 0 10px; border-radius: 999px; background: #F3F4F6; font-size: 14px">
+{{mk.label}}
+<button type="button" onClick="{{mk.remove}}" aria-label="{{mk.removeLabel}}" style="width: 24px; height: 24px; border: 0; border-radius: 50%; background: transparent; color: #6B7280; display: inline-flex; align-items: center; justify-content: center">
+<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"></path></svg>
+</button>
+</span>
+</sc-for>
+<input id="f-market" type="text" value="{{marketDraft}}" onChange="{{h.marketDraft}}" onKeyDown="{{h.marketKey}}" placeholder="Add a market and press Enter" style="flex: 1 1 160px; min-width: 120px; height: 30px; border: 0; outline: none; font: inherit; font-size: 14px; color: #111827; background: transparent">
+</div>
+<sc-if value="{{er.markets}}" hint-placeholder-val="{{false}}"><p style="margin: 0; font-size: 13px; color: #B42318">Add at least one market.</p></sc-if>
+</div>
+
+<div class="two-col" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px">
+<label for="f-method" style="font-size: 14px; font-weight: 600">Method</label>
+<span style="display: inline-flex; align-items: center; height: 22px; padding: 0 8px; border-radius: 999px; background: {{tg.method.bg}}; color: {{tg.method.fg}}; font-size: 12px; font-weight: 500">{{tg.method.text}}</span>
+</div>
+<select id="f-method" class="fld" value="{{form.method}}" onChange="{{h.method}}" style="width: 100%; box-sizing: border-box; min-height: 44px; padding: 10px 12px; border: 1px solid #D1D5DB; border-radius: 10px; font: inherit; font-size: 15px; color: #111827; background: #FFFFFF">
+<sc-for list="{{methods}}" as="o" hint-placeholder-count="4"><option value="{{o}}">{{o}}</option></sc-for>
+</select>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px">
+<label for="f-when" style="font-size: 14px; font-weight: 600">Fieldwork</label>
+<span style="display: inline-flex; align-items: center; height: 22px; padding: 0 8px; border-radius: 999px; background: {{tg.fieldwork.bg}}; color: {{tg.fieldwork.fg}}; font-size: 12px; font-weight: 500">{{tg.fieldwork.text}}</span>
+</div>
+<input id="f-when" class="fld" type="text" value="{{form.fieldwork}}" onChange="{{h.fieldwork}}" style="width: 100%; box-sizing: border-box; min-height: 44px; padding: 10px 12px; border: 1px solid #D1D5DB; border-radius: 10px; font: inherit; font-size: 15px; color: #111827; background: #FFFFFF">
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px">
+<label for="f-n" style="font-size: 14px; font-weight: 600">Participants</label>
+<span style="display: inline-flex; align-items: center; height: 22px; padding: 0 8px; border-radius: 999px; background: {{tg.participants.bg}}; color: {{tg.participants.fg}}; font-size: 12px; font-weight: 500">{{tg.participants.text}}</span>
+</div>
+<input id="f-n" class="fld" type="text" inputmode="numeric" value="{{form.participants}}" onChange="{{h.participants}}" style="width: 100%; box-sizing: border-box; min-height: 44px; padding: 10px 12px; border: 1px solid #D1D5DB; border-radius: 10px; font: inherit; font-size: 15px; color: #111827; background: #FFFFFF">
+</div>
+</div>
+</section>
+
+<section aria-labelledby="sec-findings" style="display: flex; flex-direction: column; gap: 14px; padding: 24px; border: 1px solid #E5E7EB; border-radius: 14px; background: #FFFFFF">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px">
+<h2 id="sec-findings" style="margin: 0; font-size: 17px; font-weight: 600">Key findings</h2>
+<span style="display: inline-flex; align-items: center; height: 22px; padding: 0 8px; border-radius: 999px; background: {{tg.findings.bg}}; color: {{tg.findings.fg}}; font-size: 12px; font-weight: 500">{{tg.findings.text}}</span>
+</div>
+<p style="margin: 0; font-size: 14px; color: #6B7280">These feed the answers people get in search. Keep each one to a sentence or two.</p>
+<sc-for list="{{findings}}" as="fd" hint-placeholder-count="4">
+<div style="display: flex; gap: 10px; align-items: flex-start">
+<span aria-hidden="true" style="flex: none; margin-top: 10px; width: 24px; height: 24px; border-radius: 6px; background: #FDF0EB; color: #A3290F; font-size: 12px; font-weight: 600; display: flex; align-items: center; justify-content: center">{{fd.n}}</span>
+<textarea class="fld" rows="2" aria-label="{{fd.label}}" value="{{fd.text}}" onChange="{{fd.onChange}}" style="flex: 1; min-width: 0; box-sizing: border-box; padding: 10px 12px; border: 1px solid #D1D5DB; border-radius: 10px; font: inherit; font-size: 15px; line-height: 1.5; color: #111827; background: #FFFFFF; resize: vertical"></textarea>
+<button type="button" class="ghost" onClick="{{fd.remove}}" aria-label="{{fd.removeLabel}}" style="flex: none; margin-top: 2px; width: 40px; height: 40px; border: 0; border-radius: 8px; background: transparent; color: #6B7280; display: flex; align-items: center; justify-content: center">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16"></path><path d="M10 11v6M14 11v6"></path><path d="M6 7l1 13h10l1-13"></path><path d="M9 7V4h6v3"></path></svg>
+</button>
+</div>
+</sc-for>
+<sc-if value="{{er.findings}}" hint-placeholder-val="{{false}}"><p style="margin: 0; font-size: 13px; color: #B42318">Add at least one finding.</p></sc-if>
+<div>
+<button type="button" class="ghost" onClick="{{h.addFinding}}" style="display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 0 14px; border: 1px solid #E5E7EB; border-radius: 10px; background: #FFFFFF; color: #111827; font-size: 14px; font-weight: 500">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>
+Add a finding
+</button>
+</div>
+</section>
+
+<section aria-labelledby="sec-outcome" style="display: flex; flex-direction: column; gap: 14px; padding: 24px; border: 1px solid {{outcomeCardBd}}; border-radius: 14px; background: #FFFFFF">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px">
+<h2 id="sec-outcome" style="margin: 0; font-size: 17px; font-weight: 600">Outcome</h2>
+<span style="display: inline-flex; align-items: center; height: 22px; padding: 0 8px; border-radius: 999px; background: {{tg.outcome.bg}}; color: {{tg.outcome.fg}}; font-size: 12px; font-weight: 500">{{tg.outcome.text}}</span>
+</div>
+<p id="outcome-q" style="margin: 0; font-size: 14px; line-height: 1.5; color: #4B5563">What happened because of this study? Only you know this, so we can't fill it in.</p>
+<div class="opt-grid" role="radiogroup" aria-labelledby="outcome-q" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px">
+<sc-for list="{{outcomeOpts}}" as="o" hint-placeholder-count="3">
+<button type="button" role="radio" aria-checked="{{o.checked}}" class="opt" onClick="{{o.pick}}" style="display: flex; flex-direction: column; align-items: flex-start; gap: 4px; min-height: 76px; padding: 12px 14px; text-align: left; border-radius: 12px; border: 1.5px solid {{o.bd}}; background: {{o.bg}}; color: #111827">
+<span style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600">
+<span aria-hidden="true" style="display: inline-flex; width: 16px; height: 16px; box-sizing: border-box; border-radius: 50%; border: {{o.ring}}; background: #FFFFFF"></span>
+{{o.label}}
+</span>
+<span style="font-size: 13px; line-height: 1.45; color: #4B5563">{{o.hint}}</span>
+</button>
+</sc-for>
+</div>
+<sc-if value="{{er.outcomeType}}" hint-placeholder-val="{{false}}"><p style="margin: 0; font-size: 13px; color: #B42318">Choose what happened, even if it's "No decision yet".</p></sc-if>
+
+<sc-if value="{{showOutcomeText}}" hint-placeholder-val="{{false}}">
+<div class="fade-in" style="display: flex; flex-direction: column; gap: 6px">
+<label for="f-outcome" style="font-size: 14px; font-weight: 600">{{outcomeTextLabel}}</label>
+<textarea id="f-outcome" class="fld" rows="3" value="{{form.outcomeText}}" onChange="{{h.outcomeText}}" placeholder="{{outcomePlaceholder}}" aria-invalid="{{inv.outcomeText}}" style="width: 100%; box-sizing: border-box; padding: 10px 12px; border: 1px solid {{bd.outcomeText}}; border-radius: 10px; font: inherit; font-size: 15px; line-height: 1.5; color: #111827; background: #FFFFFF; resize: vertical"></textarea>
+<sc-if value="{{er.outcomeText}}" hint-placeholder-val="{{false}}"><p style="margin: 0; font-size: 13px; color: #B42318">Describe what changed or what was decided.</p></sc-if>
+</div>
+</sc-if>
+<sc-if value="{{showReminder}}" hint-placeholder-val="{{false}}">
+<p class="fade-in" style="margin: 0; display: flex; gap: 8px; align-items: center; font-size: 14px; color: #4B5563">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+We'll remind you in 3 months to add the outcome.
+</p>
+</sc-if>
+</section>
+
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px">
+<sc-if value="{{showErrSummary}}" hint-placeholder-val="{{false}}">
+<p role="alert" style="margin: 0; font-size: 14px; font-weight: 500; color: #B42318">{{errSummary}}</p>
+</sc-if>
+<sc-if value="{{noErrSummary}}" hint-placeholder-val="{{true}}"><span></span></sc-if>
+<div style="display: flex; gap: 10px">
+<button type="button" class="ghost" onClick="{{startOver}}" style="min-height: 44px; padding: 0 18px; border: 1px solid #E5E7EB; border-radius: 10px; background: #FFFFFF; color: #111827; font-size: 15px; font-weight: 500">Cancel</button>
+<button type="button" class="primary" onClick="{{submit}}" style="min-height: 44px; padding: 0 22px; border: 0; border-radius: 10px; background: #D9381E; color: #FFFFFF; font-size: 15px; font-weight: 600">Submit study</button>
+</div>
+</div>
+</div>
+
+<aside aria-label="About this submission" style="flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 14px; padding: 20px; border: 1px solid #E5E7EB; border-radius: 14px; background: #FFFFFF">
+<span style="font-size: 13px; font-weight: 600; color: #6B7280">Your file</span>
+<div style="display: flex; align-items: center; gap: 12px">
+<div aria-hidden="true" style="flex: none; width: 36px; height: 44px; border-radius: 6px; background: #FDF0EB; color: #A3290F; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 6px; box-sizing: border-box; font-size: 9px; font-weight: 700">{{fileExt}}</div>
+<div style="display: flex; flex-direction: column; gap: 2px; min-width: 0">
+<span style="font-size: 14px; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap">{{fileName}}</span>
+<span style="font-size: 13px; color: #6B7280">{{fileSize}}</span>
+</div>
+</div>
+<button type="button" class="ghost" onClick="{{startOver}}" style="align-self: flex-start; min-height: 36px; padding: 0 12px; border: 1px solid #E5E7EB; border-radius: 8px; background: #FFFFFF; color: #111827; font-size: 13px; font-weight: 500">Replace file</button>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 14px; padding: 20px; border: 1px solid #E5E7EB; border-radius: 14px; background: #FFFFFF">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 15px; font-weight: 600">Related studies</span>
+<span style="font-size: 13px; line-height: 1.5; color: #4B5563">Already in Insights Hub. Not a duplicate: yours adds new markets and a new angle. Link them so people see the full picture.</span>
+</div>
+<sc-for list="{{related}}" as="rl" hint-placeholder-count="2">
+<div style="display: flex; gap: 12px; align-items: flex-start; padding-top: 12px; border-top: 1px solid #F3F4F6">
+<div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px">
+<span style="font-size: 14px; font-weight: 500">{{rl.title}}</span>
+<span style="font-size: 12px; color: #6B7280">{{rl.meta}}</span>
+<span style="font-size: 12px; color: #A3290F">{{rl.why}}</span>
+</div>
+<button type="button" class="opt" onClick="{{rl.toggle}}" aria-pressed="{{rl.pressed}}" aria-label="{{rl.aria}}" style="flex: none; min-height: 34px; padding: 0 12px; border-radius: 999px; border: 1px solid {{rl.bd}}; background: {{rl.bg}}; color: {{rl.fg}}; font-size: 13px; font-weight: 500">{{rl.text}}</button>
+</div>
+</sc-for>
+</div>
+</aside>
+</div>
+</div>
+</sc-if>
+
+<!-- ============ DONE ============ -->
+<sc-if value="{{isDone}}" hint-placeholder-val="{{false}}">
+<div class="fade-in" style="display: flex; flex-direction: column; align-items: center; gap: 24px; padding-top: 12px">
+<div style="display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; max-width: 560px">
+<div aria-hidden="true" style="width: 56px; height: 56px; border-radius: 50%; background: #FDF0EB; color: #D9381E; display: flex; align-items: center; justify-content: center">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+</div>
+<h1 class="h1" style="margin: 0; font-size: 28px; line-height: 1.2; font-weight: 600; letter-spacing: -0.02em">Study submitted</h1>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #4B5563">The Insights team does a quick check, usually within 2 working days. After that, it shows up in search answers for every team.</p>
+</div>
+
+<div style="width: 100%; max-width: 680px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 13px; font-weight: 600; color: #6B7280">How it will appear in search</span>
+<div style="display: flex; flex-direction: column; gap: 14px; padding: 20px; border: 1px solid #E5E7EB; border-radius: 14px; background: #FFFFFF; box-shadow: 0 1px 3px rgba(17,24,39,.06)">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 16px; font-weight: 600">{{form.title}}</span>
+<span style="font-size: 13px; color: #6B7280">{{doneMeta}}</span>
+</div>
+<ul style="margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 6px; font-size: 14px; line-height: 1.55; color: #374151">
+<sc-for list="{{doneFindings}}" as="df" hint-placeholder-count="3"><li>{{df}}</li></sc-for>
+</ul>
+<div style="display: flex; gap: 10px; align-items: flex-start; padding: 12px 14px; border-radius: 10px; background: #F9FAFB; font-size: 14px; line-height: 1.5">
+<span style="flex: none; font-weight: 600">Outcome</span>
+<span style="color: #374151">{{doneOutcome}}</span>
+</div>
+<sc-if value="{{hasLinked}}" hint-placeholder-val="{{false}}">
+<span style="font-size: 13px; color: #6B7280">{{linkedText}}</span>
+</sc-if>
+</div>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px">
+<button type="button" class="primary" onClick="{{startOver}}" style="min-height: 44px; padding: 0 20px; border: 0; border-radius: 10px; background: #D9381E; color: #FFFFFF; font-size: 15px; font-weight: 600">Add another study</button>
+<button type="button" class="ghost" onClick="{{startOver}}" style="min-height: 44px; padding: 0 18px; border: 1px solid #E5E7EB; border-radius: 10px; background: #FFFFFF; color: #111827; font-size: 15px; font-weight: 500">See your submissions</button>
+</div>
+</div>
+</sc-if>
+
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1100}}'>
+var TEAMS = ['Europe regional team', 'US regional team', 'Germany country team', 'Spain country team', 'Product research', 'Insights team'];
+var GROUPS = ['Merchants', 'Small businesses', 'Cardholders', 'Students', 'New customers'];
+var METHODS = ['Interviews', 'Survey', 'Diary study', 'Usability test', 'Data analysis', 'Field visits'];
+
+var SAMPLE_FILE = { name: 'market-stallholder-interviews.pdf', size: '3.1 MB', ext: 'PDF' };
+var SAMPLE = {
+  title: 'Contactless at weekly markets: stallholder interviews',
+  team: '',
+  markets: ['Germany', 'Netherlands'],
+  group: 'Merchants',
+  method: 'Interviews',
+  fieldwork: 'Aug 2026',
+  participants: '16',
+  findings: [
+    'Stallholders take contactless mainly because customers ask for it, not to save time.',
+    'Weak signal and flat batteries at outdoor markets are the main reason payments fail.',
+    'Most would accept a slightly higher fee for a card reader that works offline.',
+    'Cash stays important for small purchases under about 5 euros.'
+  ],
+  outcomeType: '',
+  outcomeText: ''
+};
+
+var RELATED = [
+  { id: 'r1', title: 'Merchant interviews in smaller towns', meta: 'Country · Germany · Sep 2025', why: 'Same user group and market' },
+  { id: 'r2', title: 'Card acceptance tracker, H1 2026', meta: 'Market data · Germany · Jul 2026', why: 'Covers contactless acceptance' }
+];
+
+var OUTCOMES = [
+  { id: 'change', label: 'Led to a change', hint: 'Something shipped, stopped or was redesigned.' },
+  { id: 'decision', label: 'Informed a decision', hint: 'It shaped a plan, priority or strategy.' },
+  { id: 'none', label: 'No decision yet', hint: 'Too early to tell. Add it later.' }
+];
+
+var READ_STEPS = ['Reading 12 pages', 'Finding the study details', 'Pulling out key findings', 'Looking for related studies'];
+
+var PREFILLED = ['title', 'markets', 'group', 'method', 'fieldwork', 'participants', 'findings'];
+
+var INITIAL_SUBS = [
+  { id: 's1', title: 'Card acceptance tracker, H1 2026', date: '22 Jul 2026', status: 'outcome', outcome: '' },
+  { id: 's2', title: 'Tap to pay on phone: usability test', date: '14 Nov 2025', status: 'published', outcome: 'Led to a change' },
+  { id: 's3', title: 'Merchant interviews in smaller towns', date: '30 Sep 2025', status: 'published', outcome: 'Informed a decision' }
+];
+
+function outcomeLabel(id) {
+  for (var i = 0; i < OUTCOMES.length; i++) if (OUTCOMES[i].id === id) return OUTCOMES[i].label;
+  return '';
+}
+
+function freshForm() {
+  return JSON.parse(JSON.stringify(SAMPLE));
+}
+
+function formatSize(bytes) {
+  if (!bytes && bytes !== 0) return '';
+  if (bytes < 1024 * 1024) return Math.max(1, Math.round(bytes / 1024)) + ' KB';
+  return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+}
+
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = {
+      step: 'start', file: null, fileError: false, dragOver: false, readStep: 0,
+      form: freshForm(), edited: {}, marketDraft: '', linked: { r1: true, r2: false }, showErrors: false,
+      subs: INITIAL_SUBS.slice(), openSub: null, subDraft: { type: '', text: '' }, subErr: ''
+    };
+    this.timers = [];
+    this.fileInput = null;
+    this.nextSub = 1;
+  }
+
+  componentWillUnmount() { this.clearTimers(); }
+
+  clearTimers() {
+    this.timers.forEach(function (t) { clearTimeout(t); });
+    this.timers = [];
+  }
+
+  toTop() {
+    try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch (e) {}
+  }
+
+  startReading(file) {
+    var self = this;
+    this.clearTimers();
+    this.setState({ step: 'reading', file: file, fileError: false, dragOver: false, readStep: 0,
+      form: freshForm(), edited: {}, marketDraft: '', linked: { r1: true, r2: false }, showErrors: false });
+    this.toTop();
+    for (var i = 1; i <= READ_STEPS.length; i++) {
+      (function (n) {
+        self.timers.push(setTimeout(function () { self.setState({ readStep: n }); }, n * 800));
+      })(i);
+    }
+    this.timers.push(setTimeout(function () { self.setState({ step: 'review' }); self.toTop(); }, READ_STEPS.length * 800 + 500));
+  }
+
+  takeFile(f) {
+    if (!f) return;
+    var ext = (f.name.split('.').pop() || '').toLowerCase();
+    if (['pdf', 'ppt', 'pptx', 'doc', 'docx'].indexOf(ext) < 0) {
+      this.setState({ fileError: true, dragOver: false });
+      return;
+    }
+    this.startReading({ name: f.name, size: formatSize(f.size), ext: ext.indexOf('ppt') === 0 ? 'PPT' : ext.indexOf('doc') === 0 ? 'DOC' : 'PDF' });
+  }
+
+  setField(k, v) {
+    this.setState(function (s) {
+      var form = Object.assign({}, s.form); form[k] = v;
+      var edited = Object.assign({}, s.edited); edited[k] = true;
+      return { form: form, edited: edited };
+    });
+  }
+
+  addMarket() {
+    var v = (this.state.marketDraft || '').trim().replace(/,$/, '');
+    if (!v) return;
+    var cur = this.state.form.markets;
+    if (cur.some(function (m) { return m.toLowerCase() === v.toLowerCase(); })) { this.setState({ marketDraft: '' }); return; }
+    this.setField('markets', cur.concat([v]));
+    this.setState({ marketDraft: '' });
+  }
+
+  errors() {
+    var f = this.state.form;
+    var needsText = f.outcomeType === 'change' || f.outcomeType === 'decision';
+    return {
+      title: !f.title.trim(),
+      team: !f.team,
+      markets: f.markets.length === 0,
+      findings: f.findings.filter(function (x) { return x.trim(); }).length === 0,
+      outcomeType: !f.outcomeType,
+      outcomeText: needsText && !f.outcomeText.trim()
+    };
+  }
+
+  submit() {
+    var errs = this.errors();
+    var bad = Object.keys(errs).some(function (k) { return errs[k]; });
+    if (bad) { this.setState({ showErrors: true }); return; }
+    var f = this.state.form;
+    var today = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+    var entry = { id: 'n' + (this.nextSub++), title: f.title.trim(), date: today, status: 'review', outcome: outcomeLabel(f.outcomeType) };
+    this.setState(function (s) { return { step: 'done', subs: [entry].concat(s.subs), showErrors: false }; });
+    this.toTop();
+  }
+
+  startOver() {
+    this.clearTimers();
+    if (this.fileInput) { try { this.fileInput.value = ''; } catch (e) {} }
+    this.setState({ step: 'start', file: null, fileError: false, dragOver: false, readStep: 0,
+      form: freshForm(), edited: {}, marketDraft: '', showErrors: false, openSub: null });
+    this.toTop();
+  }
+
+  tag(k, empty) {
+    if (empty) return { text: 'Needs input', bg: '#FEF3C7', fg: '#92400E' };
+    if (this.state.edited[k]) return { text: 'Edited', bg: '#F3F4F6', fg: '#4B5563' };
+    if (PREFILLED.indexOf(k) >= 0) return { text: 'Pre-filled', bg: '#FDF0EB', fg: '#A3290F' };
+    return { text: 'Added by you', bg: '#F3F4F6', fg: '#4B5563' };
+  }
+
+  renderVals() {
+    var self = this;
+    var s = this.state;
+    var f = s.form;
+    var file = s.file || SAMPLE_FILE;
+
+    var stepIdx = { start: 0, reading: 0, review: 1, done: 2 }[s.step];
+    var steps = ['Upload', 'Review', 'Done'].map(function (label, i) {
+      var done = i < stepIdx || s.step === 'done';
+      var cur = i === stepIdx && s.step !== 'done';
+      return {
+        label: label, n: String(i + 1), done: done, notDone: !done,
+        bg: cur ? '#D9381E' : (done ? '#FDF0EB' : '#FFFFFF'),
+        fg: cur ? '#FFFFFF' : (done ? '#A3290F' : '#6B7280'),
+        bd: cur ? '#D9381E' : (done ? '#F3A58C' : '#D1D5DB'),
+        labelFg: cur || done ? '#111827' : '#6B7280',
+        weight: cur ? '600' : '500',
+        showLine: i > 0, lineBg: i <= stepIdx ? '#F3A58C' : '#E5E7EB',
+        current: cur ? 'step' : 'false'
+      };
+    });
+
+    var readSteps = READ_STEPS.map(function (label, i) {
+      var done = i < s.readStep, active = i === s.readStep;
+      return { label: label, done: done, active: active, pending: !done && !active, fg: done || active ? '#111827' : '#9CA3AF' };
+    });
+
+    var errs = this.errors();
+    var show = s.showErrors;
+    var er = {}, inv = {}, bd = {};
+    Object.keys(errs).forEach(function (k) {
+      er[k] = show && errs[k];
+      inv[k] = er[k] ? 'true' : 'false';
+      bd[k] = er[k] ? '#B42318' : '#D1D5DB';
+    });
+    var errCount = Object.keys(errs).filter(function (k) { return errs[k]; }).length;
+
+    var tg = {
+      title: this.tag('title', !f.title.trim()),
+      team: this.tag('team', !f.team),
+      group: this.tag('group', false),
+      markets: this.tag('markets', f.markets.length === 0),
+      method: this.tag('method', false),
+      fieldwork: this.tag('fieldwork', !f.fieldwork.trim()),
+      participants: this.tag('participants', !f.participants.trim()),
+      findings: this.tag('findings', f.findings.filter(function (x) { return x.trim(); }).length === 0),
+      outcome: this.tag('outcome', !f.outcomeType)
+    };
+
+    var h = {
+      title: function (e) { self.setField('title', e.target.value); },
+      team: function (e) { self.setField('team', e.target.value); },
+      group: function (e) { self.setField('group', e.target.value); },
+      method: function (e) { self.setField('method', e.target.value); },
+      fieldwork: function (e) { self.setField('fieldwork', e.target.value); },
+      participants: function (e) { self.setField('participants', e.target.value.replace(/[^0-9]/g, '')); },
+      outcomeText: function (e) { self.setField('outcomeText', e.target.value); },
+      marketDraft: function (e) { self.setState({ marketDraft: e.target.value }); },
+      marketKey: function (e) {
+        if ((e.key === 'Enter' || e.key === ',') && !(e.nativeEvent && e.nativeEvent.isComposing)) { e.preventDefault(); self.addMarket(); }
+        else if (e.key === 'Backspace' && !s.marketDraft && f.markets.length) { self.setField('markets', f.markets.slice(0, -1)); }
+      },
+      addFinding: function () { self.setField('findings', f.findings.concat([''])); }
+    };
+
+    var markets = f.markets.map(function (m, i) {
+      return {
+        label: m, removeLabel: 'Remove ' + m,
+        remove: function () { self.setField('markets', f.markets.filter(function (_, j) { return j !== i; })); }
+      };
+    });
+
+    var findings = f.findings.map(function (text, i) {
+      return {
+        n: String(i + 1), text: text, label: 'Finding ' + (i + 1), removeLabel: 'Remove finding ' + (i + 1),
+        onChange: function (e) {
+          var next = f.findings.slice(); next[i] = e.target.value; self.setField('findings', next);
+        },
+        remove: function () { self.setField('findings', f.findings.filter(function (_, j) { return j !== i; })); }
+      };
+    });
+
+    var outcomeOpts = OUTCOMES.map(function (o) {
+      var on = f.outcomeType === o.id;
+      return {
+        label: o.label, hint: o.hint, checked: on ? 'true' : 'false',
+        bd: on ? '#D9381E' : (er.outcomeType ? '#B42318' : '#E5E7EB'),
+        bg: on ? '#FDF0EB' : '#FFFFFF',
+        ring: on ? '5px solid #D9381E' : '1.5px solid #9CA3AF',
+        pick: function () { self.setField('outcomeType', o.id); }
+      };
+    });
+    var needsText = f.outcomeType === 'change' || f.outcomeType === 'decision';
+
+    var related = RELATED.map(function (r) {
+      var on = !!s.linked[r.id];
+      return {
+        title: r.title, meta: r.meta, why: r.why,
+        pressed: on ? 'true' : 'false', text: on ? 'Linked' : 'Link',
+        aria: (on ? 'Unlink ' : 'Link ') + r.title,
+        bd: on ? '#F3A58C' : '#E5E7EB', bg: on ? '#FDF0EB' : '#FFFFFF', fg: on ? '#A3290F' : '#111827',
+        toggle: function () {
+          self.setState(function (st) { var l = Object.assign({}, st.linked); l[r.id] = !l[r.id]; return { linked: l }; });
+        }
+      };
+    });
+    var linkedCount = RELATED.filter(function (r) { return s.linked[r.id]; }).length;
+
+    var subs = s.subs.map(function (sb, i) {
+      var pill = sb.status === 'published' ? { t: 'Published', bg: '#F3F4F6', fg: '#374151' }
+        : sb.status === 'review' ? { t: 'In review', bg: '#FEF3C7', fg: '#92400E' }
+        : { t: 'Outcome missing', bg: '#FDF0EB', fg: '#A3290F' };
+      var isOpen = s.openSub === sb.id;
+      var d = s.subDraft;
+      var metaBits = ['Submitted ' + sb.date];
+      if (sb.outcome) metaBits.push('Outcome: ' + sb.outcome);
+      return {
+        title: sb.title, meta: metaBits.join(' · '), status: pill.t, pillBg: pill.bg, pillFg: pill.fg,
+        topBorder: i === 0 ? '0' : '1px solid #F3F4F6',
+        canAdd: sb.status === 'outcome', isOpen: isOpen, expanded: isOpen ? 'true' : 'false',
+        toggleText: isOpen ? 'Close' : 'Add outcome',
+        qId: 'q-' + sb.id, tId: 't-' + sb.id,
+        draftText: d.text, err: isOpen && !!s.subErr, errText: s.subErr,
+        toggle: function () { self.setState({ openSub: isOpen ? null : sb.id, subDraft: { type: '', text: '' }, subErr: '' }); },
+        onText: function (e) { self.setState({ subDraft: { type: s.subDraft.type, text: e.target.value } }); },
+        opts: OUTCOMES.map(function (o) {
+          var on = d.type === o.id;
+          return {
+            label: o.label, checked: on ? 'true' : 'false',
+            bd: on ? '#D9381E' : '#E5E7EB', bg: on ? '#FDF0EB' : '#FFFFFF', fg: on ? '#A3290F' : '#111827',
+            pick: function () { self.setState({ subDraft: { type: o.id, text: s.subDraft.text }, subErr: '' }); }
+          };
+        }),
+        save: function () {
+          var dd = self.state.subDraft;
+          if (!dd.type) { self.setState({ subErr: 'Choose what happened.' }); return; }
+          if (dd.type !== 'none' && !dd.text.trim()) { self.setState({ subErr: 'Describe what changed or what was decided.' }); return; }
+          self.setState(function (st) {
+            return {
+              subs: st.subs.map(function (x) {
+                return x.id === sb.id ? Object.assign({}, x, { status: dd.type === 'none' ? 'outcome' : 'published', outcome: outcomeLabel(dd.type) }) : x;
+              }),
+              openSub: null, subDraft: { type: '', text: '' }, subErr: ''
+            };
+          });
+        }
+      };
+    });
+
+    var doneOutcome = outcomeLabel(f.outcomeType) + (f.outcomeText.trim() ? ': ' + f.outcomeText.trim() : '');
+    if (f.outcomeType === 'none') doneOutcome = 'No decision yet. We’ll remind you in 3 months.';
+
+    return {
+      isStart: s.step === 'start', isReading: s.step === 'reading', isReview: s.step === 'review', isDone: s.step === 'done',
+      notStart: s.step !== 'start',
+      steps: steps, readSteps: readSteps,
+      fileName: file.name, fileSize: file.size, fileExt: file.ext,
+      fileError: s.fileError,
+      dropBd: s.dragOver ? '#D9381E' : '#E5C3B8',
+      dropBg: s.dragOver ? '#FDF0EB' : '#FFFFFF',
+      form: f, tg: tg, er: er, inv: inv, bd: bd, h: h,
+      teams: TEAMS, groups: GROUPS, methods: METHODS,
+      markets: markets, marketDraft: s.marketDraft, findings: findings,
+      outcomeOpts: outcomeOpts,
+      showOutcomeText: needsText,
+      showReminder: f.outcomeType === 'none',
+      outcomeTextLabel: f.outcomeType === 'change' ? 'What changed?' : 'What was decided?',
+      outcomePlaceholder: f.outcomeType === 'change' ? 'For example: offline mode was added to the card reader in Q1.' : 'For example: offline mode moved up the roadmap for next year.',
+      outcomeCardBd: er.outcomeType || er.outcomeText ? '#F3A58C' : '#E5E7EB',
+      prefilledCount: String(PREFILLED.length),
+      related: related,
+      showErrSummary: show && errCount > 0, noErrSummary: !(show && errCount > 0),
+      errSummary: errCount === 1 ? '1 field needs your input before you can submit.' : errCount + ' fields need your input before you can submit.',
+      subs: subs,
+      doneMeta: [f.markets.join(', '), f.fieldwork, f.method, f.participants ? f.participants + ' participants' : '', f.team].filter(Boolean).join(' · '),
+      doneFindings: f.findings.filter(function (x) { return x.trim(); }),
+      doneOutcome: doneOutcome,
+      hasLinked: linkedCount > 0,
+      linkedText: linkedCount === 1 ? 'Linked to 1 related study' : 'Linked to ' + linkedCount + ' related studies',
+      setFileInput: function (el) { self.fileInput = el; },
+      browse: function () { if (self.fileInput) self.fileInput.click(); },
+      onFile: function (e) { self.takeFile(e.target.files && e.target.files[0]); },
+      onDragOver: function (e) { e.preventDefault(); if (!self.state.dragOver) self.setState({ dragOver: true }); },
+      onDragLeave: function () { self.setState({ dragOver: false }); },
+      onDrop: function (e) { e.preventDefault(); self.takeFile(e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0]); },
+      useSample: function () { self.startReading(SAMPLE_FILE); },
+      submit: function () { self.submit(); },
+      startOver: function () { self.startOver(); }
+    };
+  }
+}
+</script>
+</body>
+</html>
